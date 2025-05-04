@@ -38,7 +38,11 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <a href="#" className="flex items-center space-x-2">
-              <span className="text-2xl font-bold text-primary">TrackScore</span>
+              <img 
+                src="/lovable-uploads/3c4756d4-83a0-499f-8d98-04970f61faa7.png" 
+                alt="Scalysis Logo" 
+                className="h-10" 
+              />
             </a>
           </div>
 

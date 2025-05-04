@@ -74,10 +74,9 @@ const Stat = ({ value, label, description, delay }: StatProps) => {
         isVisible ? `animate-fadeIn ${delay}` : "opacity-0"
       )}
     >
-      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
-        <span className="text-2xl font-bold">{displayValue.charAt(0)}</span>
+      <div className="bg-primary text-white rounded-lg p-6 mb-4 shadow-medium">
+        <div className="text-4xl font-bold mb-2">{displayValue}</div>
       </div>
-      <div className="text-4xl font-bold mb-2">{displayValue}</div>
       <h3 className="text-lg font-medium text-gray-800 mb-1">{label}</h3>
       <p className="text-gray-600 text-sm">{description}</p>
     </div>
@@ -96,7 +95,7 @@ const Stats = () => {
             <span className="text-gradient">Numbers</span> That Speak For Themselves
           </h2>
           <p className="text-lg text-gray-600">
-            TrackScore delivers measurable improvements to businesses of all sizes across India. Here's what our customers have achieved.
+            Scalysis delivers measurable improvements to businesses of all sizes across India. Here's what our customers have achieved.
           </p>
         </div>
 

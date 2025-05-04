@@ -61,7 +61,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold">TrackScore</h3>
+            <div className="flex items-center">
+              <img 
+                src="/lovable-uploads/3c4756d4-83a0-499f-8d98-04970f61faa7.png" 
+                alt="Scalysis Logo" 
+                className="h-10 mr-2" 
+              />
+            </div>
             <p className="text-gray-600">
               Smart order selection for COD orders. Reducing RTO rates for e-commerce businesses across India.
             </p>
@@ -117,8 +123,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="text-primary mr-2" />
-                <a href="mailto:info@trackscore.com" className="text-gray-600 hover:text-primary transition-colors">
-                  info@trackscore.com
+                <a href="mailto:info@scalysis.com" className="text-gray-600 hover:text-primary transition-colors">
+                  info@scalysis.com
                 </a>
               </li>
             </ul>
@@ -148,7 +154,7 @@ const Footer = () => {
         
         <div className="border-t border-gray-200 pt-8 mt-8 text-center">
           <p className="text-gray-600 text-sm">
-            &copy; {new Date().getFullYear()} TrackScore. All rights reserved.
+            &copy; {new Date().getFullYear()} Scalysis. All rights reserved.
           </p>
         </div>
       </div>

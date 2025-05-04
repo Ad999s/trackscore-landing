@@ -27,10 +27,10 @@ const Hero = () => {
                 AI-Powered Order Selection
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                Reduce RTO Rates for <span className="text-gradient">COD Orders</span> in India
+                No One Solves <span className="text-gradient">RTO</span> Like Scalysis
               </h1>
               <p className="text-xl text-gray-600 mt-4 max-w-xl">
-                TrackScore predicts and prevents returns before they happen, 
+                Scalysis predicts and prevents returns before they happen, 
                 helping e-commerce businesses save money and delight customers.
               </p>
             </div>
@@ -38,14 +38,18 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="group">
                 <a href="#get-started">
-                  Get Started 
+                  Install on Shopify 
                   <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <a href="#how-it-works">See How It Works</a>
+                <a href="#how-it-works">Watch Demo</a>
               </Button>
             </div>
+            
+            <p className="text-sm text-gray-600 font-medium">
+              15 day free trial
+            </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-6 pt-4">
               <div className="flex -space-x-2">
@@ -56,7 +60,7 @@ const Hero = () => {
                 ))}
               </div>
               <p className="text-sm text-gray-600">
-                <span className="font-medium">300+</span> businesses using TrackScore
+                <span className="font-medium">300+</span> businesses using Scalysis
               </p>
             </div>
           </div>

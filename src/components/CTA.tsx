@@ -55,19 +55,20 @@ const CTA = () => {
                   Ready to Reduce Your RTO Rates?
                 </h2>
                 <p className="text-white/90 text-lg">
-                  Join hundreds of businesses across India that are saving money and improving customer satisfaction with TrackScore.
+                  Join hundreds of businesses across India that are saving money and improving customer satisfaction with Scalysis.
                 </p>
                 <div className="flex flex-wrap gap-4 pt-2">
                   <Button asChild size="lg" variant="secondary" className="group text-primary">
                     <a href="#contact">
-                      Get Started Now
+                      Install on Shopify
                       <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
                     </a>
                   </Button>
                   <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10">
-                    <a href="#contact">Schedule Demo</a>
+                    <a href="#contact">Watch Demo</a>
                   </Button>
                 </div>
+                <p className="text-sm text-white/90">15 day free trial</p>
               </div>
               
               <div className="md:col-span-2">
