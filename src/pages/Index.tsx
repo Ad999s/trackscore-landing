@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
+import PincodeBlocker from "@/components/PincodeBlocker";
+import ProfitCalculator from "@/components/ProfitCalculator";
 import Stats from "@/components/Stats";
 import HowItWorks from "@/components/HowItWorks";
 import CTA from "@/components/CTA";
@@ -20,6 +22,8 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <Features />
+        <PincodeBlocker />
+        <ProfitCalculator />
         <Stats />
         <HowItWorks />
         <CTA />

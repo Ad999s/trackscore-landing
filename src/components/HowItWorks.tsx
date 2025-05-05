@@ -1,12 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { 
-  ArrowRight, 
-  Upload, 
-  ShieldCheck, 
-  Truck,
-  BarChart
-} from "lucide-react";
+import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface StepProps {
@@ -77,31 +71,38 @@ const HowItWorks = () => {
   const steps = [
     {
       number: 1,
-      title: "Connect Your Order Data",
-      description: "Integrate TrackScore with your e-commerce platform or upload your order data through our secure API or dashboard.",
-      icon: <Upload size={20} className="text-primary" />,
+      title: "Install on Shopify",
+      description: "Easy integration with your store.",
+      icon: <Check size={20} className="text-primary" />,
       delay: "animation-delay-100"
     },
     {
       number: 2,
-      title: "AI Risk Assessment",
-      description: "Our algorithms analyze each order to calculate an RTO risk score based on multiple factors including address quality, order history, and regional trends.",
-      icon: <ShieldCheck size={20} className="text-primary" />,
+      title: "Connect with order data & AWB links",
+      description: "Syncs seamlessly for real-time tracking.",
+      icon: <Check size={20} className="text-primary" />,
       delay: "animation-delay-200"
     },
     {
       number: 3,
-      title: "Optimize Order Processing",
-      description: "High-risk orders are flagged for additional verification while low-risk orders are fast-tracked for efficient processing and delivery.",
-      icon: <Truck size={20} className="text-primary" />,
+      title: "Train the model",
+      description: "Customizes for your specific needs.",
+      icon: <Check size={20} className="text-primary" />,
       delay: "animation-delay-300"
     },
     {
       number: 4,
-      title: "Monitor Performance",
-      description: "Track your RTO reduction metrics and cost savings through our comprehensive analytics dashboard.",
-      icon: <BarChart size={20} className="text-primary" />,
-      delay: "animation-delay-400",
+      title: "Master model + product-specific model",
+      description: "Optimized for general & brand-specific use.",
+      icon: <Check size={20} className="text-primary" />,
+      delay: "animation-delay-400"
+    },
+    {
+      number: 5,
+      title: "Real-time accurate predictions",
+      description: "Delivers precise insights on every order.",
+      icon: <Check size={20} className="text-primary" />,
+      delay: "animation-delay-500",
       isLast: true
     }
   ];
@@ -115,7 +116,7 @@ const HowItWorks = () => {
               Simple Process
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <span className="text-gradient">How</span> TrackScore Works
+              <span className="text-gradient">How</span> Scalysis Works
             </h2>
             <p className="text-lg text-gray-600 mb-8">
               Our intuitive platform seamlessly integrates with your existing workflows to reduce RTO rates without disrupting your operations.
