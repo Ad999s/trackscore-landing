@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { Check } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface StepProps {
