@@ -60,7 +60,7 @@ const CTA = () => {
                 <div className="flex flex-wrap gap-4 pt-2">
                   <Button asChild size="lg" variant="secondary" className="group text-primary">
                     <a href="#contact">
-                      Install on Shopify
+                      Try 30 Days Free
                       <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
                     </a>
                   </Button>
@@ -68,7 +68,6 @@ const CTA = () => {
                     <a href="#contact">Watch Demo</a>
                   </Button>
                 </div>
-                <p className="text-sm text-white/90">15 day free trial</p>
               </div>
               
               <div className="md:col-span-2">

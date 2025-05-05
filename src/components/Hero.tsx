@@ -27,18 +27,17 @@ const Hero = () => {
                 AI-Powered Order Selection
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                No One Solves <span className="text-gradient">RTO</span> Like Scalysis
+                Smart Order Selection: <span className="text-gradient">Reduce RTO</span>
               </h1>
               <p className="text-xl text-gray-600 mt-4 max-w-xl">
-                Scalysis predicts and prevents returns before they happen, 
-                helping e-commerce businesses save money and delight customers.
+                The All-in-One RTO Killer, Built for Shopify Brands Like Yours.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="group">
                 <a href="#get-started">
-                  Install on Shopify 
+                  Try 30 Days Free 
                   <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
@@ -47,10 +46,6 @@ const Hero = () => {
               </Button>
             </div>
             
-            <p className="text-sm text-gray-600 font-medium">
-              15 day free trial
-            </p>
-
             <div className="flex flex-col sm:flex-row items-center gap-6 pt-4">
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (
