@@ -47,27 +47,34 @@ const OldVsNew = () => {
               isVisible ? "animate-slideUp" : "opacity-0 translate-y-8"
             )}>
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-100 text-red-700 px-4 py-1 rounded-full font-medium">
-                Model 1 (Traditional)
+                Traditional RTO Models
               </div>
-              <div className="mt-6">
-                <h3 className="text-xl font-semibold mb-4 text-center">Everyone Gets a Label</h3>
-                <div className="flex justify-center mb-6">
-                  <div className="w-32 h-32 bg-red-50 rounded-full flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
+              <div className="mt-6 space-y-6">
+                <div className="p-4 border-b border-gray-100">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-red-400 rounded-full mr-3"></div>
+                    <p className="text-gray-800 font-medium">Everyone gets tagged</p>
                   </div>
                 </div>
                 
-                <div className="space-y-4 text-center">
-                  <div className="bg-red-50 p-3 rounded">
-                    <p className="text-red-700">Vague predictions</p>
+                <div className="p-4 border-b border-gray-100">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-red-400 rounded-full mr-3"></div>
+                    <p className="text-gray-800 font-medium">Vague risk scores (High, Medium, Low)</p>
                   </div>
-                  <div className="bg-red-50 p-3 rounded">
-                    <p className="text-red-700">Unreliable accuracy</p>
+                </div>
+                
+                <div className="p-4 border-b border-gray-100">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-red-400 rounded-full mr-3"></div>
+                    <p className="text-gray-800 font-medium">Over-blocking → lost revenue</p>
                   </div>
-                  <div className="bg-red-50 p-3 rounded">
-                    <p className="text-red-700">High false positives</p>
+                </div>
+                
+                <div className="p-4 border-b border-gray-100">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-red-400 rounded-full mr-3"></div>
+                    <p className="text-gray-800 font-medium">One-size-fits-all logic</p>
                   </div>
                 </div>
                 
@@ -85,27 +92,34 @@ const OldVsNew = () => {
               isVisible ? "animate-slideUp animation-delay-300" : "opacity-0 translate-y-8"
             )}>
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-100 text-green-700 px-4 py-1 rounded-full font-medium">
-                Model 2 (Scalysis)
+                Scalysis Precision Model
               </div>
-              <div className="mt-6">
-                <h3 className="text-xl font-semibold mb-4 text-center">Sniper Model</h3>
-                <div className="flex justify-center mb-6">
-                  <div className="w-32 h-32 bg-green-50 rounded-full flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
+              <div className="mt-6 space-y-6">
+                <div className="p-4 border-b border-gray-100">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                    <p className="text-gray-800 font-medium">Targeted and accurate tagging</p>
                   </div>
                 </div>
                 
-                <div className="space-y-4 text-center">
-                  <div className="bg-green-50 p-3 rounded">
-                    <p className="text-green-700">Labels few, high confidence orders</p>
+                <div className="p-4 border-b border-gray-100">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                    <p className="text-gray-800 font-medium">Order-specific insights with data-backed confidence</p>
                   </div>
-                  <div className="bg-green-50 p-3 rounded">
-                    <p className="text-green-700">Precise predictions</p>
+                </div>
+                
+                <div className="p-4 border-b border-gray-100">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                    <p className="text-gray-800 font-medium">Smart blocking → saved revenue</p>
                   </div>
-                  <div className="bg-green-50 p-3 rounded">
-                    <p className="text-green-700">Minimal false predictions</p>
+                </div>
+                
+                <div className="p-4 border-b border-gray-100">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                    <p className="text-gray-800 font-medium">Seller-personalized AI engine</p>
                   </div>
                 </div>
                 

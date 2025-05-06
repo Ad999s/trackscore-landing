@@ -14,6 +14,7 @@ import Stats from "@/components/Stats";
 import HowItWorks from "@/components/HowItWorks";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import BrandsBleedRTOs from "@/components/BrandsBleedRTOs";
 
 const Index = () => {
   useEffect(() => {
@@ -29,6 +30,7 @@ const Index = () => {
         <Features />
         <OldVsNew />
         <ROISimulator />
+        <BrandsBleedRTOs />
         <SmartMetaTargeting />
         <AutoPnLTracking />
         <PredictCashFlow />

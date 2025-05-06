@@ -3,31 +3,31 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import { ArrowRightIcon, IndianRupeeIcon } from "lucide-react";
+import { ArrowRightIcon, IndianRupeeIcon, PackageIcon } from "lucide-react";
 
 const ROISimulator = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [orderCount, setOrderCount] = useState(10000);
+  const [orderCount, setOrderCount] = useState(100); // Changed from 10000 to 100
   const [avgOrderValue, setAvgOrderValue] = useState(1000);
-  const [rtoRate, setRtoRate] = useState([25]); // Starting at 25%
+  const [deliveryRate, setDeliveryRate] = useState([75]); // Inverse of RTO rate - starting at 75% delivery rate
   const [savings, setSavings] = useState({
-    monthly: 0,
-    annual: 0
+    total: 0,
+    inventoryProtected: 15 // Fixed at 15 as requested
   });
   
   // Calculate savings whenever inputs change
   useEffect(() => {
-    const rtoOrders = orderCount * (rtoRate[0] / 100);
+    const rtoRate = 100 - deliveryRate[0]; // Convert delivery rate to RTO rate
+    const rtoOrders = orderCount * (rtoRate / 100);
     const preventableRtoOrders = rtoOrders * 0.35; // Assuming 35% RTO reduction
     const savingsPerOrder = avgOrderValue * 0.25; // Assuming 25% of order value is saved
-    const monthlySavings = preventableRtoOrders * savingsPerOrder;
-    const annualSavings = monthlySavings * 12;
+    const totalSavings = preventableRtoOrders * savingsPerOrder;
     
     setSavings({
-      monthly: Math.round(monthlySavings),
-      annual: Math.round(annualSavings)
+      total: Math.round(totalSavings),
+      inventoryProtected: 15 // Fixed at 15 as requested
     });
-  }, [orderCount, avgOrderValue, rtoRate]);
+  }, [orderCount, avgOrderValue, deliveryRate]);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -67,7 +67,7 @@ const ROISimulator = () => {
               ROI Simulator
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Your last 10,000 orders. Here's what we would've saved you.
+              Your last 100 orders. Here's what we would've saved you.
             </p>
           </div>
           
@@ -102,8 +102,8 @@ const ROISimulator = () => {
                 
                 <div>
                   <div className="flex justify-between mb-2">
-                    <label className="text-sm font-medium text-gray-700">Current RTO Rate (%)</label>
-                    <span className="text-sm font-medium text-primary">{rtoRate[0]}%</span>
+                    <label className="text-sm font-medium text-gray-700">Current Delivery Rate (%)</label>
+                    <span className="text-sm font-medium text-primary">{deliveryRate[0]}%</span>
                   </div>
                   
                   <div className="relative py-4">
@@ -115,8 +115,8 @@ const ROISimulator = () => {
                       <span>100%</span>
                     </div>
                     <Slider
-                      value={rtoRate}
-                      onValueChange={setRtoRate}
+                      value={deliveryRate}
+                      onValueChange={setDeliveryRate}
                       max={100}
                       step={1}
                     />
@@ -138,25 +138,25 @@ const ROISimulator = () => {
                   
                   <div className="space-y-8 flex-grow flex flex-col justify-center">
                     <div className="bg-green-50 rounded-lg p-6 text-center">
-                      <div className="text-sm text-gray-500 mb-2">Monthly Savings</div>
+                      <div className="text-sm text-gray-500 mb-2">Total Savings per 100 Order COD</div>
                       <div className="flex items-center justify-center text-3xl font-bold text-green-600">
                         <IndianRupeeIcon size={24} />
-                        {new Intl.NumberFormat('en-IN').format(savings.monthly)}
+                        {new Intl.NumberFormat('en-IN').format(savings.total)}
                       </div>
                     </div>
                     
                     <div className="bg-blue-50 rounded-lg p-6 text-center">
-                      <div className="text-sm text-gray-500 mb-2">Annual Savings</div>
+                      <div className="text-sm text-gray-500 mb-2">Inventory Protected</div>
                       <div className="flex items-center justify-center text-3xl font-bold text-blue-600">
-                        <IndianRupeeIcon size={24} />
-                        {new Intl.NumberFormat('en-IN').format(savings.annual)}
+                        <PackageIcon size={24} className="mr-2" />
+                        {savings.inventoryProtected} units
                       </div>
                     </div>
                   </div>
                   
                   <div className="mt-6 pt-6 border-t border-gray-200">
                     <p className="text-sm text-gray-600">
-                      Based on your current order volume and RTO rate, Scalysis could help you save up to <span className="font-bold text-primary">{Math.round(rtoRate[0] * 0.35)}%</span> of your RTO costs.
+                      Based on your current order volume and delivery rate, Scalysis could help you save up to <span className="font-bold text-primary">{Math.round((100 - deliveryRate[0]) * 0.35)}%</span> of your RTO costs.
                     </p>
                   </div>
                 </div>
