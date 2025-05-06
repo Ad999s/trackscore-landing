@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
+import OldVsNew from "@/components/OldVsNew";
+import ROISimulator from "@/components/ROISimulator";
 import SmartMetaTargeting from "@/components/SmartMetaTargeting";
 import AutoPnLTracking from "@/components/AutoPnLTracking";
 import PredictCashFlow from "@/components/PredictCashFlow";
@@ -25,6 +27,8 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <Features />
+        <OldVsNew />
+        <ROISimulator />
         <SmartMetaTargeting />
         <AutoPnLTracking />
         <PredictCashFlow />

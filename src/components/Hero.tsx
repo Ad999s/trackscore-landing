@@ -27,17 +27,18 @@ const Hero = () => {
                 AI-Powered Order Selection
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                Smart Order Selection: <span className="text-gradient">Reduce RTO</span>
+                Stop guessing RTOs. <span className="text-gradient">Start sniping them.</span>
               </h1>
               <p className="text-xl text-gray-600 mt-4 max-w-xl">
-                The All-in-One RTO Killer, Built for Shopify Brands Like Yours.
+                The only AI model built to tag the right orders with 95%+ accuracy.
+                No revenue impact. No false confidence. Just cash flow.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="group">
                 <a href="#get-started">
-                  Try 30 Days Free 
+                  Get a Precision Report 
                   <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
