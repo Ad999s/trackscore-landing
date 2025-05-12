@@ -16,6 +16,10 @@ import Stats from "@/components/Stats";
 import HowItWorks from "@/components/HowItWorks";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import SmartLearning from "@/components/SmartLearning";
+import BadOrdersCounter from "@/components/BadOrdersCounter";
+import BeforeAfterFlip from "@/components/BeforeAfterFlip";
+import AITrainingModel from "@/components/AITrainingModel";
 
 const Index = () => {
   useEffect(() => {
@@ -29,12 +33,16 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <YourNewPnL />
+        <SmartLearning />
         <Features />
         <OldVsNew />
+        <BadOrdersCounter />
         <ROISimulator />
+        <BeforeAfterFlip />
         <BrandsBleedRTOs />
         <SmartMetaTargeting />
         <AutoPnLTracking />
+        <AITrainingModel />
         <PredictCashFlow />
         <PincodeBlocker />
         <ProfitCalculator />
