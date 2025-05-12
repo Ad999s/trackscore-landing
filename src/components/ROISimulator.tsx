@@ -7,12 +7,12 @@ import { ArrowRightIcon, IndianRupeeIcon, PackageIcon } from "lucide-react";
 
 const ROISimulator = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [orderCount, setOrderCount] = useState(100); // Changed from 10000 to 100
+  const [orderCount, setOrderCount] = useState(100);
   const [avgOrderValue, setAvgOrderValue] = useState(1000);
-  const [deliveryRate, setDeliveryRate] = useState([75]); // Inverse of RTO rate - starting at 75% delivery rate
+  const [deliveryRate, setDeliveryRate] = useState([75]);
   const [savings, setSavings] = useState({
     total: 0,
-    inventoryProtected: 15 // Fixed at 15 as requested
+    inventoryProtected: 15
   });
   
   // Calculate savings whenever inputs change
@@ -23,9 +23,12 @@ const ROISimulator = () => {
     const savingsPerOrder = avgOrderValue * 0.25; // Assuming 25% of order value is saved
     const totalSavings = preventableRtoOrders * savingsPerOrder;
     
+    // Scale inventory protected based on delivery rate
+    const inventoryProtected = Math.round(15 * (rtoRate / 25)); // Scale based on RTO rate
+    
     setSavings({
       total: Math.round(totalSavings),
-      inventoryProtected: 15 // Fixed at 15 as requested
+      inventoryProtected: Math.max(5, Math.min(25, inventoryProtected)) // Keep between 5 and 25
     });
   }, [orderCount, avgOrderValue, deliveryRate]);
   
@@ -64,7 +67,7 @@ const ROISimulator = () => {
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              ROI Simulator
+              Calculate your Savings
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Your last 100 orders. Here's what we would've saved you.

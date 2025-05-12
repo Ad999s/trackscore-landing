@@ -44,10 +44,10 @@ const BeforeAfterFlip = () => {
               Transformation
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              AI Order <span className="text-gradient">Selection</span>
+              AI Powered <span className="text-gradient">Order Selection</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Built for maximum profit, least RTO.
+              Save big on daily shipping costs, packaging costs & inventory. Ship less, make more.
             </p>
           </div>
 
@@ -70,7 +70,7 @@ const BeforeAfterFlip = () => {
                 </div>
                 <div>
                   <p className="text-green-600 font-medium">Delivery Probability: 89%</p>
-                  <p className="text-sm text-gray-500">Expected Profit: ₹780</p>
+                  <p className="text-sm text-gray-500">Expected Profit: ₹460</p>
                 </div>
               </div>
             </div>
@@ -93,7 +93,7 @@ const BeforeAfterFlip = () => {
                 </div>
                 <div>
                   <p className="text-red-600 font-medium">RTO Risk: 87%</p>
-                  <p className="text-sm text-gray-500">Potential Loss: ₹1,250</p>
+                  <p className="text-sm text-gray-500">Potential Loss: ₹120</p>
                 </div>
               </div>
             </div>
@@ -116,7 +116,7 @@ const BeforeAfterFlip = () => {
                 </div>
                 <div>
                   <p className="text-green-600 font-medium">Delivery Probability: 92%</p>
-                  <p className="text-sm text-gray-600 font-bold">More Profit</p>
+                  <p className="text-sm text-gray-600 font-bold">Expected Profit: ₹460</p>
                 </div>
               </div>
             </div>
