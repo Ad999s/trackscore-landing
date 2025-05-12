@@ -63,9 +63,31 @@ const SmartMetaTargeting = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Smart <span className="text-gradient">Meta Targeting</span>
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 mb-6">
               Re-route 7% of the same ad spend to your ideal customer. Our Soft-Touch Targeting won't hurt your ROAS, CPM, or audience reach—just big results.
             </p>
+            
+            {/* Added bullet points */}
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <div className="mt-1 flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center">
+                  <span className="text-primary text-sm">✓</span>
+                </div>
+                <p className="text-gray-700">Works with Meta ads</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="mt-1 flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center">
+                  <span className="text-primary text-sm">✓</span>
+                </div>
+                <p className="text-gray-700">Auto-filters bad regions</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="mt-1 flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center">
+                  <span className="text-primary text-sm">✓</span>
+                </div>
+                <p className="text-gray-700">Save ad spend daily</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

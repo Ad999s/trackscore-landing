@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
-import { Check, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Connect, Database, TrendingUp } from "lucide-react";
 
 interface StepProps {
   number: number;
@@ -71,38 +71,24 @@ const HowItWorks = () => {
   const steps = [
     {
       number: 1,
-      title: "Install on Shopify",
-      description: "Easy integration with your store.",
-      icon: <Check size={20} className="text-primary" />,
+      title: "Connect your store",
+      description: "Easily integrate with Shopify, Meesho, and other platforms in just a few clicks.",
+      icon: <Connect size={20} className="text-primary" />,
       delay: "animation-delay-100"
     },
     {
       number: 2,
-      title: "Connect with order data & AWB links",
-      description: "Syncs seamlessly for real-time tracking.",
-      icon: <Check size={20} className="text-primary" />,
+      title: "Let AI start learning",
+      description: "Our system analyzes your real orders and delivery results to build a custom model.",
+      icon: <Database size={20} className="text-primary" />,
       delay: "animation-delay-200"
     },
     {
       number: 3,
-      title: "Train the model",
-      description: "Customizes for your specific needs.",
-      icon: <Check size={20} className="text-primary" />,
-      delay: "animation-delay-300"
-    },
-    {
-      number: 4,
-      title: "Master model + product-specific model",
-      description: "Optimized for general & brand-specific use.",
-      icon: <Check size={20} className="text-primary" />,
-      delay: "animation-delay-400"
-    },
-    {
-      number: 5,
-      title: "Real-time accurate predictions",
-      description: "Delivers precise insights on every order.",
-      icon: <Check size={20} className="text-primary" />,
-      delay: "animation-delay-500",
+      title: "Start saving",
+      description: "Get daily flagged orders, P&L tracking, and smart ad targeting recommendations.",
+      icon: <TrendingUp size={20} className="text-primary" />,
+      delay: "animation-delay-300",
       isLast: true
     }
   ];
@@ -116,7 +102,7 @@ const HowItWorks = () => {
               Simple Process
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <span className="text-gradient">How</span> Scalysis Works
+              <span className="text-gradient">Get Started</span> in 3 Simple Steps
             </h2>
             <p className="text-lg text-gray-600 mb-8">
               Our intuitive platform seamlessly integrates with your existing workflows to reduce RTO rates without disrupting your operations.
@@ -196,7 +182,9 @@ const HowItWorks = () => {
                     <div className="text-gray-500">Showing 5 of 248 orders</div>
                     <div className="flex items-center text-primary font-medium cursor-pointer hover:underline">
                       View All Orders
-                      <ArrowRight size={14} className="ml-1" />
+                      <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
                     </div>
                   </div>
                 </div>
