@@ -1,13 +1,21 @@
 
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setIsLoaded(true);
+    
+    // Auto-play video when component mounts
+    if (videoRef.current) {
+      videoRef.current.play().catch(err => {
+        console.log("Video autoplay prevented:", err);
+      });
+    }
   }, []);
 
   return (
@@ -60,7 +68,7 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Column - Dashboard Preview */}
+          {/* Right Column - Video instead of Dashboard Preview */}
           <div className={`relative ${isLoaded ? 'animate-slideUp animation-delay-200' : 'opacity-0'}`}>
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-xl blur-xl"></div>
@@ -72,46 +80,21 @@ const Hero = () => {
                     <div className="w-3 h-3 rounded-full bg-green-400"></div>
                   </div>
                 </div>
-                <div className="p-4">
-                  <div className="flex justify-between mb-4">
-                    <div className="space-y-1">
-                      <h3 className="font-medium">RTO Reduction Dashboard</h3>
-                      <p className="text-xs text-gray-500">Real-time order analysis</p>
-                    </div>
-                    <div className="px-2 py-1 bg-green-50 text-green-600 text-xs font-medium rounded flex items-center">
-                      <span className="w-1.5 h-1.5 rounded-full bg-green-500 mr-1"></span>
-                      Live
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-3 gap-3 mb-4">
-                    {[
-                      { label: "Orders Analyzed", value: "2,851", color: "bg-blue-50 text-blue-600" },
-                      { label: "RTO Reduction", value: "37%", color: "bg-green-50 text-green-600" },
-                      { label: "Cost Savings", value: "₹235K", color: "bg-accent/10 text-accent" }
-                    ].map((stat, index) => (
-                      <div key={index} className="p-3 rounded-lg bg-gray-50 border border-gray-100">
-                        <div className={`text-xs font-medium ${stat.color} px-1.5 py-0.5 rounded w-fit mb-1`}>
-                          {stat.label}
-                        </div>
-                        <div className="text-xl font-semibold">{stat.value}</div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="h-32 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                    <div className="w-full px-4">
-                      <div className="h-6 bg-gray-200 rounded-full mb-2 overflow-hidden">
-                        <div className="h-full bg-primary rounded-full" style={{ width: "65%" }}></div>
-                      </div>
-                      <div className="grid grid-cols-4 gap-2">
-                        {[1, 2, 3, 4].map((i) => (
-                          <div key={i} className="h-4 bg-gray-200 rounded"></div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex justify-between text-xs text-gray-500">
-                    <span>Updated 5 minutes ago</span>
-                    <span className="text-primary">View full report</span>
+                <div className="relative">
+                  <video 
+                    ref={videoRef}
+                    className="w-full aspect-video object-cover"
+                    playsInline
+                    muted
+                    loop
+                    controls
+                  >
+                    <source src="/mainnnnn.mov" type="video/quicktime" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <div className="absolute top-2 right-2 px-2 py-1 bg-green-50 text-green-600 text-xs font-medium rounded flex items-center">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 mr-1"></span>
+                    Live Demo
                   </div>
                 </div>
               </div>
