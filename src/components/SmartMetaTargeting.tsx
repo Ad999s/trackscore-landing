@@ -1,9 +1,12 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Copy } from "lucide-react";
 
 const SmartMetaTargeting = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,19 +31,114 @@ const SmartMetaTargeting = () => {
     };
   }, []);
 
+  useEffect(() => {
+    // Automatic scrolling effect for pincode list
+    if (isVisible && scrollRef.current) {
+      const scrollContainer = scrollRef.current;
+      const scrollAnimation = () => {
+        if (scrollContainer) {
+          scrollContainer.scrollLeft += 1;
+          if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
+            scrollContainer.scrollLeft = 0;
+          }
+        }
+        requestAnimationFrame(scrollAnimation);
+      };
+      
+      const animationFrame = requestAnimationFrame(scrollAnimation);
+      return () => cancelAnimationFrame(animationFrame);
+    }
+  }, [isVisible]);
+
+  const pincodes = [
+    { code: "180011", rto: 94 },
+    { code: "560001", rto: 89 },
+    { code: "110001", rto: 85 },
+    { code: "400001", rto: 82 },
+    { code: "411001", rto: 78 },
+    { code: "380001", rto: 76 },
+    { code: "500001", rto: 73 },
+    { code: "226001", rto: 71 },
+    { code: "700001", rto: 69 },
+    { code: "600001", rto: 67 },
+    { code: "530001", rto: 65 },
+    { code: "800001", rto: 62 },
+  ];
+
+  const getRtoColor = (rto: number) => {
+    // Returns darker red for higher RTO rates
+    const intensity = Math.min(255, Math.round((rto / 100) * 255));
+    return `rgb(${intensity}, ${Math.max(0, 80 - intensity * 0.5)}, ${Math.max(0, 80 - intensity * 0.5)})`;
+  };
+
+  const handleCopyCsv = () => {
+    const csvContent = "Pincode,RTO Rate\n" + pincodes.map(p => `${p.code},${p.rto}%`).join("\n");
+    navigator.clipboard.writeText(csvContent);
+    console.log("CSV copied to clipboard");
+    // In a real app, you could add a toast notification here
+  };
+
   return (
     <section className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <p className="inline-block text-sm font-medium px-3 py-1 bg-primary/10 text-primary rounded-full mb-4">
+            Smart Targeting
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Smart <span className="text-gradient">Meta Targeting</span>
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Scalysis maps your worst RTO zones. Attract better buyers.
+          </p>
+        </div>
+        
         <div 
           id="meta-targeting-section"
           className={cn(
-            "grid md:grid-cols-2 gap-12 items-center transition-all duration-500",
+            "max-w-5xl mx-auto transition-all duration-500",
             isVisible ? "animate-fadeIn" : "opacity-0"
           )}
         >
-          {/* Left Column - Image */}
+          {/* Pincode scrolling list */}
+          <div className="relative mt-8 mb-6 overflow-hidden">
+            <div 
+              ref={scrollRef}
+              className="flex whitespace-nowrap overflow-hidden py-4"
+            >
+              {/* Duplicate the pincodes array to create a seamless loop */}
+              {[...pincodes, ...pincodes].map((pincode, idx) => (
+                <div 
+                  key={`${pincode.code}-${idx}`} 
+                  className="inline-block mx-3 text-lg font-mono"
+                >
+                  <span className="font-medium">{pincode.code}</span>
+                  <span 
+                    className="ml-2 font-bold" 
+                    style={{ color: getRtoColor(pincode.rto) }}
+                  >
+                    {pincode.rto}%
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Copy CSV button */}
+          <div className="flex justify-center mt-6">
+            <Button 
+              onClick={handleCopyCsv} 
+              variant="outline" 
+              className="flex items-center gap-2"
+            >
+              <Copy size={16} />
+              Copy CSV
+            </Button>
+          </div>
+          
+          {/* Image display */}
           <div className={cn(
-            "relative transition-all duration-500",
+            "mt-12 transition-all duration-500",
             isVisible ? "animate-slideUp animation-delay-200" : "opacity-0"
           )}>
             <div className="relative">
@@ -51,41 +149,6 @@ const SmartMetaTargeting = () => {
                   alt="Smart Meta Targeting Interface" 
                   className="w-full h-auto" 
                 />
-              </div>
-            </div>
-          </div>
-          
-          {/* Right Column - Text Content */}
-          <div className="space-y-6">
-            <p className="inline-block text-sm font-medium px-3 py-1 bg-primary/10 text-primary rounded-full mb-4">
-              Smart Targeting
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Smart <span className="text-gradient">Meta Targeting</span>
-            </h2>
-            <p className="text-lg text-gray-600 mb-6">
-              Re-route 7% of the same ad spend to your ideal customer. Our Soft-Touch Targeting won't hurt your ROAS, CPM, or audience reach—just big results.
-            </p>
-            
-            {/* Added bullet points */}
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="mt-1 flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center">
-                  <span className="text-primary text-sm">✓</span>
-                </div>
-                <p className="text-gray-700">Works with Meta ads</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="mt-1 flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center">
-                  <span className="text-primary text-sm">✓</span>
-                </div>
-                <p className="text-gray-700">Auto-filters bad regions</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="mt-1 flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center">
-                  <span className="text-primary text-sm">✓</span>
-                </div>
-                <p className="text-gray-700">Save ad spend daily</p>
               </div>
             </div>
           </div>

@@ -32,12 +32,12 @@ const Index = () => {
         <Hero />
         <BeforeAfterFlip />
         <YourNewPnL />
+        <SmartMetaTargeting />
         <SmartLearning />
         <Features />
         <OldVsNew />
         <ROISimulator />
         <BrandsBleedRTOs />
-        <SmartMetaTargeting />
         <AutoPnLTracking />
         <PredictCashFlow />
         <PincodeBlocker />
