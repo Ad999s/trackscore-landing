@@ -31,7 +31,7 @@ const FlipCard = ({ icon, title, beforeValue, afterValue, iconBg, iconColor, del
           return () => clearInterval(flipInterval);
         }
       },
-      { threshold: 0.1, once: true }
+      { threshold: 0.1 }
     );
     
     const id = `flip-card-${title.replace(/\s+/g, '-').toLowerCase()}`;
