@@ -1,7 +1,6 @@
-
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { Connect, Database, TrendingUp } from "lucide-react";
+import { Link, Database, TrendingUp } from "lucide-react";
 
 interface StepProps {
   number: number;
@@ -73,7 +72,7 @@ const HowItWorks = () => {
       number: 1,
       title: "Connect your store",
       description: "Easily integrate with Shopify, Meesho, and other platforms in just a few clicks.",
-      icon: <Connect size={20} className="text-primary" />,
+      icon: <Link size={20} className="text-primary" />,
       delay: "animation-delay-100"
     },
     {
