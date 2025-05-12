@@ -10,11 +10,29 @@ const Hero = () => {
   useEffect(() => {
     setIsLoaded(true);
     
-    // Auto-play video when component mounts
-    if (videoRef.current) {
-      videoRef.current.play().catch(err => {
-        console.log("Video autoplay prevented:", err);
-      });
+    // Auto-play video when component mounts with retry mechanism
+    const attemptPlay = () => {
+      if (videoRef.current) {
+        videoRef.current.play()
+          .catch(err => {
+            console.log("Video autoplay prevented:", err);
+            // On mobile, often needs user interaction first
+            // We'll try again after a short delay
+            setTimeout(attemptPlay, 1000);
+          });
+      }
+    };
+    
+    attemptPlay();
+    
+    // Add event listener for when video can play
+    const videoElement = videoRef.current;
+    if (videoElement) {
+      videoElement.addEventListener('canplaythrough', attemptPlay);
+      
+      return () => {
+        videoElement.removeEventListener('canplaythrough', attemptPlay);
+      };
     }
   }, []);
 
@@ -87,6 +105,8 @@ const Hero = () => {
                     playsInline
                     muted
                     loop
+                    autoPlay
+                    preload="auto"
                     controls
                   >
                     <source src="/mainnnnn.mov" type="video/quicktime" />
