@@ -81,10 +81,10 @@ const SmartLearning = () => {
               Smart AI
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              🔄 Smart Learning From <span className="text-gradient">Your Store</span>
+              AI that understands <span className="text-gradient">order patterns</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Your AI adapts specifically to your business needs. It's not a black box—it's your private AI assistant.
+              Scalysis knows your order patterns more than you do. 95% accuracy predicting order intent.
             </p>
           </div>
 

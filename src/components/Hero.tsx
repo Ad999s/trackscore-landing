@@ -27,11 +27,10 @@ const Hero = () => {
                 AI-Powered Order Selection
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                Stop guessing RTOs. <span className="text-gradient">Start sniping them.</span>
+                The AI Powered <span className="text-gradient">RTO Solution.</span>
               </h1>
               <p className="text-xl text-gray-600 mt-4 max-w-xl">
-                The only AI model built to tag the right orders with 95%+ accuracy.
-                No revenue impact. No false confidence. Just cash flow.
+                Trained on your data, Scalysis picks orders that convert to real cash, not returns.
               </p>
             </div>
 

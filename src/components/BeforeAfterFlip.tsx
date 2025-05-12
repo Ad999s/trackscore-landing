@@ -185,10 +185,10 @@ const BeforeAfterFlip = () => {
               Transformation
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              🔁 <span className="text-gradient">Before vs After</span> Comparison
+              AI Order <span className="text-gradient">Selection</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              See the dramatic improvement in your key metrics when you switch to Scalysis.
+              Built for maximum profit, least RTO.
             </p>
           </div>
 
