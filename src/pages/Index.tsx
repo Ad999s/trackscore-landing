@@ -11,7 +11,6 @@ import SmartMetaTargeting from "@/components/SmartMetaTargeting";
 import AutoPnLTracking from "@/components/AutoPnLTracking";
 import PredictCashFlow from "@/components/PredictCashFlow";
 import PincodeBlocker from "@/components/PincodeBlocker";
-import ProfitCalculator from "@/components/ProfitCalculator";
 import Stats from "@/components/Stats";
 import HowItWorks from "@/components/HowItWorks";
 import CTA from "@/components/CTA";
@@ -31,8 +30,8 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <BeforeAfterFlip />
-        <YourNewPnL />
         <SmartMetaTargeting />
+        <YourNewPnL />
         <SmartLearning />
         <Features />
         <OldVsNew />
@@ -41,7 +40,6 @@ const Index = () => {
         <AutoPnLTracking />
         <PredictCashFlow />
         <PincodeBlocker />
-        <ProfitCalculator />
         <Stats />
         <HowItWorks />
         <CTA />

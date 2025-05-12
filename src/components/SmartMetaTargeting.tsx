@@ -100,7 +100,24 @@ const SmartMetaTargeting = () => {
             isVisible ? "animate-fadeIn" : "opacity-0"
           )}
         >
-          {/* Pincode scrolling list */}
+          {/* Image display - moved above pincode list */}
+          <div className={cn(
+            "mb-12 transition-all duration-500",
+            isVisible ? "animate-slideUp animation-delay-200" : "opacity-0"
+          )}>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-xl blur-xl"></div>
+              <div className="relative bg-white rounded-xl shadow-medium overflow-hidden border border-gray-100">
+                <img 
+                  src="/lovable-uploads/f02f2d55-07d3-4d98-9dc7-9443cc8b8759.png" 
+                  alt="Smart Meta Targeting Interface" 
+                  className="w-full h-auto" 
+                />
+              </div>
+            </div>
+          </div>
+          
+          {/* Pincode scrolling list with oval boxes */}
           <div className="relative mt-8 mb-6 overflow-hidden">
             <div 
               ref={scrollRef}
@@ -110,7 +127,7 @@ const SmartMetaTargeting = () => {
               {[...pincodes, ...pincodes].map((pincode, idx) => (
                 <div 
                   key={`${pincode.code}-${idx}`} 
-                  className="inline-block mx-3 text-lg font-mono"
+                  className="inline-block mx-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-100 shadow-sm"
                 >
                   <span className="font-medium">{pincode.code}</span>
                   <span 
@@ -125,7 +142,7 @@ const SmartMetaTargeting = () => {
           </div>
           
           {/* Copy CSV button */}
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center mt-6 mb-12">
             <Button 
               onClick={handleCopyCsv} 
               variant="outline" 
@@ -136,20 +153,21 @@ const SmartMetaTargeting = () => {
             </Button>
           </div>
           
-          {/* Image display */}
-          <div className={cn(
-            "mt-12 transition-all duration-500",
-            isVisible ? "animate-slideUp animation-delay-200" : "opacity-0"
-          )}>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-xl blur-xl"></div>
-              <div className="relative bg-white rounded-xl shadow-medium overflow-hidden border border-gray-100">
-                <img 
-                  src="/lovable-uploads/f02f2d55-07d3-4d98-9dc7-9443cc8b8759.png" 
-                  alt="Smart Meta Targeting Interface" 
-                  className="w-full h-auto" 
-                />
-              </div>
+          {/* Three metric boxes */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+            <div className="bg-blue-50 rounded-lg p-6 text-center">
+              <div className="text-3xl font-bold text-blue-600 mb-2">6%</div>
+              <p className="text-gray-700">Better audience quality</p>
+            </div>
+            
+            <div className="bg-purple-50 rounded-lg p-6 text-center">
+              <div className="text-3xl font-bold text-purple-600 mb-2">6.6%</div>
+              <p className="text-gray-700">Better Ad Spent</p>
+            </div>
+            
+            <div className="bg-green-50 rounded-lg p-6 text-center">
+              <div className="text-3xl font-bold text-green-600 mb-2">8%</div>
+              <p className="text-gray-700">RTO Drop</p>
             </div>
           </div>
         </div>
