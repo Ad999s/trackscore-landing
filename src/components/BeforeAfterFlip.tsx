@@ -1,118 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { ArrowLeftRight, IndianRupee, TrendingUp, Package } from "lucide-react";
-
-interface FlipCardProps {
-  icon: React.ReactNode;
-  title: string;
-  beforeValue: string;
-  afterValue: string;
-  iconBg: string;
-  iconColor: string;
-  delay: string;
-}
-
-const FlipCard = ({ icon, title, beforeValue, afterValue, iconBg, iconColor, delay }: FlipCardProps) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          
-          // Set up flipping interval
-          const flipInterval = setInterval(() => {
-            setIsFlipped(prev => !prev);
-          }, 3000);
-          
-          return () => clearInterval(flipInterval);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    
-    const id = `flip-card-${title.replace(/\s+/g, '-').toLowerCase()}`;
-    const currentElement = document.getElementById(id);
-    
-    if (currentElement) {
-      observer.observe(currentElement);
-    }
-    
-    return () => {
-      if (currentElement) {
-        observer.unobserve(currentElement);
-      }
-    };
-  }, [title]);
-
-  return (
-    <div
-      id={`flip-card-${title.replace(/\s+/g, '-').toLowerCase()}`}
-      className={cn(
-        "relative h-64 perspective-1000 w-full transition-all duration-500",
-        isVisible ? `animate-fadeIn ${delay}` : "opacity-0"
-      )}
-    >
-      <div className={cn(
-        "relative w-full h-full transition-transform duration-700 transform-style-3d rounded-xl shadow-medium",
-        isFlipped ? "rotate-y-180" : ""
-      )}>
-        {/* Front Card (Before) */}
-        <div className="absolute w-full h-full backface-hidden rounded-xl bg-white border border-gray-100 p-6 flex flex-col">
-          <div className="flex items-center gap-4 mb-6">
-            <div className={`p-3 rounded-lg ${iconBg}`}>
-              {icon}
-            </div>
-            <h3 className="text-xl font-semibold">{title}</h3>
-          </div>
-          
-          <div className="flex-1 flex flex-col items-center justify-center">
-            <p className="text-sm text-gray-500 mb-2">Before Scalysis</p>
-            <p className="text-3xl font-bold">{beforeValue}</p>
-          </div>
-          
-          <div className="flex justify-center">
-            <button 
-              onClick={() => setIsFlipped(true)}
-              className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
-            >
-              <ArrowLeftRight className="h-4 w-4" />
-              See After
-            </button>
-          </div>
-        </div>
-        
-        {/* Back Card (After) */}
-        <div className="absolute w-full h-full backface-hidden rotate-y-180 rounded-xl bg-white border-2 border-primary p-6 flex flex-col">
-          <div className="flex items-center gap-4 mb-6">
-            <div className={`p-3 rounded-lg ${iconBg}`}>
-              {icon}
-            </div>
-            <h3 className="text-xl font-semibold">{title}</h3>
-          </div>
-          
-          <div className="flex-1 flex flex-col items-center justify-center">
-            <p className="text-sm text-gray-500 mb-2">After Scalysis</p>
-            <p className="text-3xl font-bold text-primary">{afterValue}</p>
-          </div>
-          
-          <div className="flex justify-center">
-            <button 
-              onClick={() => setIsFlipped(false)}
-              className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
-            >
-              <ArrowLeftRight className="h-4 w-4" />
-              See Before
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+import { CircleCheck, CircleX } from "lucide-react";
 
 const BeforeAfterFlip = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -140,36 +29,6 @@ const BeforeAfterFlip = () => {
     };
   }, []);
 
-  const flipCards = [
-    {
-      icon: <TrendingUp className="h-6 w-6 text-blue-600" />,
-      title: "Delivery Rate",
-      beforeValue: "58%",
-      afterValue: "73%",
-      iconBg: "bg-blue-50",
-      iconColor: "text-blue-600",
-      delay: "animation-delay-100"
-    },
-    {
-      icon: <IndianRupee className="h-6 w-6 text-red-600" />,
-      title: "Monthly RTO Loss",
-      beforeValue: "₹1.2L",
-      afterValue: "₹35K",
-      iconBg: "bg-red-50",
-      iconColor: "text-red-600",
-      delay: "animation-delay-200"
-    },
-    {
-      icon: <Package className="h-6 w-6 text-amber-600" />,
-      title: "Inventory Use",
-      beforeValue: "100 units",
-      afterValue: "70 units",
-      iconBg: "bg-amber-50",
-      iconColor: "text-amber-600",
-      delay: "animation-delay-300"
-    }
-  ];
-
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -192,10 +51,79 @@ const BeforeAfterFlip = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {flipCards.map((card) => (
-              <FlipCard key={card.title} {...card} />
-            ))}
+          <div className="flex flex-col md:flex-row justify-center items-center gap-5 mt-12">
+            {/* First Green Card - Ship */}
+            <div className={cn(
+              "relative w-full md:w-1/3 h-64 bg-white border border-green-100 rounded-xl shadow-medium p-6 transition-all duration-500",
+              isVisible ? "animate-fadeIn animation-delay-100" : "opacity-0"
+            )}>
+              <div className="h-full flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 rounded-full bg-green-50">
+                      <CircleCheck className="h-6 w-6 text-green-600" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-green-600">Ship</h3>
+                  </div>
+                  <p className="text-gray-600">Order #8752</p>
+                  <p className="text-sm text-gray-500 mt-2">Mumbai, Maharashtra</p>
+                </div>
+                <div>
+                  <p className="text-green-600 font-medium">Delivery Probability: 89%</p>
+                  <p className="text-sm text-gray-500">Expected Profit: ₹780</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Middle Red Card - Don't Ship with animation */}
+            <div className={cn(
+              "relative w-full md:w-1/3 h-64 bg-white border border-red-100 rounded-xl shadow-medium p-6 transition-all duration-700",
+              isVisible ? "animate-pulse animation-delay-200 opacity-80 bg-gray-50" : "opacity-0"
+            )}>
+              <div className="h-full flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 rounded-full bg-red-50">
+                      <CircleX className="h-6 w-6 text-red-600" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-red-600">Don't Ship</h3>
+                  </div>
+                  <p className="text-gray-600">Order #9145</p>
+                  <p className="text-sm text-gray-500 mt-2">Ghaziabad, UP</p>
+                </div>
+                <div>
+                  <p className="text-red-600 font-medium">RTO Risk: 87%</p>
+                  <p className="text-sm text-gray-500">Potential Loss: ₹1,250</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Last Green Card - Ship = More Profit */}
+            <div className={cn(
+              "relative w-full md:w-1/3 h-64 bg-white border border-green-100 rounded-xl shadow-medium p-6 transition-all duration-500",
+              isVisible ? "animate-fadeIn animation-delay-300" : "opacity-0"
+            )}>
+              <div className="h-full flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 rounded-full bg-green-50">
+                      <CircleCheck className="h-6 w-6 text-green-600" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-green-600">Ship</h3>
+                  </div>
+                  <p className="text-gray-600">Order #7634</p>
+                  <p className="text-sm text-gray-500 mt-2">Bangalore, Karnataka</p>
+                </div>
+                <div>
+                  <p className="text-green-600 font-medium">Delivery Probability: 92%</p>
+                  <p className="text-sm text-gray-600 font-bold">More Profit</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="text-center mt-10">
+            <p className="text-gray-500">Scalysis intelligently selects orders to maximize profit and minimize returns</p>
           </div>
         </div>
       </div>
