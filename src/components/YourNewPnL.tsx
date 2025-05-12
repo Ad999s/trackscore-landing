@@ -176,7 +176,7 @@ const YourNewPnL = () => {
             <StatCard 
               icon={<TrendingUp className="h-5 w-5 text-green-600" />}
               label="Profit Bump"
-              value="₹15,000"
+              value="42%"
               subtext="Increased profit margin"
               delay="animation-delay-100"
               color="bg-green-50"
@@ -184,15 +184,15 @@ const YourNewPnL = () => {
             <StatCard 
               icon={<Tag className="h-5 w-5 text-blue-600" />}
               label="RTO Rate"
-              value="40%"
-              subtext="Drop in returns"
+              value="7%"
+              subtext="Down from base 20%"
               delay="animation-delay-200"
               color="bg-blue-50"
             />
             <StatCard 
               icon={<PackageCheck className="h-5 w-5 text-purple-600" />}
               label="Orders Saved"
-              value="70"
+              value="35"
               subtext="Monthly average"
               delay="animation-delay-300"
               color="bg-purple-50"
@@ -200,8 +200,8 @@ const YourNewPnL = () => {
             <StatCard 
               icon={<IndianRupee className="h-5 w-5 text-amber-600" />}
               label="Shipping Cost"
-              value="₹20,000"
-              subtext="Monthly savings"
+              value="₹25,000"
+              subtext="30% decrease"
               delay="animation-delay-400"
               color="bg-amber-50"
             />
