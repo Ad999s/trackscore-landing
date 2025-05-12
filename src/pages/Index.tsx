@@ -2,9 +2,11 @@
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import YourNewPnL from "@/components/YourNewPnL";
 import Features from "@/components/Features";
 import OldVsNew from "@/components/OldVsNew";
 import ROISimulator from "@/components/ROISimulator";
+import BrandsBleedRTOs from "@/components/BrandsBleedRTOs";
 import SmartMetaTargeting from "@/components/SmartMetaTargeting";
 import AutoPnLTracking from "@/components/AutoPnLTracking";
 import PredictCashFlow from "@/components/PredictCashFlow";
@@ -14,7 +16,6 @@ import Stats from "@/components/Stats";
 import HowItWorks from "@/components/HowItWorks";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
-import BrandsBleedRTOs from "@/components/BrandsBleedRTOs";
 
 const Index = () => {
   useEffect(() => {
@@ -27,6 +28,7 @@ const Index = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
+        <YourNewPnL />
         <Features />
         <OldVsNew />
         <ROISimulator />
