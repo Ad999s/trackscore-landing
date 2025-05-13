@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import HowSelectionWorks from "@/components/HowSelectionWorks";
 import YourNewPnL from "@/components/YourNewPnL";
 import Features from "@/components/Features";
 import OldVsNew from "@/components/OldVsNew";
@@ -29,6 +30,7 @@ const Index = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
+        <HowSelectionWorks />
         <BeforeAfterFlip />
         <SmartMetaTargeting />
         <YourNewPnL />
