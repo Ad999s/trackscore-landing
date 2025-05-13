@@ -9,14 +9,14 @@ const ProcessStep = ({
   description, 
   isActive, 
   isLast = false,
-  onClick
+  onMouseEnter
 }: { 
   number: number;
   title: string;
   description: string;
   isActive: boolean;
   isLast?: boolean;
-  onClick: () => void;
+  onMouseEnter: () => void;
 }) => {
   return (
     <div 
@@ -24,7 +24,7 @@ const ProcessStep = ({
         "relative flex gap-6 cursor-pointer transition-all duration-300 group",
         isActive ? "opacity-100" : "opacity-70 hover:opacity-90"
       )}
-      onClick={onClick}
+      onMouseEnter={onMouseEnter}
     >
       <div className="flex flex-col items-center">
         <div className={cn(
@@ -80,14 +80,7 @@ const HowSelectionWorks = () => {
     };
   }, []);
 
-  useEffect(() => {
-    // Auto cycle through steps
-    const interval = setInterval(() => {
-      setActiveStep((prev) => prev === 5 ? 1 : prev + 1);
-    }, 3000);
-    
-    return () => clearInterval(interval);
-  }, []);
+  // Removed auto cycle through steps (previously was here)
   
   const steps = [
     {
@@ -97,13 +90,13 @@ const HowSelectionWorks = () => {
     },
     {
       number: 2,
-      title: "Ranks All Orders Internally",
-      description: "Each order is analyzed and ranked based on multiple parameters including location, customer history, and product category."
+      title: "Scores Each Order",
+      description: "Our proprietary algorithm assigns a confidence score to predict the likelihood of successful delivery and payment collection."
     },
     {
       number: 3,
-      title: "Scores Each Order",
-      description: "Our proprietary algorithm assigns a confidence score to predict the likelihood of successful delivery and payment collection."
+      title: "Ranks All Orders Internally",
+      description: "Each order is analyzed and ranked based on multiple parameters including location, customer history, and product category."
     },
     {
       number: 4,
@@ -151,7 +144,7 @@ const HowSelectionWorks = () => {
                 description={step.description}
                 isActive={activeStep === step.number}
                 isLast={index === steps.length - 1}
-                onClick={() => setActiveStep(step.number)}
+                onMouseEnter={() => setActiveStep(step.number)}
               />
             ))}
           </div>
@@ -170,7 +163,7 @@ const HowSelectionWorks = () => {
                       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
                         <Check size={18} className="text-blue-600" />
                       </div>
-                      Order Scanning Process
+                      Syncing with Shopify
                     </h3>
                     
                     <div className="space-y-3 mt-4">
@@ -184,7 +177,10 @@ const HowSelectionWorks = () => {
                             <p className="text-sm text-gray-500">Real-time order capture</p>
                           </div>
                         </div>
-                        <ArrowRight size={20} className="text-gray-400" />
+                        <div className="flex items-center">
+                          <span className="text-sm text-green-600 font-medium mr-2">Synced</span>
+                          <ArrowRight size={20} className="text-gray-400" />
+                        </div>
                       </div>
                       
                       <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
@@ -197,7 +193,10 @@ const HowSelectionWorks = () => {
                             <p className="text-sm text-gray-500">Order metadata extraction</p>
                           </div>
                         </div>
-                        <ArrowRight size={20} className="text-gray-400" />
+                        <div className="flex items-center">
+                          <span className="text-sm text-green-600 font-medium mr-2">Synced</span>
+                          <ArrowRight size={20} className="text-gray-400" />
+                        </div>
                       </div>
                       
                       <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
@@ -210,7 +209,10 @@ const HowSelectionWorks = () => {
                             <p className="text-sm text-gray-500">Secure data storage</p>
                           </div>
                         </div>
-                        <ArrowRight size={20} className="text-gray-400" />
+                        <div className="flex items-center">
+                          <span className="text-sm text-green-600 font-medium mr-2">All Orders Synced</span>
+                          <ArrowRight size={20} className="text-gray-400" />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -222,15 +224,17 @@ const HowSelectionWorks = () => {
                       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
                         <Check size={18} className="text-blue-600" />
                       </div>
-                      Order Ranking Algorithm
+                      Order Scoring Parameters
                     </h3>
                     
                     <div className="grid grid-cols-2 gap-4 mt-4">
                       {[
-                        { name: "Location", value: 85, color: "bg-green-500" },
-                        { name: "Purchase History", value: 72, color: "bg-blue-500" },
-                        { name: "Cart Value", value: 65, color: "bg-amber-500" },
-                        { name: "Product Category", value: 78, color: "bg-purple-500" }
+                        { name: "Past Purchase History", value: 85, color: "bg-green-500" },
+                        { name: "Time on Website", value: 72, color: "bg-blue-500" },
+                        { name: "Cross-site History", value: 65, color: "bg-amber-500" },
+                        { name: "Time to Order", value: 78, color: "bg-purple-500" },
+                        { name: "Intent Score", value: 88, color: "bg-indigo-500" },
+                        { name: "Product Category", value: 75, color: "bg-red-500" }
                       ].map((factor) => (
                         <div key={factor.name} className="bg-gray-50 p-3 rounded-lg">
                           <p className="text-sm font-medium mb-1">{factor.name}</p>
@@ -248,7 +252,7 @@ const HowSelectionWorks = () => {
                     </div>
                     
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <p className="font-medium mb-2">Ranking Factors</p>
+                      <p className="font-medium mb-2">Parameter Analysis</p>
                       <div className="text-sm text-gray-600">
                         Our proprietary algorithm uses 35+ data points to determine order quality and likelihood of successful delivery.
                       </div>
@@ -262,14 +266,17 @@ const HowSelectionWorks = () => {
                       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
                         <Check size={18} className="text-blue-600" />
                       </div>
-                      Order Confidence Scoring
+                      Orders Ranked by Intent Score
                     </h3>
                     
                     <div className="mt-4 space-y-4">
                       {[
-                        { id: "ORD-7845", score: 92, risk: "Low" },
-                        { id: "ORD-7846", score: 76, risk: "Medium" },
-                        { id: "ORD-7848", score: 38, risk: "High" }
+                        { id: "ORD-7845", score: 92, intent: "High" },
+                        { id: "ORD-7846", score: 76, intent: "Medium" },
+                        { id: "ORD-7847", score: 58, intent: "Medium" },
+                        { id: "ORD-7848", score: 38, intent: "Low" },
+                        { id: "ORD-7849", score: 22, intent: "Very Low" },
+                        { id: "ORD-7850", score: 12, intent: "Very Low" }
                       ].map((order) => (
                         <div 
                           key={order.id} 
@@ -280,18 +287,20 @@ const HowSelectionWorks = () => {
                             <div 
                               className={cn(
                                 "text-xs font-medium px-2 py-1 rounded",
-                                order.risk === "Low" ? "bg-green-50 text-green-600" :
-                                order.risk === "Medium" ? "bg-yellow-50 text-yellow-600" :
+                                order.intent === "High" ? "bg-green-50 text-green-600" :
+                                order.intent === "Medium" ? "bg-yellow-50 text-yellow-600" :
+                                order.intent === "Low" ? "bg-orange-50 text-orange-600" :
                                 "bg-red-50 text-red-600"
                               )}
                             >
-                              {order.risk} Risk
+                              {order.intent} Intent
                             </div>
                             <div 
                               className={cn(
                                 "w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium",
                                 order.score >= 80 ? "bg-green-50 text-green-600" :
-                                order.score >= 60 ? "bg-yellow-50 text-yellow-600" :
+                                order.score >= 50 ? "bg-yellow-50 text-yellow-600" :
+                                order.score >= 30 ? "bg-orange-50 text-orange-600" :
                                 "bg-red-50 text-red-600"
                               )}
                             >
@@ -300,15 +309,6 @@ const HowSelectionWorks = () => {
                           </div>
                         </div>
                       ))}
-                    </div>
-                    
-                    <div className="bg-blue-50 p-4 rounded-lg">
-                      <p className="font-medium text-blue-800 mb-1">AI Score Interpretation</p>
-                      <p className="text-sm text-blue-700">
-                        90+ = Excellent delivery probability<br/>
-                        70-89 = Good delivery probability<br/>
-                        Below 50 = High risk of return
-                      </p>
                     </div>
                   </div>
                 )}
@@ -319,40 +319,49 @@ const HowSelectionWorks = () => {
                       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
                         <Check size={18} className="text-blue-600" />
                       </div>
-                      Smart Shipping Optimization
+                      Choose Right Threshold
                     </h3>
                     
                     <div className="space-y-3 mt-4">
                       <div className="p-3 border border-green-100 bg-green-50 rounded-lg">
                         <div className="flex justify-between mb-1">
-                          <span className="font-medium text-green-700">Priority Shipping</span>
-                          <span className="text-sm bg-green-200 text-green-800 px-2 py-0.5 rounded">90-100 Score</span>
+                          <span className="font-medium text-green-700">Threshold: 80+</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-sm bg-green-200 text-green-800 px-2 py-0.5 rounded">Delivery Success: 95%</span>
+                            <span className="text-sm bg-blue-200 text-blue-800 px-2 py-0.5 rounded">Profit: High</span>
+                          </div>
                         </div>
-                        <p className="text-sm text-green-700">Premium shipping for highest confidence orders</p>
+                        <p className="text-sm text-green-700">Only highest confidence orders - maximum profit per order</p>
                       </div>
                       
                       <div className="p-3 border border-blue-100 bg-blue-50 rounded-lg">
                         <div className="flex justify-between mb-1">
-                          <span className="font-medium text-blue-700">Standard Shipping</span>
-                          <span className="text-sm bg-blue-200 text-blue-800 px-2 py-0.5 rounded">70-89 Score</span>
+                          <span className="font-medium text-blue-700">Threshold: 60+</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-sm bg-green-200 text-green-800 px-2 py-0.5 rounded">Delivery Success: 85%</span>
+                            <span className="text-sm bg-blue-200 text-blue-800 px-2 py-0.5 rounded">Profit: Medium</span>
+                          </div>
                         </div>
-                        <p className="text-sm text-blue-700">Regular shipping path for good confidence orders</p>
+                        <p className="text-sm text-blue-700">Balanced approach - good confidence with higher volume</p>
                       </div>
                       
                       <div className="p-3 border border-yellow-100 bg-yellow-50 rounded-lg">
                         <div className="flex justify-between mb-1">
-                          <span className="font-medium text-yellow-700">Verification Required</span>
-                          <span className="text-sm bg-yellow-200 text-yellow-800 px-2 py-0.5 rounded">50-69 Score</span>
+                          <span className="font-medium text-yellow-700">Threshold: 50+</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-sm bg-green-200 text-green-800 px-2 py-0.5 rounded">Delivery Success: 70%</span>
+                            <span className="text-sm bg-blue-200 text-blue-800 px-2 py-0.5 rounded">Profit: Low</span>
+                          </div>
                         </div>
-                        <p className="text-sm text-yellow-700">Additional verification before shipping</p>
+                        <p className="text-sm text-yellow-700">Higher volume but increased risk of returns</p>
                       </div>
-                      
-                      <div className="p-3 border border-red-100 bg-red-50 rounded-lg">
-                        <div className="flex justify-between mb-1">
-                          <span className="font-medium text-red-700">Flagged Orders</span>
-                          <span className="text-sm bg-red-200 text-red-800 px-2 py-0.5 rounded">Below 50</span>
-                        </div>
-                        <p className="text-sm text-red-700">Manual review or prepayment required</p>
+                    </div>
+                    
+                    <div className="bg-blue-50 p-4 rounded-lg">
+                      <p className="font-medium text-blue-800">Recommended Threshold: 70+</p>
+                      <div className="mt-2 flex justify-between">
+                        <span className="text-sm text-blue-700">Estimated Delivery Success: 88%</span>
+                        <span className="text-sm text-blue-700">Estimated Profit: ₹42,500 monthly</span>
                       </div>
                     </div>
                   </div>
@@ -364,26 +373,26 @@ const HowSelectionWorks = () => {
                       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
                         <Check size={18} className="text-blue-600" />
                       </div>
-                      Business Impact
+                      Better Business Outcomes
                     </h3>
                     
                     <div className="grid grid-cols-3 gap-3">
                       <div className="p-3 text-center bg-green-50 rounded-lg">
-                        <div className="text-2xl font-bold text-green-600">-55%</div>
-                        <div className="text-sm text-gray-600">RTO Reduction</div>
+                        <div className="text-2xl font-bold text-green-600">90%</div>
+                        <div className="text-sm text-gray-600">Delivery Success</div>
                       </div>
                       <div className="p-3 text-center bg-blue-50 rounded-lg">
-                        <div className="text-2xl font-bold text-blue-600">+32%</div>
-                        <div className="text-sm text-gray-600">Inventory Turnover</div>
+                        <div className="text-2xl font-bold text-blue-600">-40%</div>
+                        <div className="text-sm text-gray-600">Shipping Cost</div>
                       </div>
                       <div className="p-3 text-center bg-purple-50 rounded-lg">
-                        <div className="text-2xl font-bold text-purple-600">+22%</div>
-                        <div className="text-sm text-gray-600">Net Profit</div>
+                        <div className="text-2xl font-bold text-purple-600">-40%</div>
+                        <div className="text-sm text-gray-600">Inventory Usage</div>
                       </div>
                     </div>
                     
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <p className="font-medium mb-1">ROI Calculator</p>
+                      <p className="font-medium mb-1">Business Impact</p>
                       <div className="flex items-center justify-between text-sm">
                         <span>Monthly Orders: 1,000</span>
                         <span className="text-green-600 font-medium">+₹45,000 Monthly Profit</span>
