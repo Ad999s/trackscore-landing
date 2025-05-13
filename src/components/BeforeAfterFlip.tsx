@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { CircleCheck, CircleX, Package, TrendingUp, BarChart3 } from "lucide-react";
+import { CircleCheck, CircleX, Package, TrendingUp, BarChart3, DollarSign } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
@@ -15,6 +15,7 @@ interface Order {
   decision?: "ship" | "don't ship";
   probability?: number;
   risk?: string;
+  hidden?: boolean;
 }
 
 const BeforeAfterFlip = () => {
@@ -37,8 +38,8 @@ const BeforeAfterFlip = () => {
   // Stats data
   const stats = [
     { label: "Delivery Success", value: "90%", icon: <Package className="h-5 w-5 text-green-600" /> },
-    { label: "Shipping Cost", value: "40% Less", icon: <TrendingUp className="h-5 w-5 text-blue-600" /> },
-    { label: "Inventory Usage", value: "40% Less", icon: <BarChart3 className="h-5 w-5 text-purple-600" /> }
+    { label: "Shipping Cost", value: "50% Less", icon: <TrendingUp className="h-5 w-5 text-blue-600" /> },
+    { label: "Higher Profits", value: "20% More", icon: <DollarSign className="h-5 w-5 text-purple-600" /> }
   ];
 
   useEffect(() => {
@@ -69,53 +70,66 @@ const BeforeAfterFlip = () => {
   const startAnimation = () => {
     // Reset animation state
     setAnimationStep(0);
-    setOrders(initialOrders);
+    setOrders(initialOrders.map(order => ({...order, score: undefined, decision: undefined, hidden: false})));
     setSelectedOrders([]);
     
     // Animation sequence
     const sequence = [
-      // Step 1: Show all orders
+      // Step 1: Initial state - show all orders
       () => setAnimationStep(1),
       
-      // Step 2: AI analyzing and scoring orders
+      // Step 2: Syncing with Shopify
       () => {
         setAnimationStep(2);
+        // No visual change to orders, just the header label changes
+      },
+      
+      // Step 3: AI scoring orders
+      () => {
+        setAnimationStep(3);
         setOrders(prevOrders => 
           prevOrders.map(order => ({
             ...order,
-            score: Math.floor(Math.random() * 60) + 40, // Scores between 40-100
+            score: Math.floor(Math.random() * 100) + 1, // Scores between 1-100
           }))
         );
       },
       
-      // Step 3: AI making shipping decisions
+      // Step 4: Mark orders as ship/don't ship
       () => {
-        setAnimationStep(3);
+        setAnimationStep(4);
         setOrders(prevOrders => 
           prevOrders.map(order => {
             const score = order.score || 0;
             return {
               ...order,
-              decision: score >= 75 ? "ship" : "don't ship",
-              probability: score >= 75 ? score : undefined,
-              risk: score < 75 ? "High RTO Risk" : undefined
+              decision: score >= 45 ? "ship" : "don't ship",
+              probability: score >= 45 ? score : undefined,
+              risk: score < 45 ? "High RTO Risk" : undefined
             };
           })
         );
       },
       
-      // Step 4: Select only orders to be shipped
-      () => {
-        setAnimationStep(4);
-        const toShip = orders
-          .filter(order => order.decision === "ship")
-          .map(order => order.id);
-        setSelectedOrders(toShip);
-      },
-      
-      // Step 5: Show stats
+      // Step 5: Strike through orders with low scores
       () => {
         setAnimationStep(5);
+      },
+      
+      // Step 6: Hide orders that won't be shipped
+      () => {
+        setAnimationStep(6);
+        setOrders(prevOrders => 
+          prevOrders.map(order => ({
+            ...order,
+            hidden: order.decision === "don't ship"
+          }))
+        );
+      },
+      
+      // Step 7: Show business analytics
+      () => {
+        setAnimationStep(7);
       },
       
       // Restart animation after delay
@@ -132,7 +146,7 @@ const BeforeAfterFlip = () => {
   
   // Animation classes based on step
   const getOrderRowClass = (order: Order) => {
-    if (animationStep < 3) return "";
+    if (animationStep < 4) return "";
     
     if (order.decision === "ship") {
       return "bg-green-50 border-l-4 border-green-500";
@@ -169,18 +183,20 @@ const BeforeAfterFlip = () => {
               <h3 className="text-lg font-semibold flex items-center gap-2">
                 <span className="inline-block w-3 h-3 bg-blue-500 rounded-full"></span>
                 {animationStep === 0 && "COD Orders"}
-                {animationStep === 1 && "Scanning COD Orders"}
-                {animationStep === 2 && "AI Scoring Orders"}
-                {animationStep === 3 && "AI Making Decisions"}
-                {animationStep === 4 && "Selecting Profitable Orders"}
-                {animationStep === 5 && "Improved Business Outcomes"}
+                {animationStep === 1 && "Loading COD Orders"}
+                {animationStep === 2 && "Syncing with Shopify"}
+                {animationStep === 3 && "AI Scoring Orders"}
+                {animationStep === 4 && "Making Shipping Decisions"}
+                {animationStep === 5 && "Filtering Low-Quality Orders"}
+                {animationStep === 6 && "Selecting Profitable Orders"}
+                {animationStep === 7 && "Business Analytics"}
               </h3>
             </div>
             
             {/* Table of orders */}
             <div className={cn(
               "transition-all duration-500",
-              animationStep <= 4 ? "block" : "hidden"
+              animationStep <= 6 ? "block" : "hidden"
             )}>
               <div className="p-4">
                 <Table>
@@ -190,11 +206,11 @@ const BeforeAfterFlip = () => {
                       <TableHead>Channel</TableHead>
                       <TableHead>Amount</TableHead>
                       <TableHead>Status</TableHead>
-                      {(animationStep >= 2) && (
-                        <TableHead>AI Score</TableHead>
-                      )}
                       {(animationStep >= 3) && (
-                        <TableHead>Decision</TableHead>
+                        <TableHead className="transition-opacity duration-300">AI Score</TableHead>
+                      )}
+                      {(animationStep >= 4) && (
+                        <TableHead className="transition-opacity duration-300">Decision</TableHead>
                       )}
                     </TableRow>
                   </TableHeader>
@@ -203,10 +219,11 @@ const BeforeAfterFlip = () => {
                       <TableRow 
                         key={order.id} 
                         className={cn(
-                          "transition-all duration-300",
+                          "transition-all duration-500",
                           getOrderRowClass(order),
-                          animationStep === 4 && order.decision !== "ship" ? "opacity-50" : "",
-                          animationStep === 2 ? "animate-pulse" : ""
+                          animationStep === 2 ? "animate-pulse" : "",
+                          animationStep === 5 && order.decision === "don't ship" ? "line-through text-gray-400" : "",
+                          order.hidden ? "hidden" : ""
                         )}
                       >
                         <TableCell className="font-medium">{order.id}</TableCell>
@@ -218,26 +235,22 @@ const BeforeAfterFlip = () => {
                           </span>
                         </TableCell>
                         
-                        {(animationStep >= 2) && (
-                          <TableCell>
-                            {order.score && (
+                        {(animationStep >= 3) && (
+                          <TableCell className="transition-opacity duration-300 animate-fadeIn">
+                            {order.score !== undefined && (
                               <div className="flex items-center gap-2">
                                 <div className={cn(
                                   "w-10 h-10 rounded-full flex items-center justify-center text-xs font-medium",
-                                  order.score >= 75 ? "bg-green-100 text-green-700" :
-                                  order.score >= 60 ? "bg-yellow-100 text-yellow-700" :
-                                  "bg-red-100 text-red-700"
+                                  order.score >= 45 ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
                                 )}>
                                   {order.score}
                                 </div>
-                                {(animationStep === 2) && (
+                                {(animationStep === 3) && (
                                   <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
                                     <div 
                                       className={cn(
                                         "h-full rounded-full",
-                                        order.score >= 75 ? "bg-green-500" :
-                                        order.score >= 60 ? "bg-yellow-500" :
-                                        "bg-red-500"
+                                        order.score >= 45 ? "bg-green-500" : "bg-red-500"
                                       )}
                                       style={{ width: `${order.score}%` }}
                                     ></div>
@@ -248,13 +261,13 @@ const BeforeAfterFlip = () => {
                           </TableCell>
                         )}
                         
-                        {(animationStep >= 3) && (
-                          <TableCell>
+                        {(animationStep >= 4) && (
+                          <TableCell className="transition-opacity duration-300 animate-fadeIn">
                             {order.decision === "ship" ? (
                               <div className="flex items-center gap-1 text-green-600">
                                 <CircleCheck className="h-4 w-4" />
                                 <span>Ship</span>
-                                <span className="text-xs text-gray-500 ml-1">({order.probability}% success)</span>
+                                <span className="text-xs text-gray-500 ml-1">({order.probability}% verified)</span>
                               </div>
                             ) : (
                               <div className="flex items-center gap-1 text-red-600">
@@ -275,7 +288,7 @@ const BeforeAfterFlip = () => {
             {/* Stats display */}
             <div className={cn(
               "p-6 transition-all duration-500",
-              animationStep === 5 ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"
+              animationStep === 7 ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"
             )}>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {stats.map((stat, index) => (
@@ -283,9 +296,10 @@ const BeforeAfterFlip = () => {
                     key={stat.label} 
                     className={cn(
                       "bg-white p-6 rounded-lg border border-gray-100 shadow-sm text-center",
-                      "transform transition-all duration-500 delay-300",
-                      animationStep === 5 ? `opacity-100 translate-y-0 delay-${index * 100}` : "opacity-0 translate-y-4"
+                      "transform transition-all duration-500",
+                      animationStep === 7 ? `opacity-100 translate-y-0 delay-${index * 100}` : "opacity-0 translate-y-4"
                     )}
+                    style={{ transitionDelay: `${index * 200}ms` }}
                   >
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-50 mb-4">
                       {stat.icon}
