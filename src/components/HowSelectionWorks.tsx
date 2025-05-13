@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Check, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -79,8 +78,6 @@ const HowSelectionWorks = () => {
       }
     };
   }, []);
-
-  // Removed auto cycle through steps (previously was here)
   
   const steps = [
     {
@@ -100,13 +97,13 @@ const HowSelectionWorks = () => {
     },
     {
       number: 4,
-      title: "Ships According to Modes",
-      description: "Orders are intelligently routed through optimal shipping channels based on their scores to maximize delivery success rates."
+      title: "3 Mode Shipping",
+      description: "Orders are intelligently routed through three optimized shipping modes based on their scores to maximize delivery success rates."
     },
     {
       number: 5,
-      title: "Better Business Outcomes",
-      description: "The result: Fewer RTOs, improved inventory turnover, and significantly increased profit margins for your eCommerce business."
+      title: "Efficient Cashflow System",
+      description: "Save working capital on shipping costs, unnecessary wasted shipments that were never meant to convert."
     }
   ];
 
@@ -319,48 +316,48 @@ const HowSelectionWorks = () => {
                       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
                         <Check size={18} className="text-blue-600" />
                       </div>
-                      Choose Right Threshold
+                      3 Mode Shipping
                     </h3>
                     
                     <div className="space-y-3 mt-4">
                       <div className="p-3 border border-green-100 bg-green-50 rounded-lg">
                         <div className="flex justify-between mb-1">
-                          <span className="font-medium text-green-700">Threshold: 80+</span>
+                          <span className="font-medium text-green-700">Ship All</span>
                           <div className="flex items-center gap-2">
-                            <span className="text-sm bg-green-200 text-green-800 px-2 py-0.5 rounded">Delivery Success: 95%</span>
-                            <span className="text-sm bg-blue-200 text-blue-800 px-2 py-0.5 rounded">Profit: High</span>
+                            <span className="text-sm bg-green-200 text-green-800 px-2 py-0.5 rounded">Delivery Success: 60%</span>
+                            <span className="text-sm bg-blue-200 text-blue-800 px-2 py-0.5 rounded">Profit: Medium</span>
                           </div>
                         </div>
-                        <p className="text-sm text-green-700">Only highest confidence orders - maximum profit per order</p>
+                        <p className="text-sm text-green-700">Ship all orders - balanced approach with medium profit</p>
                       </div>
                       
                       <div className="p-3 border border-blue-100 bg-blue-50 rounded-lg">
                         <div className="flex justify-between mb-1">
-                          <span className="font-medium text-blue-700">Threshold: 60+</span>
+                          <span className="font-medium text-blue-700">Peak Profit</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-sm bg-green-200 text-green-800 px-2 py-0.5 rounded">Delivery Success: 70%</span>
+                            <span className="text-sm bg-blue-200 text-blue-800 px-2 py-0.5 rounded">Profit: Maximum</span>
+                          </div>
+                        </div>
+                        <p className="text-sm text-blue-700">Optimized for maximum profit with good delivery rates</p>
+                      </div>
+                      
+                      <div className="p-3 border border-yellow-100 bg-yellow-50 rounded-lg">
+                        <div className="flex justify-between mb-1">
+                          <span className="font-medium text-yellow-700">Least RTO</span>
                           <div className="flex items-center gap-2">
                             <span className="text-sm bg-green-200 text-green-800 px-2 py-0.5 rounded">Delivery Success: 85%</span>
                             <span className="text-sm bg-blue-200 text-blue-800 px-2 py-0.5 rounded">Profit: Medium</span>
                           </div>
                         </div>
-                        <p className="text-sm text-blue-700">Balanced approach - good confidence with higher volume</p>
-                      </div>
-                      
-                      <div className="p-3 border border-yellow-100 bg-yellow-50 rounded-lg">
-                        <div className="flex justify-between mb-1">
-                          <span className="font-medium text-yellow-700">Threshold: 50+</span>
-                          <div className="flex items-center gap-2">
-                            <span className="text-sm bg-green-200 text-green-800 px-2 py-0.5 rounded">Delivery Success: 70%</span>
-                            <span className="text-sm bg-blue-200 text-blue-800 px-2 py-0.5 rounded">Profit: Low</span>
-                          </div>
-                        </div>
-                        <p className="text-sm text-yellow-700">Higher volume but increased risk of returns</p>
+                        <p className="text-sm text-yellow-700">Focus on minimizing returns while maintaining profit</p>
                       </div>
                     </div>
                     
                     <div className="bg-blue-50 p-4 rounded-lg">
-                      <p className="font-medium text-blue-800">Recommended Threshold: 70+</p>
+                      <p className="font-medium text-blue-800">Recommended Mode: Peak Profit</p>
                       <div className="mt-2 flex justify-between">
-                        <span className="text-sm text-blue-700">Estimated Delivery Success: 88%</span>
+                        <span className="text-sm text-blue-700">Estimated Delivery Success: 70%</span>
                         <span className="text-sm text-blue-700">Estimated Profit: ₹42,500 monthly</span>
                       </div>
                     </div>
@@ -373,7 +370,7 @@ const HowSelectionWorks = () => {
                       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
                         <Check size={18} className="text-blue-600" />
                       </div>
-                      Better Business Outcomes
+                      Efficient Cashflow System
                     </h3>
                     
                     <div className="grid grid-cols-3 gap-3">
@@ -403,9 +400,9 @@ const HowSelectionWorks = () => {
                     </div>
                     
                     <div className="p-4 border border-blue-100 bg-blue-50 rounded-lg">
-                      <p className="font-medium text-blue-800">Start reducing RTOs today!</p>
+                      <p className="font-medium text-blue-800">Save working capital today!</p>
                       <p className="text-sm text-blue-700 mt-1">
-                        Integrate our Smart Order Selection system with your Shopify store in minutes.
+                        Avoid unnecessary wasted shipments that were never meant to convert.
                       </p>
                     </div>
                   </div>

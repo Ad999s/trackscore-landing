@@ -30,7 +30,7 @@ const Hero = () => {
                 Smart Order <br />Selection: <span className="text-blue-500">Reduce RTO</span>
               </h1>
               <p className="text-xl text-gray-600 mt-4 max-w-xl">
-                Your hunt for "how to reduce rtos" ends here.
+                Scalysis automatically removes orders that were never meant to convert. Ship less, scale more.
               </p>
             </div>
 
