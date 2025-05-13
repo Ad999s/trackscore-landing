@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
 import { CircleCheck, CircleX, Package, TrendingUp, BarChart3, DollarSign } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -23,15 +23,30 @@ const BeforeAfterFlip = () => {
   const [animationStep, setAnimationStep] = useState(0);
   const [selectedOrders, setSelectedOrders] = useState<string[]>([]);
   
-  // Orders data based on the image reference 
-  const initialOrders: Order[] = [
-    { id: "ORD-7845", channel: "Online Store", amount: "₹1,598.00", status: "Payment pending" },
-    { id: "ORD-7846", channel: "Online Store", amount: "₹1,598.00", status: "Payment pending" },
-    { id: "ORD-7847", channel: "Online Store", amount: "₹900.00", status: "Payment pending" },
-    { id: "ORD-7848", channel: "Online Store", amount: "₹1,598.00", status: "Payment pending" },
-    { id: "ORD-7849", channel: "Online Store", amount: "₹900.00", status: "Payment pending" },
-    { id: "ORD-7850", channel: "Online Store", amount: "₹900.00", status: "Payment pending" },
-  ];
+  // Generate 15 orders with consistent data
+  const initialOrders: Order[] = useMemo(() => {
+    // Create array of 15 orders
+    const orders: Order[] = [];
+    for (let i = 7840; i < 7855; i++) {
+      orders.push({
+        id: `ORD-${i}`,
+        channel: "Online Store",
+        amount: i % 3 === 0 ? "₹900.00" : "₹1,598.00",
+        status: "Payment pending"
+      });
+    }
+    return orders;
+  }, []);
+
+  // Randomly select which 4 orders will be marked as "don't ship"
+  // Using useMemo to ensure it doesn't change on re-renders
+  const dontShipOrders = useMemo(() => {
+    const orderIds = initialOrders.map(order => order.id);
+    // Shuffle array and pick first 4
+    return [...orderIds]
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 4);
+  }, [initialOrders]);
   
   const [orders, setOrders] = useState<Order[]>(initialOrders);
   
@@ -82,10 +97,17 @@ const BeforeAfterFlip = () => {
       () => {
         setAnimationStep(2);
         setOrders(prevOrders => 
-          prevOrders.map(order => ({
-            ...order,
-            score: Math.floor(Math.random() * 100) + 1, // Scores between 1-100
-          }))
+          prevOrders.map(order => {
+            // Determine if this order should be "don't ship" based on our preselected list
+            const shouldNotShip = dontShipOrders.includes(order.id);
+            // Generate appropriate score range
+            const scoreBase = shouldNotShip ? 10 : 45;
+            const scoreRange = shouldNotShip ? 35 : 55;
+            return {
+              ...order,
+              score: scoreBase + Math.floor(Math.random() * scoreRange),
+            };
+          })
         );
       },
       
@@ -94,12 +116,12 @@ const BeforeAfterFlip = () => {
         setAnimationStep(3);
         setOrders(prevOrders => 
           prevOrders.map(order => {
-            const score = order.score || 0;
+            const shouldNotShip = dontShipOrders.includes(order.id);
             return {
               ...order,
-              decision: score >= 45 ? "ship" : "don't ship",
-              probability: score >= 45 ? score : undefined,
-              risk: score < 45 ? "High RTO Risk" : undefined
+              decision: shouldNotShip ? "don't ship" : "ship",
+              probability: shouldNotShip ? undefined : order.score,
+              risk: shouldNotShip ? "High RTO Risk" : undefined
             };
           })
         );
@@ -171,12 +193,12 @@ const BeforeAfterFlip = () => {
             <div className="p-4 bg-gray-50 border-b border-gray-100">
               <h3 className="text-lg font-semibold flex items-center gap-2">
                 <span className="inline-block w-3 h-3 bg-blue-500 rounded-full"></span>
-                {animationStep === 0 && "Payment Pending Orders"}
-                {animationStep === 1 && "Payment Pending Orders"}
-                {animationStep === 2 && "AI Scoring Orders"}
-                {animationStep === 3 && "Identifying Low-Quality Orders"}
-                {animationStep === 4 && "Selecting Profitable Orders"}
-                {animationStep === 5 && "Business Analytics"}
+                {animationStep === 0 && "Shopify COD Orders"}
+                {animationStep === 1 && "Shopify COD Orders"}
+                {animationStep === 2 && "Scalysis Scoring"}
+                {animationStep === 3 && "Order Selection"}
+                {animationStep === 4 && "Order Selection"}
+                {animationStep === 5 && "Analytics"}
               </h3>
             </div>
             
