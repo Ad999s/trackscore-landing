@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { CircleCheck, CircleX, Package, TrendingUp, BarChart3, DollarSign } from "lucide-react";
@@ -34,11 +35,11 @@ const BeforeAfterFlip = () => {
   
   const [orders, setOrders] = useState<Order[]>(initialOrders);
   
-  // Stats data
+  // Stats data with updated values
   const stats = [
     { label: "Delivery Success", value: "90%", icon: <Package className="h-5 w-5 text-green-600" /> },
-    { label: "Shipping Cost", value: "50% Less", icon: <TrendingUp className="h-5 w-5 text-blue-600" /> },
-    { label: "Higher Profits", value: "20% More", icon: <DollarSign className="h-5 w-5 text-purple-600" /> }
+    { label: "Shipping Cost", value: "-40%", icon: <TrendingUp className="h-5 w-5 text-blue-600" /> },
+    { label: "Inventory Usage", value: "-40%", icon: <DollarSign className="h-5 w-5 text-purple-600" /> }
   ];
 
   useEffect(() => {
@@ -65,27 +66,21 @@ const BeforeAfterFlip = () => {
     };
   }, []);
   
-  // Animation controller
+  // Animation controller with 2-second delays
   const startAnimation = () => {
     // Reset animation state
     setAnimationStep(0);
     setOrders(initialOrders.map(order => ({...order, score: undefined, decision: undefined, hidden: false})));
     setSelectedOrders([]);
     
-    // Animation sequence
+    // Animation sequence with 2-second delays
     const sequence = [
       // Step 1: Initial state - show all orders
       () => setAnimationStep(1),
       
-      // Step 2: Syncing with Shopify
+      // Step 2: Add intent score column (0-100, red and green)
       () => {
         setAnimationStep(2);
-        // No visual change to orders, just the header label changes
-      },
-      
-      // Step 3: AI scoring orders
-      () => {
-        setAnimationStep(3);
         setOrders(prevOrders => 
           prevOrders.map(order => ({
             ...order,
@@ -94,9 +89,9 @@ const BeforeAfterFlip = () => {
         );
       },
       
-      // Step 4: Mark orders as ship/don't ship
+      // Step 3: Strike through red orders (continuation of step 2)
       () => {
-        setAnimationStep(4);
+        setAnimationStep(3);
         setOrders(prevOrders => 
           prevOrders.map(order => {
             const score = order.score || 0;
@@ -110,14 +105,9 @@ const BeforeAfterFlip = () => {
         );
       },
       
-      // Step 5: Strike through orders with low scores
+      // Step 4: Only green orders left
       () => {
-        setAnimationStep(5);
-      },
-      
-      // Step 6: Hide orders that won't be shipped
-      () => {
-        setAnimationStep(6);
+        setAnimationStep(4);
         setOrders(prevOrders => 
           prevOrders.map(order => ({
             ...order,
@@ -126,31 +116,31 @@ const BeforeAfterFlip = () => {
         );
       },
       
-      // Step 7: Show business analytics
+      // Step 5: Show business analytics
       () => {
-        setAnimationStep(7);
+        setAnimationStep(5);
       },
       
       // Restart animation after delay
       () => {
-        setTimeout(startAnimation, 3000);
+        setTimeout(startAnimation, 2000);
       }
     ];
     
-    // Run each step with a delay
+    // Run each step with a 2-second delay
     sequence.forEach((step, index) => {
-      setTimeout(step, (index + 1) * 2500);
+      setTimeout(step, (index + 1) * 2000);
     });
   };
   
-  // Animation classes based on step
+  // Animation classes based on step for smooth transitions
   const getOrderRowClass = (order: Order) => {
-    if (animationStep < 4) return "";
+    if (animationStep < 3) return "";
     
     if (order.decision === "ship") {
-      return "bg-green-50 border-l-4 border-green-500";
+      return "bg-green-50 border-l-4 border-green-500 transition-all duration-500";
     } else {
-      return "bg-red-50 border-l-4 border-red-500";
+      return "bg-red-50 border-l-4 border-red-500 transition-all duration-500";
     }
   };
 
@@ -169,7 +159,7 @@ const BeforeAfterFlip = () => {
               Transformation
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <span className="text-gradient">Scalysis knows which ones convert</span>
+              Scalysis <span className="text-gradient">knows which ones convert</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Remove the RTO headache. Give it to Scalysis—AI does all the work. No calling team. No confirmation texts. Just results.
@@ -181,21 +171,19 @@ const BeforeAfterFlip = () => {
             <div className="p-4 bg-gray-50 border-b border-gray-100">
               <h3 className="text-lg font-semibold flex items-center gap-2">
                 <span className="inline-block w-3 h-3 bg-blue-500 rounded-full"></span>
-                {animationStep === 0 && "COD Orders"}
-                {animationStep === 1 && "Loading COD Orders"}
-                {animationStep === 2 && "Syncing with Shopify"}
-                {animationStep === 3 && "AI Scoring Orders"}
-                {animationStep === 4 && "Making Shipping Decisions"}
-                {animationStep === 5 && "Filtering Low-Quality Orders"}
-                {animationStep === 6 && "Selecting Profitable Orders"}
-                {animationStep === 7 && "Business Analytics"}
+                {animationStep === 0 && "Payment Pending Orders"}
+                {animationStep === 1 && "Payment Pending Orders"}
+                {animationStep === 2 && "AI Scoring Orders"}
+                {animationStep === 3 && "Identifying Low-Quality Orders"}
+                {animationStep === 4 && "Selecting Profitable Orders"}
+                {animationStep === 5 && "Business Analytics"}
               </h3>
             </div>
             
             {/* Table of orders */}
             <div className={cn(
               "transition-all duration-500",
-              animationStep <= 6 ? "block" : "hidden"
+              animationStep <= 4 ? "block" : "hidden"
             )}>
               <div className="p-4">
                 <Table>
@@ -205,11 +193,11 @@ const BeforeAfterFlip = () => {
                       <TableHead>Channel</TableHead>
                       <TableHead>Amount</TableHead>
                       <TableHead>Status</TableHead>
-                      {(animationStep >= 3) && (
-                        <TableHead className="transition-opacity duration-300">AI Score</TableHead>
+                      {(animationStep >= 2) && (
+                        <TableHead className="transition-opacity duration-500 animate-fadeIn">Intent Score</TableHead>
                       )}
-                      {(animationStep >= 4) && (
-                        <TableHead className="transition-opacity duration-300">Decision</TableHead>
+                      {(animationStep >= 3) && (
+                        <TableHead className="transition-opacity duration-500 animate-fadeIn">Decision</TableHead>
                       )}
                     </TableRow>
                   </TableHeader>
@@ -220,8 +208,8 @@ const BeforeAfterFlip = () => {
                         className={cn(
                           "transition-all duration-500",
                           getOrderRowClass(order),
-                          animationStep === 2 ? "animate-pulse" : "",
-                          animationStep === 5 && order.decision === "don't ship" ? "line-through text-gray-400" : "",
+                          animationStep === 1 ? "animate-pulse" : "",
+                          animationStep === 3 && order.decision === "don't ship" ? "line-through text-gray-400" : "",
                           order.hidden ? "hidden" : ""
                         )}
                       >
@@ -234,21 +222,21 @@ const BeforeAfterFlip = () => {
                           </span>
                         </TableCell>
                         
-                        {(animationStep >= 3) && (
-                          <TableCell className="transition-opacity duration-300 animate-fadeIn">
+                        {(animationStep >= 2) && (
+                          <TableCell className="transition-opacity duration-500 animate-fadeIn">
                             {order.score !== undefined && (
                               <div className="flex items-center gap-2">
                                 <div className={cn(
-                                  "w-10 h-10 rounded-full flex items-center justify-center text-xs font-medium",
+                                  "w-10 h-10 rounded-full flex items-center justify-center text-xs font-medium transition-all duration-500",
                                   order.score >= 45 ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
                                 )}>
                                   {order.score}
                                 </div>
-                                {(animationStep === 3) && (
+                                {(animationStep === 2) && (
                                   <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
                                     <div 
                                       className={cn(
-                                        "h-full rounded-full",
+                                        "h-full rounded-full transition-all duration-500",
                                         order.score >= 45 ? "bg-green-500" : "bg-red-500"
                                       )}
                                       style={{ width: `${order.score}%` }}
@@ -260,8 +248,8 @@ const BeforeAfterFlip = () => {
                           </TableCell>
                         )}
                         
-                        {(animationStep >= 4) && (
-                          <TableCell className="transition-opacity duration-300 animate-fadeIn">
+                        {(animationStep >= 3) && (
+                          <TableCell className="transition-opacity duration-500 animate-fadeIn">
                             {order.decision === "ship" ? (
                               <div className="flex items-center gap-1 text-green-600">
                                 <CircleCheck className="h-4 w-4" />
@@ -287,7 +275,7 @@ const BeforeAfterFlip = () => {
             {/* Stats display */}
             <div className={cn(
               "p-6 transition-all duration-500",
-              animationStep === 7 ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"
+              animationStep === 5 ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"
             )}>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {stats.map((stat, index) => (
@@ -296,7 +284,7 @@ const BeforeAfterFlip = () => {
                     className={cn(
                       "bg-white p-6 rounded-lg border border-gray-100 shadow-sm text-center",
                       "transform transition-all duration-500",
-                      animationStep === 7 ? `opacity-100 translate-y-0 delay-${index * 100}` : "opacity-0 translate-y-4"
+                      animationStep === 5 ? `opacity-100 translate-y-0` : "opacity-0 translate-y-4"
                     )}
                     style={{ transitionDelay: `${index * 200}ms` }}
                   >
