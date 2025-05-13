@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { CircleCheck, CircleX, Package, TrendingUp, BarChart3, DollarSign } from "lucide-react";
@@ -170,10 +169,10 @@ const BeforeAfterFlip = () => {
               Transformation
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              AI Powered <span className="text-gradient">Order Selection</span>
+              <span className="text-gradient">Scalysis knows which ones convert</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Save big on daily shipping costs, packaging costs & inventory. Ship less, make more.
+              Remove the RTO headache. Give it to Scalysis—AI does all the work. No calling team. No confirmation texts. Just results.
             </p>
           </div>
 
