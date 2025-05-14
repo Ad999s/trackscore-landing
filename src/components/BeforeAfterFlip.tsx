@@ -50,9 +50,9 @@ const BeforeAfterFlip = () => {
   
   // Stats data with updated values
   const stats = [
-    { label: "Delivery Success", value: "90%", icon: <Package className="h-5 w-5 text-green-600" /> },
-    { label: "Shipping Cost", value: "-40%", icon: <TrendingUp className="h-5 w-5 text-blue-600" /> },
-    { label: "Inventory Usage", value: "-40%", icon: <DollarSign className="h-5 w-5 text-purple-600" /> }
+    { label: "Delivery Success", value: "90%", icon: <Package className="h-5 w-5 text-white" /> },
+    { label: "Shipping Cost", value: "-40%", icon: <TrendingUp className="h-5 w-5 text-white" /> },
+    { label: "Inventory Usage", value: "-40%", icon: <DollarSign className="h-5 w-5 text-white" /> }
   ];
 
   // Animation controller with status updates
@@ -172,15 +172,6 @@ const BeforeAfterFlip = () => {
             </p>
           </div>
 
-          {/* Scalysis Logo */}
-          <div className="flex justify-center mb-8">
-            <img 
-              src="/lovable-uploads/2bc30ab8-075f-4c60-9467-76f1eea27775.png" 
-              alt="Scalysis Logo" 
-              className="h-16 w-auto"
-            />
-          </div>
-
           {/* Order Processing Animation */}
           <div className="relative bg-white rounded-xl shadow-lg overflow-hidden mb-8 max-w-3xl mx-auto">
             <div className="p-4 bg-gray-50 border-b border-gray-100 flex items-center justify-between">
@@ -199,98 +190,96 @@ const BeforeAfterFlip = () => {
               )}
             </div>
             
-            {/* Table of orders */}
-            <div className="max-h-[400px] overflow-y-auto">
-              <div className="p-4">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Order ID</TableHead>
-                      <TableHead>Channel</TableHead>
-                      <TableHead>Amount</TableHead>
-                      <TableHead>Status</TableHead>
-                      {(animationStep >= 2) && (
-                        <TableHead className="transition-opacity duration-500 animate-fadeIn">Intent Score</TableHead>
+            {/* Table of orders - making it more compact */}
+            <div className="max-h-[350px] overflow-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Order ID</TableHead>
+                    <TableHead>Channel</TableHead>
+                    <TableHead>Amount</TableHead>
+                    <TableHead>Status</TableHead>
+                    {(animationStep >= 2) && (
+                      <TableHead className="transition-opacity duration-500 animate-fadeIn">Intent Score</TableHead>
+                    )}
+                    {(animationStep >= 3) && (
+                      <TableHead className="transition-opacity duration-500 animate-fadeIn">Decision</TableHead>
+                    )}
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {orders.map((order) => (
+                    <TableRow 
+                      key={order.id} 
+                      className={cn(
+                        "transition-all duration-500",
+                        getOrderRowClass(order),
+                        animationStep === 1 ? "animate-pulse" : "",
+                        animationStep === 3 && order.decision === "don't ship" ? "line-through text-gray-400" : "",
+                        order.hidden ? "hidden" : ""
                       )}
+                    >
+                      <TableCell className="font-medium">{order.id}</TableCell>
+                      <TableCell>{order.channel}</TableCell>
+                      <TableCell>{order.amount}</TableCell>
+                      <TableCell>
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                          {order.status}
+                        </span>
+                      </TableCell>
+                      
+                      {(animationStep >= 2) && (
+                        <TableCell className="transition-opacity duration-500 animate-fadeIn">
+                          {order.score !== undefined && (
+                            <div className="flex items-center gap-2">
+                              <div className={cn(
+                                "w-10 h-10 rounded-full flex items-center justify-center text-xs font-medium transition-all duration-500",
+                                order.score >= 45 ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+                              )}>
+                                {order.score}
+                              </div>
+                              {(animationStep === 2) && (
+                                <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
+                                  <div 
+                                    className={cn(
+                                      "h-full rounded-full transition-all duration-500",
+                                      order.score >= 45 ? "bg-green-500" : "bg-red-500"
+                                    )}
+                                    style={{ width: `${order.score}%` }}
+                                  ></div>
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </TableCell>
+                      )}
+                      
                       {(animationStep >= 3) && (
-                        <TableHead className="transition-opacity duration-500 animate-fadeIn">Decision</TableHead>
+                        <TableCell className="transition-opacity duration-500 animate-fadeIn">
+                          {order.decision === "ship" ? (
+                            <div className="flex items-center gap-1 text-green-600">
+                              <CircleCheck className="h-4 w-4" />
+                              <span>Ship</span>
+                              <span className="text-xs text-gray-500 ml-1">({order.probability}% verified)</span>
+                            </div>
+                          ) : (
+                            <div className="flex items-center gap-1 text-red-600">
+                              <CircleX className="h-4 w-4" />
+                              <span>Don't Ship</span>
+                              <span className="text-xs text-gray-500 ml-1">({order.risk})</span>
+                            </div>
+                          )}
+                        </TableCell>
                       )}
                     </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {orders.map((order) => (
-                      <TableRow 
-                        key={order.id} 
-                        className={cn(
-                          "transition-all duration-500",
-                          getOrderRowClass(order),
-                          animationStep === 1 ? "animate-pulse" : "",
-                          animationStep === 3 && order.decision === "don't ship" ? "line-through text-gray-400" : "",
-                          order.hidden ? "hidden" : ""
-                        )}
-                      >
-                        <TableCell className="font-medium">{order.id}</TableCell>
-                        <TableCell>{order.channel}</TableCell>
-                        <TableCell>{order.amount}</TableCell>
-                        <TableCell>
-                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
-                            {order.status}
-                          </span>
-                        </TableCell>
-                        
-                        {(animationStep >= 2) && (
-                          <TableCell className="transition-opacity duration-500 animate-fadeIn">
-                            {order.score !== undefined && (
-                              <div className="flex items-center gap-2">
-                                <div className={cn(
-                                  "w-10 h-10 rounded-full flex items-center justify-center text-xs font-medium transition-all duration-500",
-                                  order.score >= 45 ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
-                                )}>
-                                  {order.score}
-                                </div>
-                                {(animationStep === 2) && (
-                                  <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
-                                    <div 
-                                      className={cn(
-                                        "h-full rounded-full transition-all duration-500",
-                                        order.score >= 45 ? "bg-green-500" : "bg-red-500"
-                                      )}
-                                      style={{ width: `${order.score}%` }}
-                                    ></div>
-                                  </div>
-                                )}
-                              </div>
-                            )}
-                          </TableCell>
-                        )}
-                        
-                        {(animationStep >= 3) && (
-                          <TableCell className="transition-opacity duration-500 animate-fadeIn">
-                            {order.decision === "ship" ? (
-                              <div className="flex items-center gap-1 text-green-600">
-                                <CircleCheck className="h-4 w-4" />
-                                <span>Ship</span>
-                                <span className="text-xs text-gray-500 ml-1">({order.probability}% verified)</span>
-                              </div>
-                            ) : (
-                              <div className="flex items-center gap-1 text-red-600">
-                                <CircleX className="h-4 w-4" />
-                                <span>Don't Ship</span>
-                                <span className="text-xs text-gray-500 ml-1">({order.risk})</span>
-                              </div>
-                            )}
-                          </TableCell>
-                        )}
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
+                  ))}
+                </TableBody>
+              </Table>
             </div>
           </div>
           
           {/* Start Button */}
-          <div className="flex justify-center mb-12">
+          <div className="flex justify-center mb-8">
             <Button 
               onClick={startAnimation}
               disabled={animationRunning}
@@ -301,20 +290,23 @@ const BeforeAfterFlip = () => {
             </Button>
           </div>
           
-          {/* Stats outside animation container */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 max-w-3xl mx-auto">
-            {stats.map((stat) => (
-              <div 
-                key={stat.label} 
-                className="bg-white p-6 rounded-lg border border-gray-100 shadow-sm text-center"
-              >
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-50 mb-4">
-                  {stat.icon}
+          {/* Stats in blue background for emphasis */}
+          <div className="bg-blue-600 text-white rounded-xl p-8 shadow-lg mb-12">
+            <h3 className="text-xl font-bold mb-6 text-center">Numbers That Speak For Themselves</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {stats.map((stat) => (
+                <div 
+                  key={stat.label} 
+                  className="text-center"
+                >
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/30 mb-4">
+                    {stat.icon}
+                  </div>
+                  <h4 className="text-lg font-semibold mb-2">{stat.label}</h4>
+                  <p className="text-3xl font-bold">{stat.value}</p>
                 </div>
-                <h4 className="text-lg font-semibold mb-2">{stat.label}</h4>
-                <p className="text-3xl font-bold text-primary">{stat.value}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

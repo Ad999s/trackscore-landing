@@ -39,10 +39,11 @@ const Navbar = () => {
           <div className="flex items-center">
             <a href="#" className="flex items-center space-x-2">
               <img 
-                src="/lovable-uploads/3c4756d4-83a0-499f-8d98-04970f61faa7.png" 
+                src="/lovable-uploads/2bc30ab8-075f-4c60-9467-76f1eea27775.png" 
                 alt="Scalysis Logo" 
-                className="h-10" 
+                className="h-12" 
               />
+              <span className="text-lg font-semibold text-gray-800">Scalysis</span>
             </a>
           </div>
 
