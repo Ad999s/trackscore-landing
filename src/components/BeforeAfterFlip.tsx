@@ -1,9 +1,10 @@
 
-import { useEffect, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
-import { CircleCheck, CircleX, Package, TrendingUp, BarChart3, DollarSign } from "lucide-react";
+import { CircleCheck, CircleX, Package, TrendingUp, DollarSign, Play } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
 
 // Type for our orders
 interface Order {
@@ -19,15 +20,15 @@ interface Order {
 }
 
 const BeforeAfterFlip = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [animationStep, setAnimationStep] = useState(0);
-  const [selectedOrders, setSelectedOrders] = useState<string[]>([]);
+  const [animationRunning, setAnimationRunning] = useState(false);
   
-  // Generate 15 orders with consistent data
+  // Generate 6 orders with consistent data
   const initialOrders: Order[] = useMemo(() => {
-    // Create array of 15 orders
+    // Create array of 6 orders
     const orders: Order[] = [];
-    for (let i = 7840; i < 7855; i++) {
+    for (let i = 7840; i < 7846; i++) {
       orders.push({
         id: `ORD-${i}`,
         channel: "Online Store",
@@ -38,14 +39,12 @@ const BeforeAfterFlip = () => {
     return orders;
   }, []);
 
-  // Randomly select which 4 orders will be marked as "don't ship"
+  // Select 2 specific orders that will be marked as "don't ship"
   // Using useMemo to ensure it doesn't change on re-renders
   const dontShipOrders = useMemo(() => {
     const orderIds = initialOrders.map(order => order.id);
-    // Shuffle array and pick first 4
-    return [...orderIds]
-      .sort(() => 0.5 - Math.random())
-      .slice(0, 4);
+    // Always pick the 2nd and 5th orders
+    return [orderIds[1], orderIds[4]];
   }, [initialOrders]);
   
   const [orders, setOrders] = useState<Order[]>(initialOrders);
@@ -57,36 +56,17 @@ const BeforeAfterFlip = () => {
     { label: "Inventory Usage", value: "-40%", icon: <DollarSign className="h-5 w-5 text-purple-600" /> }
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          startAnimation();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    
-    const currentElement = document.getElementById("before-after-section");
-    
-    if (currentElement) {
-      observer.observe(currentElement);
-    }
-    
-    return () => {
-      if (currentElement) {
-        observer.unobserve(currentElement);
-      }
-    };
-  }, []);
-  
   // Animation controller with 2-second delays
   const startAnimation = () => {
+    // Don't start if already running
+    if (animationRunning) return;
+    
+    // Set animation as running
+    setAnimationRunning(true);
+    
     // Reset animation state
     setAnimationStep(0);
     setOrders(initialOrders.map(order => ({...order, score: undefined, decision: undefined, hidden: false})));
-    setSelectedOrders([]);
     
     // Animation sequence with 2-second delays
     const sequence = [
@@ -138,14 +118,11 @@ const BeforeAfterFlip = () => {
         );
       },
       
-      // Step 5: Show business analytics
+      // Step 5: Complete animation
       () => {
         setAnimationStep(5);
-      },
-      
-      // Restart animation after delay
-      () => {
-        setTimeout(startAnimation, 2000);
+        // Set animation as not running once complete
+        setAnimationRunning(false);
       }
     ];
     
@@ -320,78 +297,35 @@ const BeforeAfterFlip = () => {
               </div>
             </div>
           </div>
-
-          <div className="flex flex-col md:flex-row justify-center items-center gap-5 mt-12">
-            {/* First Green Card - Ship */}
-            <div className={cn(
-              "relative w-full md:w-1/3 h-64 bg-white border border-green-100 rounded-xl shadow-medium p-6 transition-all duration-500",
-              isVisible ? "animate-fadeIn animation-delay-100" : "opacity-0"
-            )}>
-              <div className="h-full flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 rounded-full bg-green-50">
-                      <CircleCheck className="h-6 w-6 text-green-600" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-green-600">Ship</h3>
-                  </div>
-                  <p className="text-gray-600">Order #8752</p>
-                  <p className="text-sm text-gray-500 mt-2">Mumbai, Maharashtra</p>
-                </div>
-                <div>
-                  <p className="text-green-600 font-medium">Delivery Probability: 89%</p>
-                  <p className="text-sm text-gray-500">Expected Profit: ₹460</p>
-                </div>
-              </div>
-            </div>
-            
-            {/* Middle Red Card - Don't Ship with animation */}
-            <div className={cn(
-              "relative w-full md:w-1/3 h-64 bg-white border border-red-100 rounded-xl shadow-medium p-6 transition-all duration-700",
-              isVisible ? "animate-pulse animation-delay-200 opacity-80 bg-gray-50" : "opacity-0"
-            )}>
-              <div className="h-full flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 rounded-full bg-red-50">
-                      <CircleX className="h-6 w-6 text-red-600" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-red-600">Don't Ship</h3>
-                  </div>
-                  <p className="text-gray-600">Order #9145</p>
-                  <p className="text-sm text-gray-500 mt-2">Ghaziabad, UP</p>
-                </div>
-                <div>
-                  <p className="text-red-600 font-medium">RTO Risk: 87%</p>
-                  <p className="text-sm text-gray-500">Potential Loss: ₹120</p>
-                </div>
-              </div>
-            </div>
-            
-            {/* Last Green Card - Ship = More Profit */}
-            <div className={cn(
-              "relative w-full md:w-1/3 h-64 bg-white border border-green-100 rounded-xl shadow-medium p-6 transition-all duration-500",
-              isVisible ? "animate-fadeIn animation-delay-300" : "opacity-0"
-            )}>
-              <div className="h-full flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 rounded-full bg-green-50">
-                      <CircleCheck className="h-6 w-6 text-green-600" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-green-600">Ship</h3>
-                  </div>
-                  <p className="text-gray-600">Order #7634</p>
-                  <p className="text-sm text-gray-500 mt-2">Bangalore, Karnataka</p>
-                </div>
-                <div>
-                  <p className="text-green-600 font-medium">Delivery Probability: 92%</p>
-                  <p className="text-sm text-gray-600 font-bold">Expected Profit: ₹460</p>
-                </div>
-              </div>
-            </div>
+          
+          {/* Start Button */}
+          <div className="flex justify-center mb-10">
+            <Button 
+              onClick={startAnimation}
+              disabled={animationRunning}
+              className="px-6 py-2"
+            >
+              <Play className="h-4 w-4 mr-2" />
+              {animationRunning ? "Running..." : "Start"}
+            </Button>
           </div>
           
+          {/* Stats outside animation container */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            {stats.map((stat) => (
+              <div 
+                key={stat.label} 
+                className="bg-white p-6 rounded-lg border border-gray-100 shadow-sm text-center"
+              >
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-50 mb-4">
+                  {stat.icon}
+                </div>
+                <h4 className="text-lg font-semibold mb-2">{stat.label}</h4>
+                <p className="text-3xl font-bold text-primary">{stat.value}</p>
+              </div>
+            ))}
+          </div>
+
           <div className="text-center mt-10">
             <p className="text-gray-500">Scalysis intelligently selects orders to maximize profit and minimize returns</p>
           </div>
