@@ -41,9 +41,13 @@ const Navbar = () => {
               <img 
                 src="/lovable-uploads/2bc30ab8-075f-4c60-9467-76f1eea27775.png" 
                 alt="Scalysis Logo" 
-                className="h-12" 
+                className="h-10" 
+                onError={(e) => {
+                  console.error("Logo failed to load");
+                  e.currentTarget.style.display = "none";
+                }}
               />
-              <span className="text-lg font-semibold text-gray-800">Scalysis</span>
+              <span className="text-xl font-semibold text-gray-800">Scalysis</span>
             </a>
           </div>
 

@@ -1,13 +1,20 @@
-
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight, Package, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 
 const ProfitCalculator = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [sliderValue, setSliderValue] = useState([70]);
+  const [calculatedProfit, setCalculatedProfit] = useState({
+    monthly: "211,833",
+    annual: "25.42",
+    inventorySaved: "588",
+    deliveryRateFrom: "70.0",
+    deliveryRateTo: "83.5",
+    profitIncrease: "17"
+  });
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,6 +39,19 @@ const ProfitCalculator = () => {
     };
   }, []);
 
+  const handleCalculate = () => {
+    // In a real app, this would be actual calculation logic
+    // For now we'll just keep the same values
+    setCalculatedProfit({
+      monthly: "211,833",
+      annual: "25.42",
+      inventorySaved: "588",
+      deliveryRateFrom: "70.0",
+      deliveryRateTo: "83.5",
+      profitIncrease: "17"
+    });
+  };
+
   return (
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,11 +70,11 @@ const ProfitCalculator = () => {
           </p>
 
           <div className={cn(
-            "grid md:grid-cols-2 gap-8 w-full transition-all duration-500",
+            "grid md:grid-cols-2 gap-8 w-full transition-all duration-500 max-w-5xl",
             isVisible ? "animate-slideUp animation-delay-200" : "opacity-0"
           )}>
-            {/* Calculator */}
-            <div className="bg-primary text-white rounded-lg p-8">
+            {/* Calculator - Left side */}
+            <div className="bg-blue-600 text-white rounded-lg p-8">
               <div className="flex items-center gap-2 mb-5">
                 <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -112,13 +132,17 @@ const ProfitCalculator = () => {
                   </div>
                 </div>
                 
-                <Button variant="secondary" className="w-full py-6 text-primary font-medium text-base">
+                <Button 
+                  variant="secondary" 
+                  className="w-full py-6 text-primary font-medium text-base"
+                  onClick={handleCalculate}
+                >
                   Calculate Profit
                 </Button>
               </div>
             </div>
             
-            {/* Results */}
+            {/* Results - Right side */}
             <div className="flex flex-col">
               <div className="flex items-center gap-2 mb-5">
                 <ArrowUpRight className="w-5 h-5 text-green-600" />
@@ -126,33 +150,27 @@ const ProfitCalculator = () => {
               </div>
               
               <div className="bg-green-50 rounded-lg p-8 text-center mb-6">
-                <div className="text-4xl font-bold text-green-600 mb-1">+₹211,833</div>
+                <div className="text-4xl font-bold text-green-600 mb-1">+₹{calculatedProfit.monthly}</div>
                 <div className="text-gray-500">Monthly profit</div>
-                <div className="text-2xl font-bold text-green-600 mt-3">+₹25.42 Lakhs</div>
+                <div className="text-2xl font-bold text-green-600 mt-3">+₹{calculatedProfit.annual} Lakhs</div>
                 <div className="text-gray-500">In Annual profits</div>
               </div>
               
               <div className="grid grid-cols-3 gap-4 mb-8">
                 <div className="bg-blue-50 rounded-lg p-4 text-center">
                   <div className="flex justify-center mb-2">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="4" y="4" width="16" height="16" rx="2" stroke="#3B82F6" strokeWidth="2"/>
-                      <path d="M16 10L12 14L8 10" stroke="#3B82F6" strokeWidth="2"/>
-                    </svg>
+                    <Package className="h-5 w-5 text-blue-600" />
                   </div>
                   <div className="text-sm text-gray-500">Inventory Saved</div>
-                  <div className="font-bold text-blue-600">588 units</div>
+                  <div className="font-bold text-blue-600">{calculatedProfit.inventorySaved} units</div>
                 </div>
                 
                 <div className="bg-blue-50 rounded-lg p-4 text-center">
                   <div className="flex justify-center mb-2">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M20 4L4 20" stroke="#3B82F6" strokeWidth="2"/>
-                      <path d="M4 4L20 20" stroke="#3B82F6" strokeWidth="2"/>
-                    </svg>
+                    <TrendingUp className="h-5 w-5 text-blue-600" />
                   </div>
                   <div className="text-sm text-gray-500">Delivery Rate</div>
-                  <div className="font-bold text-blue-600">70.0% → 83.5%</div>
+                  <div className="font-bold text-blue-600">{calculatedProfit.deliveryRateFrom}% → {calculatedProfit.deliveryRateTo}%</div>
                 </div>
                 
                 <div className="bg-blue-50 rounded-lg p-4 text-center">
@@ -163,7 +181,7 @@ const ProfitCalculator = () => {
                     </svg>
                   </div>
                   <div className="text-sm text-gray-500">Increase in Net Profit</div>
-                  <div className="font-bold text-blue-600">17%</div>
+                  <div className="font-bold text-blue-600">{calculatedProfit.profitIncrease}%</div>
                 </div>
               </div>
               
