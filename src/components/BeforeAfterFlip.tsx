@@ -1,8 +1,7 @@
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { CircleCheck, CircleX, Package, TrendingUp, DollarSign, Play } from "lucide-react";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 
@@ -23,6 +22,7 @@ const BeforeAfterFlip = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [animationStep, setAnimationStep] = useState(0);
   const [animationRunning, setAnimationRunning] = useState(false);
+  const [animationStatus, setAnimationStatus] = useState("");
   
   // Generate 6 orders with consistent data
   const initialOrders: Order[] = useMemo(() => {
@@ -40,7 +40,6 @@ const BeforeAfterFlip = () => {
   }, []);
 
   // Select 2 specific orders that will be marked as "don't ship"
-  // Using useMemo to ensure it doesn't change on re-renders
   const dontShipOrders = useMemo(() => {
     const orderIds = initialOrders.map(order => order.id);
     // Always pick the 2nd and 5th orders
@@ -56,80 +55,88 @@ const BeforeAfterFlip = () => {
     { label: "Inventory Usage", value: "-40%", icon: <DollarSign className="h-5 w-5 text-purple-600" /> }
   ];
 
-  // Animation controller with 2-second delays
+  // Animation controller with status updates
   const startAnimation = () => {
     // Don't start if already running
     if (animationRunning) return;
     
     // Set animation as running
     setAnimationRunning(true);
+    setAnimationStatus("Initializing...");
     
-    // Reset animation state
-    setAnimationStep(0);
-    setOrders(initialOrders.map(order => ({...order, score: undefined, decision: undefined, hidden: false})));
-    
-    // Animation sequence with 2-second delays
-    const sequence = [
-      // Step 1: Initial state - show all orders
-      () => setAnimationStep(1),
+    // Start animation after 0.5 seconds
+    setTimeout(() => {
+      // Reset animation state
+      setAnimationStep(0);
+      setOrders(initialOrders.map(order => ({...order, score: undefined, decision: undefined, hidden: false})));
       
-      // Step 2: Add intent score column (0-100, red and green)
-      () => {
-        setAnimationStep(2);
-        setOrders(prevOrders => 
-          prevOrders.map(order => {
-            // Determine if this order should be "don't ship" based on our preselected list
-            const shouldNotShip = dontShipOrders.includes(order.id);
-            // Generate appropriate score range
-            const scoreBase = shouldNotShip ? 10 : 45;
-            const scoreRange = shouldNotShip ? 35 : 55;
-            return {
+      // Animation sequence with 2-second delays and status updates
+      const sequence = [
+        // Step 1: Initial state - show all orders
+        () => {
+          setAnimationStep(1);
+          setAnimationStatus("Syncing orders...");
+        },
+        
+        // Step 2: Add intent score column (0-100, red and green)
+        () => {
+          setAnimationStep(2);
+          setAnimationStatus("Calculating intent scores...");
+          setOrders(prevOrders => 
+            prevOrders.map(order => {
+              // Determine if this order should be "don't ship" based on our preselected list
+              const shouldNotShip = dontShipOrders.includes(order.id);
+              // Generate appropriate score range
+              const scoreBase = shouldNotShip ? 10 : 45;
+              const scoreRange = shouldNotShip ? 35 : 55;
+              return {
+                ...order,
+                score: scoreBase + Math.floor(Math.random() * scoreRange),
+              };
+            })
+          );
+        },
+        
+        // Step 3: Strike through red orders (continuation of step 2)
+        () => {
+          setAnimationStep(3);
+          setAnimationStatus("Processing decisions...");
+          setOrders(prevOrders => 
+            prevOrders.map(order => {
+              const shouldNotShip = dontShipOrders.includes(order.id);
+              return {
+                ...order,
+                decision: shouldNotShip ? "don't ship" : "ship",
+                probability: shouldNotShip ? undefined : order.score,
+                risk: shouldNotShip ? "High RTO Risk" : undefined
+              };
+            })
+          );
+        },
+        
+        // Step 4: Only green orders left
+        () => {
+          setAnimationStep(4);
+          setAnimationStatus("Filtering orders...");
+          setOrders(prevOrders => 
+            prevOrders.map(order => ({
               ...order,
-              score: scoreBase + Math.floor(Math.random() * scoreRange),
-            };
-          })
-        );
-      },
+              hidden: order.decision === "don't ship"
+            }))
+          );
+          // Mark animation as complete
+          setTimeout(() => {
+            setAnimationRunning(false);
+            setAnimationStatus("Complete");
+          }, 1000);
+        }
+      ];
       
-      // Step 3: Strike through red orders (continuation of step 2)
-      () => {
-        setAnimationStep(3);
-        setOrders(prevOrders => 
-          prevOrders.map(order => {
-            const shouldNotShip = dontShipOrders.includes(order.id);
-            return {
-              ...order,
-              decision: shouldNotShip ? "don't ship" : "ship",
-              probability: shouldNotShip ? undefined : order.score,
-              risk: shouldNotShip ? "High RTO Risk" : undefined
-            };
-          })
-        );
-      },
-      
-      // Step 4: Only green orders left
-      () => {
-        setAnimationStep(4);
-        setOrders(prevOrders => 
-          prevOrders.map(order => ({
-            ...order,
-            hidden: order.decision === "don't ship"
-          }))
-        );
-      },
-      
-      // Step 5: Complete animation
-      () => {
-        setAnimationStep(5);
-        // Set animation as not running once complete
-        setAnimationRunning(false);
-      }
-    ];
-    
-    // Run each step with a 2-second delay
-    sequence.forEach((step, index) => {
-      setTimeout(step, (index + 1) * 2000);
-    });
+      // Run each step with a 2-second delay
+      sequence.forEach((step, index) => {
+        setTimeout(step, index * 2000);
+      });
+    }, 500); // 0.5 second initial delay
   };
   
   // Animation classes based on step for smooth transitions
@@ -144,7 +151,7 @@ const BeforeAfterFlip = () => {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div 
           id="before-after-section"
@@ -153,7 +160,7 @@ const BeforeAfterFlip = () => {
             isVisible ? "animate-fadeIn" : "opacity-0"
           )}
         >
-          <div className="text-center mb-12">
+          <div className="text-center mb-10">
             <p className="inline-block text-sm font-medium px-3 py-1 bg-primary/10 text-primary rounded-full mb-4">
               Transformation
             </p>
@@ -165,9 +172,18 @@ const BeforeAfterFlip = () => {
             </p>
           </div>
 
+          {/* Scalysis Logo */}
+          <div className="flex justify-center mb-8">
+            <img 
+              src="/lovable-uploads/2bc30ab8-075f-4c60-9467-76f1eea27775.png" 
+              alt="Scalysis Logo" 
+              className="h-16 w-auto"
+            />
+          </div>
+
           {/* Order Processing Animation */}
-          <div className="relative bg-white rounded-xl shadow-lg overflow-hidden mb-10">
-            <div className="p-4 bg-gray-50 border-b border-gray-100">
+          <div className="relative bg-white rounded-xl shadow-lg overflow-hidden mb-8 max-w-3xl mx-auto">
+            <div className="p-4 bg-gray-50 border-b border-gray-100 flex items-center justify-between">
               <h3 className="text-lg font-semibold flex items-center gap-2">
                 <span className="inline-block w-3 h-3 bg-blue-500 rounded-full"></span>
                 {animationStep === 0 && "Shopify COD Orders"}
@@ -175,15 +191,16 @@ const BeforeAfterFlip = () => {
                 {animationStep === 2 && "Scalysis Scoring"}
                 {animationStep === 3 && "Order Selection"}
                 {animationStep === 4 && "Order Selection"}
-                {animationStep === 5 && "Analytics"}
               </h3>
+              {animationRunning && (
+                <span className="text-sm text-blue-600 font-medium animate-pulse">
+                  {animationStatus}
+                </span>
+              )}
             </div>
             
             {/* Table of orders */}
-            <div className={cn(
-              "transition-all duration-500",
-              animationStep <= 4 ? "block" : "hidden"
-            )}>
+            <div className="max-h-[400px] overflow-y-auto">
               <div className="p-4">
                 <Table>
                   <TableHeader>
@@ -270,40 +287,14 @@ const BeforeAfterFlip = () => {
                 </Table>
               </div>
             </div>
-            
-            {/* Stats display */}
-            <div className={cn(
-              "p-6 transition-all duration-500",
-              animationStep === 5 ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"
-            )}>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {stats.map((stat, index) => (
-                  <div 
-                    key={stat.label} 
-                    className={cn(
-                      "bg-white p-6 rounded-lg border border-gray-100 shadow-sm text-center",
-                      "transform transition-all duration-500",
-                      animationStep === 5 ? `opacity-100 translate-y-0` : "opacity-0 translate-y-4"
-                    )}
-                    style={{ transitionDelay: `${index * 200}ms` }}
-                  >
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-50 mb-4">
-                      {stat.icon}
-                    </div>
-                    <h4 className="text-lg font-semibold mb-2">{stat.label}</h4>
-                    <p className="text-3xl font-bold text-primary">{stat.value}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
           
           {/* Start Button */}
-          <div className="flex justify-center mb-10">
+          <div className="flex justify-center mb-12">
             <Button 
               onClick={startAnimation}
               disabled={animationRunning}
-              className="px-6 py-2"
+              className="px-6 py-3 bg-primary hover:bg-primary/90"
             >
               <Play className="h-4 w-4 mr-2" />
               {animationRunning ? "Running..." : "Start"}
@@ -311,7 +302,7 @@ const BeforeAfterFlip = () => {
           </div>
           
           {/* Stats outside animation container */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 max-w-3xl mx-auto">
             {stats.map((stat) => (
               <div 
                 key={stat.label} 
@@ -324,10 +315,6 @@ const BeforeAfterFlip = () => {
                 <p className="text-3xl font-bold text-primary">{stat.value}</p>
               </div>
             ))}
-          </div>
-
-          <div className="text-center mt-10">
-            <p className="text-gray-500">Scalysis intelligently selects orders to maximize profit and minimize returns</p>
           </div>
         </div>
       </div>
