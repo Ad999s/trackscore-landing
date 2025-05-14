@@ -2,8 +2,6 @@
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ProductShowcase from "@/components/ProductShowcase";
-import MoneyWorth from "@/components/MoneyWorth";
 import HowSelectionWorks from "@/components/HowSelectionWorks";
 import ProfitCalculator from "@/components/ProfitCalculator";
 import BeforeAfterFlip from "@/components/BeforeAfterFlip";
@@ -27,8 +25,6 @@ const Index = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
-        <ProductShowcase />
-        <MoneyWorth />
         <HowSelectionWorks />
         <ProfitCalculator />
         <BeforeAfterFlip />

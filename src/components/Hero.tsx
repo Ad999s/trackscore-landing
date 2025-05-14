@@ -1,92 +1,135 @@
 
-import { useState } from "react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
-  const [isButtonHovered, setIsButtonHovered] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   return (
-    <section className="pt-32 pb-16 relative overflow-hidden bg-gradient-to-br from-purple-50 to-blue-50">
+    <section className="relative pt-28 pb-20 overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-1/4 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl transform translate-x-1/2"></div>
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center max-w-4xl mx-auto text-center">
-          {/* Purple pill button */}
-          <Button 
-            variant="outline" 
-            size="sm" 
-            className="mb-8 rounded-full bg-purple-100 text-purple-700 border-purple-200 hover:bg-purple-200 px-4"
-          >
-            Try Scalysis Free
-          </Button>
-          
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-            Real-time 
-            <span className="text-purple-600 block md:inline"> performance </span>
-            management
-          </h1>
-          
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
-            From financial metrics to sales and marketing data, our dashboard
-            provides you with a holistic view of your business operations.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 mb-16">
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="rounded-full border-gray-300 px-6 font-medium"
-            >
-              View Full Features
-            </Button>
-            <Button 
-              size="lg" 
-              className="rounded-full px-6 font-medium"
-            >
-              Get Access
-            </Button>
-          </div>
-          
-          {/* Brand logos */}
-          <div className="w-full">
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
-              <div className="flex justify-center">
-                <svg width="100" height="24" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z" stroke="#888888" strokeWidth="1.5"/>
-                  <path d="M97 12H94M90 12H87M83 12H80M76 12H73M69 12H66M62 12H59M55 12H52M48 12H45M41 12H38M34 12H31M27 12H24" stroke="#888888" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Text Content */}
+          <div className={`space-y-8 ${isLoaded ? 'animate-fadeIn' : 'opacity-0'}`}>
+            <div className="space-y-4">
+              <p className="inline-block text-sm font-medium px-3 py-1 bg-blue-50 text-blue-600 rounded-full">
+                Reduce RTO rates upto 55%
+              </p>
+              <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+                Smart Order <br />Selection: <span className="text-blue-500">Reduce RTO</span>
+              </h1>
+              <p className="text-xl text-gray-600 mt-4 max-w-xl">
+                Scalysis automatically removes orders that were never meant to convert. Ship less, scale more.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 group">
+                <a href="#get-started" className="flex items-center">
+                  Install on shopify -&gt;
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" className="border-gray-300">
+                <a href="#how-it-works">See how it works</a>
+              </Button>
+            </div>
+            
+            <div className="flex flex-col space-y-3">
+              <div className="flex items-center gap-2">
+                <p className="text-gray-700">Trusted by D2C brands just like yours</p>
               </div>
-              <div className="flex justify-center">
-                <svg width="100" height="24" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z" stroke="#888888" strokeWidth="1.5"/>
-                  <path d="M97 12H94M90 12H87M83 12H80M76 12H73M69 12H66M62 12H59M55 12H52M48 12H45M41 12H38M34 12H31M27 12H24" stroke="#888888" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
+              <div className="flex items-center">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <span key={i} className="text-yellow-400 text-xl">★</span>
+                ))}
+                <span className="ml-2 text-gray-700 font-medium">4.9/5</span>
               </div>
-              <div className="flex justify-center">
-                <svg width="100" height="24" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z" stroke="#888888" strokeWidth="1.5"/>
-                  <path d="M97 12H94M90 12H87M83 12H80M76 12H73M69 12H66M62 12H59M55 12H52M48 12H45M41 12H38M34 12H31M27 12H24" stroke="#888888" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
-              </div>
-              <div className="flex justify-center">
-                <svg width="100" height="24" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z" stroke="#888888" strokeWidth="1.5"/>
-                  <path d="M97 12H94M90 12H87M83 12H80M76 12H73M69 12H66M62 12H59M55 12H52M48 12H45M41 12H38M34 12H31M27 12H24" stroke="#888888" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
-              </div>
-              <div className="flex justify-center">
-                <svg width="100" height="24" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z" stroke="#888888" strokeWidth="1.5"/>
-                  <path d="M97 12H94M90 12H87M83 12H80M76 12H73M69 12H66M62 12H59M55 12H52M48 12H45M41 12H38M34 12H31M27 12H24" stroke="#888888" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
-              </div>
-              <div className="flex justify-center">
-                <svg width="100" height="24" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z" stroke="#888888" strokeWidth="1.5"/>
-                  <path d="M97 12H94M90 12H87M83 12H80M76 12H73M69 12H66M62 12H59M55 12H52M48 12H45M41 12H38M34 12H31M27 12H24" stroke="#888888" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
+              <div className="mt-2">
+                <p className="font-medium text-gray-800">
+                  Instantly increase your Net Profits by <span className="text-blue-600 font-bold text-xl">22%+</span>
+                </p>
               </div>
             </div>
-            <p className="text-sm text-gray-500 mt-4 text-center">Trusted by market-leading companies</p>
+          </div>
+
+          {/* Right Column - Dashboard Preview */}
+          <div className={`relative ${isLoaded ? 'animate-slideUp animation-delay-200' : 'opacity-0'}`}>
+            <div className="relative bg-white rounded-xl shadow-medium overflow-hidden border border-gray-100">
+              <div className="p-5">
+                <div className="flex justify-between mb-4">
+                  <div className="space-y-1">
+                    <h3 className="font-medium text-xl">Order Intelligence Dashboard</h3>
+                    <p className="text-sm text-gray-600">Real-time AI-driven insights</p>
+                  </div>
+                  <div className="px-2 py-1 bg-green-50 text-green-600 text-xs font-medium rounded flex items-center">
+                    AI Analysis
+                  </div>
+                </div>
+                
+                <div className="space-y-6 mt-6">
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span className="text-sm font-medium">Genuine Orders</span>
+                      <span className="text-sm font-medium text-green-600">92%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="bg-green-500 h-2 rounded-full" style={{ width: "92%" }}></div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span className="text-sm font-medium">Low Intent Orders</span>
+                      <span className="text-sm font-medium text-red-600">8%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="bg-red-500 h-2 rounded-full" style={{ width: "8%" }}></div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span className="text-sm font-medium">Profit Increase</span>
+                      <span className="text-sm font-medium text-blue-600">+62%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="bg-blue-500 h-2 rounded-full" style={{ width: "62%" }}></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-gray-50 p-4 rounded-lg mt-6 mb-6">
+                  <div className="font-medium mb-2">AI Recommendation</div>
+                  <p className="text-sm text-gray-700">Focus marketing efforts on Northern region - 89% genuine purchase rate, 2.8x higher ROI than other regions.</p>
+                </div>
+                
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="p-3 text-center bg-gray-50 rounded-lg">
+                    <div className="text-2xl font-bold text-green-600">82%</div>
+                    <div className="text-sm text-gray-600">Delivery Rate</div>
+                  </div>
+                  <div className="p-3 text-center bg-gray-50 rounded-lg">
+                    <div className="text-2xl font-bold text-blue-600">+56%</div>
+                    <div className="text-sm text-gray-600">Profit Margin</div>
+                  </div>
+                  <div className="p-3 text-center bg-gray-50 rounded-lg">
+                    <div className="text-2xl font-bold text-amber-600">-43%</div>
+                    <div className="text-sm text-gray-600">RTO Rate</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

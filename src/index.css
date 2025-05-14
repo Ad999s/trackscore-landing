@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
  
-    --primary: 259 94% 51%;
+    --primary: 221.2 83.2% 53.3%;
     --primary-foreground: 210 40% 98%;
  
     --secondary: 210 40% 96.1%;
@@ -31,7 +31,7 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 259 94% 51%;
+    --ring: 221.2 83.2% 53.3%;
  
     --radius: 0.5rem;
   }
@@ -123,21 +123,4 @@
 
 .rotate-y-180 {
   transform: rotateY(180deg);
-}
-
-/* Glass morphism utility */
-.glass-morphism {
-  @apply backdrop-blur-md bg-white/70 border border-white/20;
-}
-
-/* Modern smooth transitions */
-.smooth-transition {
-  @apply transition-all duration-300 ease-in-out;
-}
-
-/* Border gradient effect */
-.border-gradient {
-  border: 2px solid;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(to right, #6366f1, #a855f7);
 }
