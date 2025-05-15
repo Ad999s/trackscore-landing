@@ -13,11 +13,11 @@ const BuiltForDropshippers = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Built for dropshippers, D2C brands, and anyone scaling with COD.
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800">
+            Offer COD without fear.
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Offer COD without fear.
+            Built for dropshippers, D2C brands, and anyone scaling with COD.
           </p>
         </motion.div>
 
@@ -31,10 +31,14 @@ const BuiltForDropshippers = () => {
             className="space-y-6"
           >
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold">Customers love COD. So does your ROAS.</h3>
-              <p className="text-lg">The only problem? RTO.</p>
-              <p className="text-lg">
-                Scalysis picks your highest-quality orders daily — cutting RTO, saving on shipping, and driving profit. No bluff. Just results.
+              <h3 className="text-2xl font-bold text-gray-800">
+                Customers love COD. <span className="text-blue-600">So does your ROAS.</span>
+              </h3>
+              <p className="text-lg font-medium text-red-500">The only problem? RTO.</p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Scalysis picks your <span className="font-semibold bg-yellow-100 px-1 rounded">highest-quality orders</span> daily — 
+                cutting RTO, saving on shipping, and <span className="font-semibold text-green-600">driving profit</span>. 
+                No bluff. Just results.
               </p>
             </div>
           </motion.div>

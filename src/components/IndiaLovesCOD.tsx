@@ -1,9 +1,6 @@
 
-import React, { Suspense, lazy } from "react";
+import React, { Suspense } from "react";
 import { motion } from "framer-motion";
-
-// Use React's lazy loading instead of Next.js dynamic
-const World = lazy(() => import("@/components/ui/globe").then((module) => ({ default: module.World })));
 
 const IndiaLovesCOD = () => {
   const globeConfig = {
@@ -69,7 +66,7 @@ const IndiaLovesCOD = () => {
           transition={{ duration: 1 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800">
             India Loves COD. 65% all transactions powered by COD.
           </h2>
         </motion.div>
@@ -77,7 +74,12 @@ const IndiaLovesCOD = () => {
         <div className="relative h-[500px] md:h-[600px] w-full">
           <div className="absolute w-full inset-x-0 h-full z-10">
             <Suspense fallback={<div className="w-full h-full flex items-center justify-center">Loading globe...</div>}>
-              <World data={sampleArcs} globeConfig={globeConfig} />
+              {/* Globe will be loaded via index.tsx */}
+              <div className="w-full h-full bg-blue-50/20 rounded-lg">
+                <div className="w-full h-full flex items-center justify-center text-gray-500">
+                  Globe visualization loading...
+                </div>
+              </div>
             </Suspense>
           </div>
           <div className="absolute w-full bottom-0 inset-x-0 h-20 bg-gradient-to-b from-transparent to-white z-40" />

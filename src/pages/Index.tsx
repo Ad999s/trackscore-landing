@@ -19,6 +19,7 @@ import { motion } from "framer-motion";
 import SmartLearning from "@/components/SmartLearning";
 import BuiltForDropshippers from "@/components/BuiltForDropshippers";
 import IndiaLovesCOD from "@/components/IndiaLovesCOD";
+import GlobeDemo from "@/components/ui/globe-demo";
 
 const Index = () => {
   useEffect(() => {
@@ -51,7 +52,7 @@ const Index = () => {
         >
           <HowSelectionWorks />
         </motion.div>
-        <IndiaLovesCOD />
+        <GlobeDemo />
         <SavingStats />
         <motion.div
           initial="hidden"
