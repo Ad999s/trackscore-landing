@@ -58,7 +58,7 @@ const Hero = () => {
                 Reduce RTO rates upto 55%
               </p>
               <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-                Scale COD 10x.<br /><span className="text-blue-500">Kill RTO.</span>
+                Scale COD 10x Faster.<br /><span className="text-blue-500">Without RTO.</span>
               </h1>
               <p className="text-xl text-gray-600 mt-4 mx-auto">
                 Scalysis uses machine learning and smart order selection to pick highest quality of orders that leads to maxiumum delivery rate & lowest shipping costs.
