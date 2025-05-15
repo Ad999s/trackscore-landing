@@ -88,7 +88,7 @@ const SavingStats = () => {
     <section className="py-4 bg-blue-600 text-white">
       <div className="container mx-auto px-4">
         <motion.div 
-          className="flex items-center justify-between"
+          className="flex flex-col md:flex-row md:items-center md:justify-between"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -102,7 +102,9 @@ const SavingStats = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <CountUp end={85} suffix=" lakh" />
+              <span className="flex items-baseline">
+                ₹<CountUp end={85} suffix="L+" />
+              </span>
             </motion.div>
             
             <motion.div 
@@ -112,9 +114,9 @@ const SavingStats = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <p>
-                <span className="block font-medium mb-0">Scalysis is helping D2C brands save</span>
-                unnecessary shipping costs each week
+              <p className="leading-snug">
+                <span className="block font-medium mb-1">saved weekly</span>
+                on shipping costs by top D2C brands
               </p>
             </motion.div>
           </div>
@@ -126,8 +128,8 @@ const SavingStats = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <p className="px-3 py-1 bg-blue-500 rounded-full inline-block text-xs font-medium">
-              Backed by real data from millions of orders
+            <p className="px-3 py-1 bg-blue-500 rounded-full inline-block text-sm font-medium">
+              — powered by Scalysis
             </p>
           </motion.div>
         </motion.div>
@@ -139,8 +141,8 @@ const SavingStats = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <p className="px-3 py-1 bg-blue-500 rounded-full inline-block text-xs font-medium">
-            Backed by real data from millions of orders
+          <p className="px-3 py-1 bg-blue-500 rounded-full inline-block text-sm font-medium">
+            — powered by Scalysis
           </p>
         </motion.div>
       </div>
