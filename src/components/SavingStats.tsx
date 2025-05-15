@@ -85,16 +85,16 @@ const CountUp = ({
 
 const SavingStats = () => {
   return (
-    <section className="py-20 bg-blue-600 text-white">
+    <section className="py-12 bg-blue-600 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          className="max-w-5xl mx-auto text-center"
+          className="max-w-5xl mx-auto flex items-center justify-between"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16">
+          <div className="flex items-center space-x-8 md:space-x-16">
             <motion.div 
               className="text-6xl md:text-8xl font-bold"
               initial={{ opacity: 0, y: -20 }}
@@ -106,21 +106,21 @@ const SavingStats = () => {
             </motion.div>
             
             <motion.div 
-              className="text-xl md:text-2xl max-w-md text-left"
+              className="text-xl max-w-md"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <p>
-                <span className="block font-medium text-2xl md:text-3xl mb-2">Scalysis is helping D2C brands save</span>
+                <span className="block font-medium text-2xl mb-2">Scalysis is helping D2C brands save</span>
                 unnecessary shipping costs each week with smart order selection
               </p>
             </motion.div>
           </div>
 
           <motion.div
-            className="mt-10"
+            className="hidden md:block"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -130,6 +130,18 @@ const SavingStats = () => {
               Backed by real data from millions of orders
             </p>
           </motion.div>
+        </motion.div>
+        
+        <motion.div
+          className="md:hidden mt-6 text-center"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+        >
+          <p className="px-4 py-2 bg-blue-500 rounded-full inline-block text-sm font-medium">
+            Backed by real data from millions of orders
+          </p>
         </motion.div>
       </div>
     </section>
