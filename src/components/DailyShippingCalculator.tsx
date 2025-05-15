@@ -72,7 +72,7 @@ const DailyShippingCalculator = () => {
         >
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              See How Much You're Wasting on Shipping — and Save It
+              Check How Much You Can Save On Shipping Daily
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Estimate your potential savings by reducing unnecessary shipments with our AI-powered order selection
