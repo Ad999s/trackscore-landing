@@ -1,12 +1,9 @@
 
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
 
-// Use dynamic import to ensure this only loads on client side (required for three.js)
-const World = dynamic(() => import("@/components/ui/globe").then((m) => m.World), {
-  ssr: false,
-});
+// Use React's lazy loading instead of Next.js dynamic
+const World = lazy(() => import("@/components/ui/globe").then((module) => ({ default: module.World })));
 
 const IndiaLovesCOD = () => {
   const globeConfig = {
@@ -79,7 +76,9 @@ const IndiaLovesCOD = () => {
 
         <div className="relative h-[500px] md:h-[600px] w-full">
           <div className="absolute w-full inset-x-0 h-full z-10">
-            <World data={sampleArcs} globeConfig={globeConfig} />
+            <Suspense fallback={<div className="w-full h-full flex items-center justify-center">Loading globe...</div>}>
+              <World data={sampleArcs} globeConfig={globeConfig} />
+            </Suspense>
           </div>
           <div className="absolute w-full bottom-0 inset-x-0 h-20 bg-gradient-to-b from-transparent to-white z-40" />
         </div>

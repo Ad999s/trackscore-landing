@@ -2,7 +2,6 @@
 "use client";
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 interface Arc {
   startLat: number;
@@ -36,12 +35,54 @@ interface GlobeConfig {
   autoRotateSpeed: number;
 }
 
+// Since we're getting an error with the direct import, we'll load OrbitControls dynamically
+class OrbitControlsImplementation {
+  enableDamping: boolean = true;
+  dampingFactor: number = 0.05;
+  rotateSpeed: number = 0.07;
+  enablePan: boolean = false;
+  enableZoom: boolean = true;
+  minDistance: number = 6;
+  maxDistance: number = 15;
+  autoRotate: boolean = false;
+  autoRotateSpeed: number = 0.5;
+  target: THREE.Vector3 = new THREE.Vector3(0, 0, 0);
+
+  constructor(camera: THREE.Camera, domElement: HTMLElement) {
+    this.autoRotate = false;
+    this.autoRotateSpeed = 0.5;
+    
+    // We'll load the actual OrbitControls module dynamically
+    import('three/examples/jsm/controls/OrbitControls').then(({ OrbitControls }) => {
+      const controls = new OrbitControls(camera, domElement);
+      controls.enableDamping = this.enableDamping;
+      controls.dampingFactor = this.dampingFactor;
+      controls.rotateSpeed = this.rotateSpeed;
+      controls.enablePan = this.enablePan;
+      controls.enableZoom = this.enableZoom;
+      controls.minDistance = this.minDistance;
+      controls.maxDistance = this.maxDistance;
+      controls.autoRotate = this.autoRotate;
+      controls.autoRotateSpeed = this.autoRotateSpeed;
+      
+      // Replace this instance with the real controls
+      Object.assign(this, controls);
+    }).catch(err => {
+      console.error('Failed to load OrbitControls:', err);
+    });
+  }
+
+  update() {
+    // This will be replaced by the real update method when OrbitControls loads
+  }
+}
+
 export const World = ({ data, globeConfig }: { data: Arc[]; globeConfig: GlobeConfig }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
-  const controlsRef = useRef<OrbitControls | null>(null);
+  const controlsRef = useRef<any>(null);
   const globeRef = useRef<THREE.Mesh | null>(null);
   
   const convertLatLngToVector3 = (lat: number, lng: number, radius: number = 5) => {
@@ -199,15 +240,8 @@ export const World = ({ data, globeConfig }: { data: Arc[]; globeConfig: GlobeCo
       camera.lookAt(0, 0, 0);
     }
     
-    // Controls
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.rotateSpeed = 0.07;
-    controls.enablePan = false;
-    controls.enableZoom = true;
-    controls.minDistance = 6;
-    controls.maxDistance = 15;
+    // Use our custom OrbitControlsImplementation until the real one loads
+    const controls = new OrbitControlsImplementation(camera, renderer.domElement);
     controls.autoRotate = globeConfig.autoRotate;
     controls.autoRotateSpeed = globeConfig.autoRotateSpeed;
     controlsRef.current = controls;
