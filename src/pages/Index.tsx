@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import { GoogleGeminiEffectDemo } from "@/components/GoogleGeminiEffectDemo";
 import HowSelectionWorks from "@/components/HowSelectionWorks";
 import ProfitCalculator from "@/components/ProfitCalculator";
 import BeforeAfterFlip from "@/components/BeforeAfterFlip";
@@ -25,6 +26,7 @@ const Index = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
+        <GoogleGeminiEffectDemo />
         <HowSelectionWorks />
         <ProfitCalculator />
         <BeforeAfterFlip />
