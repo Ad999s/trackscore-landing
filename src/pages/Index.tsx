@@ -18,6 +18,7 @@ import DailyShippingCalculator from "@/components/DailyShippingCalculator";
 import { motion } from "framer-motion";
 import SmartLearning from "@/components/SmartLearning";
 import BuiltForDropshippers from "@/components/BuiltForDropshippers";
+import CodMarketStats from "@/components/CodMarketStats";
 
 const Index = () => {
   useEffect(() => {
@@ -41,6 +42,7 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <GoogleGeminiEffectDemo />
+        <CodMarketStats />
         <BuiltForDropshippers />
         <motion.div
           initial="hidden"

@@ -32,7 +32,7 @@ const BuiltForDropshippers = () => {
           >
             <div className="space-y-4">
               <p className="text-lg text-gray-700 leading-relaxed">
-                Customers love COD. So does your ROAS. And now you will too, scalysis picks your highest-quality orders daily — cutting RTO, saving on shipping, and driving profit. Scale with COD.
+                Scalysis picks your highest-quality orders daily — cutting RTO, saving on shipping, and driving profit. Scale with COD.
               </p>
             </div>
           </motion.div>
