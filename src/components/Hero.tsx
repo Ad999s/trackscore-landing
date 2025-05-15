@@ -72,7 +72,7 @@ Smart Order Selection built for COD to minimize RTO, boost profit, and scale wit
             >
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
                 <a href="#get-started" className="flex items-center">
-                  Start 30 Day Free Trial
+                  Explore App: 30 Day Trial
                 </a>
               </Button>
             </motion.div>
