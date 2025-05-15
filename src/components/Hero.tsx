@@ -67,7 +67,7 @@ Smart Order Selection built for COD to minimize RTO, boost profit, and scale wit
             <motion.div 
               className="flex justify-center"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.1 }}
+              animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
