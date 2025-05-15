@@ -1,4 +1,5 @@
 
+
 "use client";
 import { useScroll, useTransform } from "framer-motion";
 import React from "react";
@@ -31,8 +32,8 @@ export function GoogleGeminiEffectDemo() {
           pathLengthFourth,
           pathLengthFifth,
         ]}
-        title="Advanced Order Selection With AI"
-        description="Scalysis uses advanced machine learning to identify and filter out orders with high return intent"
+        title="Let Your AI Decide What Ships"
+        description="Scalysis filters out risky COD orders with machine learning precision — so you don't bleed shipping cost or ruin your ROAS."
       />
     </div>
   );

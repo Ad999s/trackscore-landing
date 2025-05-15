@@ -1,8 +1,10 @@
 
+
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import { GoogleGeminiEffectDemo } from "@/components/GoogleGeminiEffectDemo";
+import SavingStats from "@/components/SavingStats";
 import HowSelectionWorks from "@/components/HowSelectionWorks";
 import ProfitCalculator from "@/components/ProfitCalculator";
 import BeforeAfterFlip from "@/components/BeforeAfterFlip";
@@ -38,6 +40,7 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <GoogleGeminiEffectDemo />
+        <SavingStats />
         <motion.div
           initial="hidden"
           whileInView="visible"
