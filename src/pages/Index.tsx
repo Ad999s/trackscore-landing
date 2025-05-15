@@ -5,7 +5,6 @@ import Hero from "@/components/Hero";
 import { GoogleGeminiEffectDemo } from "@/components/GoogleGeminiEffectDemo";
 import SavingStats from "@/components/SavingStats";
 import HowSelectionWorks from "@/components/HowSelectionWorks";
-import BeforeAfterFlip from "@/components/BeforeAfterFlip";
 import SmartMetaTargeting from "@/components/SmartMetaTargeting";
 import AutoPnLTracking from "@/components/AutoPnLTracking";
 import PredictCashFlow from "@/components/PredictCashFlow";
@@ -19,6 +18,8 @@ import { motion } from "framer-motion";
 import SmartLearning from "@/components/SmartLearning";
 import BuiltForDropshippers from "@/components/BuiltForDropshippers";
 import CodMarketStats from "@/components/CodMarketStats";
+import ROISimulator from "@/components/ROISimulator";
+import YourNewPnL from "@/components/YourNewPnL";
 
 const Index = () => {
   useEffect(() => {
@@ -42,65 +43,8 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <GoogleGeminiEffectDemo />
-        <CodMarketStats />
-        <BuiltForDropshippers />
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
-          <HowSelectionWorks />
-        </motion.div>
-        <SavingStats />
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
-          <DailyShippingCalculator />
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
-          <BeforeAfterFlip />
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
-          <SmartMetaTargeting />
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
-          <AutoPnLTracking />
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
-          <PredictCashFlow />
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
-          <PincodeBlocker />
-        </motion.div>
+        
+        {/* 3rd section: What Our Users See After Switching / Stats */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -109,6 +53,104 @@ const Index = () => {
         >
           <Stats />
         </motion.div>
+        
+        {/* The blue strip with 85L+ */}
+        <SavingStats />
+        
+        {/* 4th section: Offer COD without fear */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <BuiltForDropshippers />
+        </motion.div>
+        
+        {/* 5th section: India loves COD */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <CodMarketStats />
+        </motion.div>
+        
+        {/* 6th section: ROI Calculator */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <ROISimulator />
+        </motion.div>
+        
+        {/* Rest of sections */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <HowSelectionWorks />
+        </motion.div>
+        
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <DailyShippingCalculator />
+        </motion.div>
+        
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <SmartMetaTargeting />
+        </motion.div>
+        
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <AutoPnLTracking />
+        </motion.div>
+        
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <PredictCashFlow />
+        </motion.div>
+        
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <PincodeBlocker />
+        </motion.div>
+        
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <YourNewPnL />
+        </motion.div>
+        
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -117,6 +159,7 @@ const Index = () => {
         >
           <SmartLearning />
         </motion.div>
+        
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -125,6 +168,7 @@ const Index = () => {
         >
           <HowItWorks />
         </motion.div>
+        
         <motion.div
           initial="hidden"
           whileInView="visible"
