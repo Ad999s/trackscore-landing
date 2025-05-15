@@ -61,8 +61,7 @@ const Hero = () => {
                 Scale COD 10x Faster.<br /><span className="text-blue-500">Without RTO.</span>
               </h1>
               <p className="text-xl text-gray-600 mt-4 mx-auto">
-                Scalysis uses machine learning and smart order selection to pick highest quality of orders that leads to maxiumum delivery rate & lowest shipping costs.
-              </p>
+Smart Order Selection built for COD to minimize RTO, boost profit, and scale without any hiccups. Scale without RTO.</p>
             </motion.div>
 
             <motion.div 
