@@ -34,20 +34,20 @@ const Navbar = () => {
           : "py-4 bg-transparent"
       )}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-10 sm:px-10 lg:px-10">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <a href="#" className="flex items-center space-x-2">
               <img 
-                src="/lovable-uploads/2bc30ab8-075f-4c60-9467-76f1eea27775.png" 
+                src="https://framerusercontent.com/images/qOi3xuJUI1I1c13AATXI63xs.png?" 
                 alt="Scalysis Logo" 
-                className="h-10" 
+                className="h-20" 
                 onError={(e) => {
                   console.error("Logo failed to load");
                   e.currentTarget.style.display = "none";
                 }}
               />
-              <span className="text-xl font-semibold text-gray-800">Scalysis</span>
+              <span className="text-xl font-semibold text-gray-800"></span>
             </a>
           </div>
 
