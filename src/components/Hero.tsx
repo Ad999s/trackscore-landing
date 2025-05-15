@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -40,10 +40,10 @@ const Hero = () => {
       </motion.div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text Content */}
+        <div className="flex flex-col items-center text-center">
+          {/* Centered Text Content */}
           <motion.div 
-            className={`space-y-8 ${isLoaded ? 'animate-fadeIn' : 'opacity-0'}`}
+            className={`space-y-8 max-w-3xl mb-12 ${isLoaded ? 'animate-fadeIn' : 'opacity-0'}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -60,59 +60,34 @@ const Hero = () => {
               <h1 className="text-5xl md:text-6xl font-bold leading-tight">
                 Smart Order <br />Selection: <span className="text-blue-500">Reduce RTO</span>
               </h1>
-              <p className="text-xl text-gray-600 mt-4 max-w-xl">
+              <p className="text-xl text-gray-600 mt-4 mx-auto">
                 Scalysis automatically removes orders that were never meant to convert. Ship less, scale more.
               </p>
             </motion.div>
 
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex justify-center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 group">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
                 <a href="#get-started" className="flex items-center">
-                  Install on shopify -&gt;
+                  Start 30 Day Trial
                 </a>
               </Button>
-              <Button variant="outline" size="lg" className="border-gray-300">
-                <a href="#how-it-works">See how it works</a>
-              </Button>
-            </motion.div>
-            
-            <motion.div 
-              className="flex flex-col space-y-3"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-            >
-              <div className="flex items-center gap-2">
-                <p className="text-gray-700">Trusted by D2C brands just like yours</p>
-              </div>
-              <div className="flex items-center">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <span key={i} className="text-yellow-400 text-xl">★</span>
-                ))}
-                <span className="ml-2 text-gray-700 font-medium">4.9/5</span>
-              </div>
-              <div className="mt-2">
-                <p className="font-medium text-gray-800">
-                  Instantly increase your Net Profits by <span className="text-blue-600 font-bold text-xl">22%+</span>
-                </p>
-              </div>
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Dashboard Preview */}
+          {/* Centered Full-width Video */}
           <motion.div 
-            className={`relative ${isLoaded ? 'animate-slideUp animation-delay-200' : 'opacity-0'}`}
+            className={`w-full max-w-5xl mx-auto ${isLoaded ? 'animate-slideUp animation-delay-200' : 'opacity-0'}`}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            style={{ opacity:1 }}
+            style={{ opacity: 1 }}
           >
-            <video autoPlay loop muted className="rounded-lg shadow-lg">
+            <video autoPlay loop muted className="w-full rounded-lg shadow-lg">
               <source src="https://framerusercontent.com/assets/viTcCR1FxpC0CsC06mwO0B2Grks.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
