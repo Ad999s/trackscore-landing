@@ -32,9 +32,7 @@ const BuiltForDropshippers = () => {
           >
             <div className="space-y-4">
               <p className="text-lg text-gray-700 leading-relaxed">
-                Scalysis picks your <span className="font-semibold bg-yellow-100 px-1 rounded">highest-quality orders</span> daily — 
-                cutting RTO, saving on shipping, and <span className="font-semibold text-green-600">driving profit</span>. 
-                No bluff. Just results.
+                Scalysis picks your highest-quality orders daily — cutting RTO, saving on shipping, and driving profit. No bluff. Just results.
               </p>
             </div>
           </motion.div>

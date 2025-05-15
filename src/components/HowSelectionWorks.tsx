@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Check, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -120,7 +121,7 @@ const HowSelectionWorks = () => {
             Our Process
           </p>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-blue-500">Scalysis:</span> The Backbone of All COD Decision-Making
+            <span className="text-blue-500">Scalysis:</span> The Backbone of All Indian COD Decision-Making
           </h2>
           <p className="text-lg text-gray-600">
             Our AI-powered system optimizes your order fulfillment process to minimize returns and maximize profits.
