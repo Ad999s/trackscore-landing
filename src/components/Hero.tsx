@@ -110,72 +110,12 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
+            style={{ opacity:1 }}
           >
-            <div className="relative bg-white rounded-xl shadow-medium overflow-hidden border border-gray-100">
-              <div className="p-5">
-                <div className="flex justify-between mb-4">
-                  <div className="space-y-1">
-                    <h3 className="font-medium text-xl">Order Intelligence Dashboard</h3>
-                    <p className="text-sm text-gray-600">Real-time AI-driven insights</p>
-                  </div>
-                  <div className="px-2 py-1 bg-green-50 text-green-600 text-xs font-medium rounded flex items-center">
-                    AI Analysis
-                  </div>
-                </div>
-                
-                <div className="space-y-6 mt-6">
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm font-medium">Genuine Orders</span>
-                      <span className="text-sm font-medium text-green-600">92%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="bg-green-500 h-2 rounded-full" style={{ width: "92%" }}></div>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm font-medium">Low Intent Orders</span>
-                      <span className="text-sm font-medium text-red-600">8%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="bg-red-500 h-2 rounded-full" style={{ width: "8%" }}></div>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm font-medium">Profit Increase</span>
-                      <span className="text-sm font-medium text-blue-600">+62%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="bg-blue-500 h-2 rounded-full" style={{ width: "62%" }}></div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-gray-50 p-4 rounded-lg mt-6 mb-6">
-                  <div className="font-medium mb-2">AI Recommendation</div>
-                  <p className="text-sm text-gray-700">Focus marketing efforts on Northern region - 89% genuine purchase rate, 2.8x higher ROI than other regions.</p>
-                </div>
-                
-                <div className="grid grid-cols-3 gap-3">
-                  <div className="p-3 text-center bg-gray-50 rounded-lg">
-                    <div className="text-2xl font-bold text-green-600">82%</div>
-                    <div className="text-sm text-gray-600">Delivery Rate</div>
-                  </div>
-                  <div className="p-3 text-center bg-gray-50 rounded-lg">
-                    <div className="text-2xl font-bold text-blue-600">+56%</div>
-                    <div className="text-sm text-gray-600">Profit Margin</div>
-                  </div>
-                  <div className="p-3 text-center bg-gray-50 rounded-lg">
-                    <div className="text-2xl font-bold text-amber-600">-43%</div>
-                    <div className="text-sm text-gray-600">RTO Rate</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <video autoPlay loop muted className="rounded-lg shadow-lg">
+              <source src="https://framerusercontent.com/assets/viTcCR1FxpC0CsC06mwO0B2Grks.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </motion.div>
         </div>
       </div>
