@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -13,7 +14,6 @@ import Stats from "@/components/Stats";
 import HowItWorks from "@/components/HowItWorks";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
-import AIDecisionSection from "@/components/AIDecisionSection";
 import { motion } from "framer-motion";
 
 const Index = () => {
@@ -38,7 +38,6 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <GoogleGeminiEffectDemo />
-        <AIDecisionSection />
         <motion.div
           initial="hidden"
           whileInView="visible"
