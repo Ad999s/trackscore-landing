@@ -82,9 +82,9 @@ Smart Order Selection built for COD to minimize RTO, boost profit, and scale wit
           <motion.div 
             className={`w-[90%] mx-auto ${isLoaded ? 'animate-slideUp animation-delay-200' : 'opacity-0'}`}
             initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 0.1, y: 0 }}
+            animate={{ opacity: 0, y: 40 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            style={{ opacity: 0.1 }}
+            style={{ opacity: 0 }}
           >
             <video autoPlay loop muted className="w-full rounded-lg shadow-lg">
               <source src="https://framerusercontent.com/assets/viTcCR1FxpC0CsC06mwO0B2Grks.mp4" type="video/mp4" />
