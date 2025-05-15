@@ -14,6 +14,9 @@ import Stats from "@/components/Stats";
 import HowItWorks from "@/components/HowItWorks";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import AIDecisionSystem from "@/components/AIDecisionSystem";
+import { GlobeDemo } from "@/components/GlobeDemo";
+import BrandsBleedRTOs from "@/components/BrandsBleedRTOs";
 
 const Index = () => {
   useEffect(() => {
@@ -27,13 +30,16 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <GoogleGeminiEffectDemo />
+        <AIDecisionSystem />
         <HowSelectionWorks />
+        <GlobeDemo />
         <ProfitCalculator />
         <BeforeAfterFlip />
         <SmartMetaTargeting />
         <AutoPnLTracking />
         <PredictCashFlow />
         <PincodeBlocker />
+        <BrandsBleedRTOs />
         <Stats />
         <HowItWorks />
         <CTA />
