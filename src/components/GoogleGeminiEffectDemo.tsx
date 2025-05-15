@@ -32,8 +32,9 @@ export function GoogleGeminiEffectDemo() {
           pathLengthFourth,
           pathLengthFifth,
         ]}
-        title="Let Your AI Decide What Ships"
-        description="Scalysis filters out risky COD orders with machine learning precision — so you don't bleed shipping cost or ruin your ROAS."
+        title="Built for COD. Trained on Your Reality."
+        description="This isn’t a generic fraud filter. Scalysis uses a vertically trained ML model — tuned on millions of COD orders from Indian D2C brands like yours.
+It learns from your historical delivery patterns, pin code behavior, return profiles, and even cash reconciliation data — to predict which orders will fail before you ship."
       />
     </div>
   );
