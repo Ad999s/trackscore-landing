@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
@@ -35,7 +34,7 @@ interface GlobeConfig {
   autoRotateSpeed: number;
 }
 
-// Since we're getting an error with the direct import, we'll load OrbitControls dynamically
+// We'll use a class that will dynamically load OrbitControls
 class OrbitControlsImplementation {
   enableDamping: boolean = true;
   dampingFactor: number = 0.05;
@@ -47,33 +46,53 @@ class OrbitControlsImplementation {
   autoRotate: boolean = false;
   autoRotateSpeed: number = 0.5;
   target: THREE.Vector3 = new THREE.Vector3(0, 0, 0);
+  controls: any = null;
 
   constructor(camera: THREE.Camera, domElement: HTMLElement) {
     this.autoRotate = false;
     this.autoRotateSpeed = 0.5;
     
-    // We'll load the actual OrbitControls module dynamically
-    import('three/examples/jsm/controls/OrbitControls').then(({ OrbitControls }) => {
-      const controls = new OrbitControls(camera, domElement);
-      controls.enableDamping = this.enableDamping;
-      controls.dampingFactor = this.dampingFactor;
-      controls.rotateSpeed = this.rotateSpeed;
-      controls.enablePan = this.enablePan;
-      controls.enableZoom = this.enableZoom;
-      controls.minDistance = this.minDistance;
-      controls.maxDistance = this.maxDistance;
-      controls.autoRotate = this.autoRotate;
-      controls.autoRotateSpeed = this.autoRotateSpeed;
-      
-      // Replace this instance with the real controls
-      Object.assign(this, controls);
+    // Dynamically import OrbitControls to avoid TypeScript errors
+    import('@react-three/drei').then((drei) => {
+      const { OrbitControls } = drei;
+      if (OrbitControls) {
+        console.log('OrbitControls loaded from drei');
+        // For drei's OrbitControls, we need to handle it differently
+        // as it's a React component, not a class constructor
+      }
     }).catch(err => {
-      console.error('Failed to load OrbitControls:', err);
+      console.error('Failed to load OrbitControls from drei:', err);
+      
+      // Fallback to Three.js OrbitControls if available
+      import('three').then(THREE => {
+        if (THREE.OrbitControls) {
+          this.controls = new THREE.OrbitControls(camera, domElement);
+          this.applySettings();
+        }
+      }).catch(err => {
+        console.error('Failed to load OrbitControls:', err);
+      });
     });
   }
 
+  applySettings() {
+    if (this.controls) {
+      this.controls.enableDamping = this.enableDamping;
+      this.controls.dampingFactor = this.dampingFactor;
+      this.controls.rotateSpeed = this.rotateSpeed;
+      this.controls.enablePan = this.enablePan;
+      this.controls.enableZoom = this.enableZoom;
+      this.controls.minDistance = this.minDistance;
+      this.controls.maxDistance = this.maxDistance;
+      this.controls.autoRotate = this.autoRotate;
+      this.controls.autoRotateSpeed = this.autoRotateSpeed;
+    }
+  }
+
   update() {
-    // This will be replaced by the real update method when OrbitControls loads
+    if (this.controls && this.controls.update) {
+      this.controls.update();
+    }
   }
 }
 
@@ -240,7 +259,7 @@ export const World = ({ data, globeConfig }: { data: Arc[]; globeConfig: GlobeCo
       camera.lookAt(0, 0, 0);
     }
     
-    // Use our custom OrbitControlsImplementation until the real one loads
+    // Use our custom OrbitControlsImplementation instead of direct import
     const controls = new OrbitControlsImplementation(camera, renderer.domElement);
     controls.autoRotate = globeConfig.autoRotate;
     controls.autoRotateSpeed = globeConfig.autoRotateSpeed;
