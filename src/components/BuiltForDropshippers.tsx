@@ -1,11 +1,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Globe } from "@/components/ui/globe";
 
 const BuiltForDropshippers = () => {
   return (
-    <section className="py-20 bg-white overflow-hidden">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -33,23 +32,36 @@ const BuiltForDropshippers = () => {
           >
             <div className="space-y-4">
               <p className="text-lg text-gray-700 leading-relaxed">
-                Scalysis picks your highest-quality orders daily — cutting RTO, saving on shipping, and driving profit. Scale with COD.
+                Customers love COD. So does your ROAS. And now you will too, scalysis picks your highest-quality orders daily — cutting RTO, saving on shipping, and driving profit. Scale with COD.
               </p>
             </div>
           </motion.div>
 
-          {/* Right Column - Globe Visualization */}
+          {/* Right Column - Video */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="relative h-80 rounded-lg overflow-hidden shadow-xl"
+            className="relative rounded-lg overflow-hidden shadow-xl"
           >
-            <div className="absolute inset-0">
-              <Globe className="top-0" />
-            </div>
-            <div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_100%,rgba(0,0,0,0.1),rgba(255,255,255,0))]" />
+            <video 
+              src="https://framerusercontent.com/assets/mWYPZsyYGsgYETs0FSJHYv5B8oA.mp4" 
+              loop 
+              preload="auto" 
+              muted 
+              playsInline 
+              style={{
+                width: "100%",
+                height: "100%",
+                borderRadius: "0.5rem",
+                display: "block",
+                objectFit: "cover",
+                backgroundColor: "rgba(0, 0, 0, 0)",
+                objectPosition: "50% 50%"
+              }} 
+              autoPlay
+            />
           </motion.div>
         </div>
       </div>
