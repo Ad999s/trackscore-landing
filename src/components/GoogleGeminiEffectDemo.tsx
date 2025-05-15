@@ -33,8 +33,7 @@ export function GoogleGeminiEffectDemo() {
           pathLengthFifth,
         ]}
         title="Built for COD. Trained on Your Reality."
-        description="This isn’t a generic fraud filter. Scalysis uses a vertically trained ML model — tuned on millions of COD orders from Indian D2C brands like yours.
-It learns from your historical delivery patterns, pin code behavior, return profiles, and even cash reconciliation data — to predict which orders will fail before you ship."
+        description="This isn’t a generic fraud filter. Scalysis uses a vertically trained ML model — tuned on millions of COD orders from Indian D2C brands like yours."
       />
     </div>
   );
