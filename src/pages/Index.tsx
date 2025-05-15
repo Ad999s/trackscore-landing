@@ -1,5 +1,4 @@
 
-
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -16,6 +15,8 @@ import Stats from "@/components/Stats";
 import HowItWorks from "@/components/HowItWorks";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import DailyShippingCalculator from "@/components/DailyShippingCalculator";
+import ROISimulator from "@/components/ROISimulator";
 import { motion } from "framer-motion";
 
 const Index = () => {
@@ -56,6 +57,22 @@ const Index = () => {
           variants={sectionVariants}
         >
           <ProfitCalculator />
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <DailyShippingCalculator />
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <ROISimulator />
         </motion.div>
         <motion.div
           initial="hidden"
