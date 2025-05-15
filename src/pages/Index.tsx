@@ -5,7 +5,6 @@ import Hero from "@/components/Hero";
 import { GoogleGeminiEffectDemo } from "@/components/GoogleGeminiEffectDemo";
 import SavingStats from "@/components/SavingStats";
 import HowSelectionWorks from "@/components/HowSelectionWorks";
-import ProfitCalculator from "@/components/ProfitCalculator";
 import BeforeAfterFlip from "@/components/BeforeAfterFlip";
 import SmartMetaTargeting from "@/components/SmartMetaTargeting";
 import AutoPnLTracking from "@/components/AutoPnLTracking";
@@ -16,8 +15,8 @@ import HowItWorks from "@/components/HowItWorks";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import DailyShippingCalculator from "@/components/DailyShippingCalculator";
-import ROISimulator from "@/components/ROISimulator";
 import { motion } from "framer-motion";
+import SmartLearning from "@/components/SmartLearning";
 
 const Index = () => {
   useEffect(() => {
@@ -41,7 +40,6 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <GoogleGeminiEffectDemo />
-        <SavingStats />
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -50,14 +48,7 @@ const Index = () => {
         >
           <HowSelectionWorks />
         </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
-          <ProfitCalculator />
-        </motion.div>
+        <SavingStats />
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -65,14 +56,6 @@ const Index = () => {
           variants={sectionVariants}
         >
           <DailyShippingCalculator />
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
-          <ROISimulator />
         </motion.div>
         <motion.div
           initial="hidden"
@@ -121,6 +104,14 @@ const Index = () => {
           variants={sectionVariants}
         >
           <Stats />
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <SmartLearning />
         </motion.div>
         <motion.div
           initial="hidden"
