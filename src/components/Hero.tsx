@@ -73,15 +73,15 @@ const Hero = () => {
             >
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
                 <a href="#get-started" className="flex items-center">
-                  Start 30 Day Trial
+                  Start 30 Day Free Trial
                 </a>
               </Button>
             </motion.div>
           </motion.div>
 
-          {/* Centered Full-width Video */}
+          {/* Centered Full-width Video - Now with 90% width and 5% padding on each side */}
           <motion.div 
-            className={`w-full max-w-5xl mx-auto ${isLoaded ? 'animate-slideUp animation-delay-200' : 'opacity-0'}`}
+            className={`w-[90%] mx-auto ${isLoaded ? 'animate-slideUp animation-delay-200' : 'opacity-0'}`}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
