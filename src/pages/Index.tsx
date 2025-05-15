@@ -16,6 +16,7 @@ import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import DailyShippingCalculator from "@/components/DailyShippingCalculator";
 import { motion } from "framer-motion";
+import SmartLearning from "@/components/SmartLearning";
 
 const Index = () => {
   useEffect(() => {
@@ -39,7 +40,6 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <GoogleGeminiEffectDemo />
-        <SavingStats />
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -48,6 +48,7 @@ const Index = () => {
         >
           <HowSelectionWorks />
         </motion.div>
+        <SavingStats />
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -103,6 +104,14 @@ const Index = () => {
           variants={sectionVariants}
         >
           <Stats />
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <SmartLearning />
         </motion.div>
         <motion.div
           initial="hidden"
