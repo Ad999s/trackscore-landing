@@ -17,6 +17,8 @@ import Footer from "@/components/Footer";
 import DailyShippingCalculator from "@/components/DailyShippingCalculator";
 import { motion } from "framer-motion";
 import SmartLearning from "@/components/SmartLearning";
+import BuiltForDropshippers from "@/components/BuiltForDropshippers";
+import IndiaLovesCOD from "@/components/IndiaLovesCOD";
 
 const Index = () => {
   useEffect(() => {
@@ -40,6 +42,7 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <GoogleGeminiEffectDemo />
+        <BuiltForDropshippers />
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -48,6 +51,7 @@ const Index = () => {
         >
           <HowSelectionWorks />
         </motion.div>
+        <IndiaLovesCOD />
         <SavingStats />
         <motion.div
           initial="hidden"
