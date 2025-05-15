@@ -11,16 +11,16 @@ export function GoogleGeminiEffectDemo() {
     offset: ["start start", "end start"],
   });
 
-  // Increase scroll speed by changing the output range values
-  const pathLengthFirst = useTransform(scrollYProgress, [0, 0.4], [0.2, 1.2]);
-  const pathLengthSecond = useTransform(scrollYProgress, [0, 0.4], [0.15, 1.2]);
-  const pathLengthThird = useTransform(scrollYProgress, [0, 0.4], [0.1, 1.2]);
-  const pathLengthFourth = useTransform(scrollYProgress, [0, 0.4], [0.05, 1.2]);
-  const pathLengthFifth = useTransform(scrollYProgress, [0, 0.4], [0, 1.2]);
+  // Further increase scroll speed by reducing the range to complete faster
+  const pathLengthFirst = useTransform(scrollYProgress, [0, 0.25], [0.2, 1.2]);
+  const pathLengthSecond = useTransform(scrollYProgress, [0, 0.25], [0.15, 1.2]);
+  const pathLengthThird = useTransform(scrollYProgress, [0, 0.25], [0.1, 1.2]);
+  const pathLengthFourth = useTransform(scrollYProgress, [0, 0.25], [0.05, 1.2]);
+  const pathLengthFifth = useTransform(scrollYProgress, [0, 0.25], [0, 1.2]);
 
   return (
     <div
-      className="h-[300vh] bg-black w-full dark:border dark:border-white/[0.1] rounded-md relative pt-40 overflow-clip"
+      className="h-[200vh] bg-black w-full dark:border dark:border-white/[0.1] rounded-md relative pt-40 overflow-clip"
       ref={ref}
     >
       <GoogleGeminiEffect

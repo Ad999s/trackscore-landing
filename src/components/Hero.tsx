@@ -1,28 +1,59 @@
-
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  
+  // Parallax effect values
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
   return (
-    <section className="relative pt-28 pb-20 overflow-hidden">
+    <motion.section 
+      ref={sectionRef}
+      className="relative pt-28 pb-20 overflow-hidden"
+      style={{ opacity }}
+    >
       {/* Background Elements */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-1/4 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl transform translate-x-1/2"></div>
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
-      </div>
+      <motion.div className="absolute inset-0 -z-10 overflow-hidden">
+        <motion.div 
+          className="absolute top-1/4 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl transform translate-x-1/2"
+          style={{ y: y1 }}
+        ></motion.div>
+        <motion.div 
+          className="absolute bottom-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"
+          style={{ y: y2 }}
+        ></motion.div>
+      </motion.div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
-          <div className={`space-y-8 ${isLoaded ? 'animate-fadeIn' : 'opacity-0'}`}>
-            <div className="space-y-4">
+          <motion.div 
+            className={`space-y-8 ${isLoaded ? 'animate-fadeIn' : 'opacity-0'}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.div 
+              className="space-y-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
               <p className="inline-block text-sm font-medium px-3 py-1 bg-blue-50 text-blue-600 rounded-full">
                 Reduce RTO rates upto 55%
               </p>
@@ -32,9 +63,14 @@ const Hero = () => {
               <p className="text-xl text-gray-600 mt-4 max-w-xl">
                 Scalysis automatically removes orders that were never meant to convert. Ship less, scale more.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 group">
                 <a href="#get-started" className="flex items-center">
                   Install on shopify -&gt;
@@ -43,9 +79,14 @@ const Hero = () => {
               <Button variant="outline" size="lg" className="border-gray-300">
                 <a href="#how-it-works">See how it works</a>
               </Button>
-            </div>
+            </motion.div>
             
-            <div className="flex flex-col space-y-3">
+            <motion.div 
+              className="flex flex-col space-y-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+            >
               <div className="flex items-center gap-2">
                 <p className="text-gray-700">Trusted by D2C brands just like yours</p>
               </div>
@@ -60,11 +101,16 @@ const Hero = () => {
                   Instantly increase your Net Profits by <span className="text-blue-600 font-bold text-xl">22%+</span>
                 </p>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right Column - Dashboard Preview */}
-          <div className={`relative ${isLoaded ? 'animate-slideUp animation-delay-200' : 'opacity-0'}`}>
+          <motion.div 
+            className={`relative ${isLoaded ? 'animate-slideUp animation-delay-200' : 'opacity-0'}`}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+          >
             <div className="relative bg-white rounded-xl shadow-medium overflow-hidden border border-gray-100">
               <div className="p-5">
                 <div className="flex justify-between mb-4">
@@ -130,10 +176,10 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
