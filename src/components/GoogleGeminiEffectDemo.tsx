@@ -32,7 +32,9 @@ export function GoogleGeminiEffectDemo() {
           pathLengthFourth,
           pathLengthFifth,
         ]}
+        <h1 className="text-white text-4xl font-extrabold">
         title="Built for COD. Trained on Your Reality."
+        </h1>
         description="This isn’t a generic fraud filter. Scalysis uses a vertically trained ML model — tuned on millions of COD orders from Indian D2C brands like yours."
       />
     </div>
