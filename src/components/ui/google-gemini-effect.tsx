@@ -30,7 +30,76 @@ export const GoogleGeminiEffect = ({
           `Scroll this component and see the bottom SVG come to life wow this
         works!`}
       </p>
-      <div className="w-full h-[890px] -top-60 md:-top-40  flex items-center justify-center bg-red-transparent absolute ">
+      
+      {/* ML Training Stats */}
+      <div className="w-full mt-12 flex justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          {/* Customer Analysis */}
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-white/10">
+            <h3 className="text-white/90 text-lg font-medium mb-3">Customer Behavior Analysis</h3>
+            <div className="mb-4">
+              <div className="flex justify-between text-sm mb-1">
+                <span className="text-white/80">Learning progress</span>
+                <span className="text-green-400">87%</span>
+              </div>
+              <div className="w-full bg-white/10 rounded-full h-2">
+                <div className="bg-green-400 h-2 rounded-full" style={{ width: "87%" }}></div>
+              </div>
+            </div>
+            <div className="text-white/70 text-sm">
+              25,482 order patterns analyzed
+            </div>
+          </div>
+          
+          {/* Product Categories */}
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-white/10 md:min-w-[280px]">
+            <h3 className="text-white/90 text-lg font-medium mb-3">Product Category Training</h3>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <span className="text-white/80 text-sm">Electronics</span>
+                <div className="text-xs text-white/60">3,451 orders</div>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-white/80 text-sm">Fashion</span>
+                <div className="text-xs text-white/60">8,927 orders</div>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-white/80 text-sm">Home Goods</span>
+                <div className="text-xs text-white/60">2,189 orders</div>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-white/80 text-sm">Beauty</span>
+                <div className="text-xs text-white/60">5,732 orders</div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Model Metrics */}
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-white/10">
+            <h3 className="text-white/90 text-lg font-medium mb-3">Model Training Metrics</h3>
+            <div className="mb-4">
+              <div className="flex justify-between text-sm mb-1">
+                <span className="text-white/80">Accuracy</span>
+                <span className="text-green-400">95.4%</span>
+              </div>
+              <div className="w-full bg-white/10 rounded-full h-2">
+                <div className="bg-green-400 h-2 rounded-full" style={{ width: "95.4%" }}></div>
+              </div>
+            </div>
+            <div className="mb-4">
+              <div className="flex justify-between text-sm mb-1">
+                <span className="text-white/80">Precision</span>
+                <span className="text-green-400">93.7%</span>
+              </div>
+              <div className="w-full bg-white/10 rounded-full h-2">
+                <div className="bg-green-400 h-2 rounded-full" style={{ width: "93.7%" }}></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="w-full h-[890px] -top-60 md:-top-40 flex items-center justify-center bg-red-transparent absolute ">
         <button className="font-bold bg-white rounded-full md:px-4 md:py-2 px-2 py-1 md:mt-24 mt-8 z-30 md:text-base text-black text-xs  w-fit mx-auto ">
           AI Order Selection
         </button>
@@ -42,6 +111,7 @@ export const GoogleGeminiEffect = ({
         xmlns="http://www.w3.org/2000/svg"
         className=" absolute -top-60  md:-top-40 w-full"
       >
+        {/* Extending the path length by 1.7x */}
         <motion.path
           d="M0 663C145.5 663 191 666.265 269 647C326.5 630 339.5 621 397.5 566C439 531.5 455 529.5 490 523C509.664 519.348 521 503.736 538 504.236C553.591 504.236 562.429 514.739 584.66 522.749C592.042 525.408 600.2 526.237 607.356 523.019C624.755 515.195 641.446 496.324 657 496.735C673.408 496.735 693.545 519.572 712.903 526.769C718.727 528.934 725.184 528.395 730.902 525.965C751.726 517.115 764.085 497.106 782 496.735C794.831 496.47 804.103 508.859 822.469 518.515C835.13 525.171 850.214 526.815 862.827 520.069C875.952 513.049 889.748 502.706 903.5 503.736C922.677 505.171 935.293 510.562 945.817 515.673C954.234 519.76 963.095 522.792 972.199 524.954C996.012 530.611 1007.42 534.118 1034 549C1077.5 573.359 1082.5 594.5 1140 629C1206 670 1328.5 662.5 1440 662.5"
           stroke="#ea384c"

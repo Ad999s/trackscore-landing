@@ -20,6 +20,7 @@ import BuiltForDropshippers from "@/components/BuiltForDropshippers";
 import CodMarketStats from "@/components/CodMarketStats";
 import MarketComparisonSlider from "@/components/MarketComparisonSlider";
 import Features from "@/components/Features";
+import TrustedPartners from "@/components/TrustedPartners";
 
 const Index = () => {
   useEffect(() => {
@@ -42,6 +43,7 @@ const Index = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
+        <TrustedPartners />
         <GoogleGeminiEffectDemo />
         <BuiltForDropshippers />
         <MarketComparisonSlider />
