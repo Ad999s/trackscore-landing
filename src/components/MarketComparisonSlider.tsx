@@ -11,7 +11,7 @@ const MarketComparisonSlider = () => {
   
   // Update state based on slider value
   useEffect(() => {
-    setIsScalysisView(sliderValue === 100);
+    setIsScalysisView(sliderValue >= 50);
   }, [sliderValue]);
 
   // Animation variants
@@ -40,11 +40,60 @@ const MarketComparisonSlider = () => {
     visible: { opacity: 1, y: 0 }
   };
   
-  // Handle slider change
-  const handleSliderChange = (value: number[]) => {
-    // Only allow values 0 or 100 to create a toggle effect
-    const newValue = value[0] > 50 ? 100 : 0;
-    setSliderValue(newValue);
+  // Calculate the number of markers based on slider value
+  const getTotalMarkers = () => {
+    const baseMarkerCount = 6; // Minimum markers (tier 1 cities)
+    const additionalMarkers = Math.floor((sliderValue / 100) * 30); // Up to 30 more markers based on slider
+    return baseMarkerCount + additionalMarkers;
+  };
+  
+  // Generate markers for the globe
+  const getMarkers = () => {
+    const allMarkers = [
+      // Tier 1 cities with bigger size (always visible)
+      { location: [19.076, 72.8777], size: 0.15 }, // Mumbai
+      { location: [28.6139, 77.2090], size: 0.15 }, // Delhi
+      { location: [12.9716, 77.5946], size: 0.15 }, // Bangalore
+      { location: [13.0827, 80.2707], size: 0.15 }, // Chennai
+      { location: [17.3850, 78.4867], size: 0.15 }, // Hyderabad
+      { location: [22.5726, 88.3639], size: 0.15 }, // Kolkata
+      
+      // Many Tier 2 & 3 cities (appear as slider increases)
+      { location: [23.0225, 72.5714], size: 0.1 }, // Ahmedabad
+      { location: [18.5204, 73.8567], size: 0.1 }, // Pune
+      { location: [26.9124, 75.7873], size: 0.1 }, // Jaipur
+      { location: [25.5941, 85.1376], size: 0.1 }, // Patna
+      { location: [26.8467, 80.9462], size: 0.1 }, // Lucknow
+      { location: [21.1458, 79.0882], size: 0.1 }, // Nagpur
+      { location: [30.7333, 76.7794], size: 0.1 }, // Chandigarh
+      { location: [20.2961, 85.8245], size: 0.1 }, // Bhubaneswar
+      { location: [23.2599, 77.4126], size: 0.1 }, // Bhopal
+      { location: [9.9312, 76.2673], size: 0.08 },  // Kochi
+      { location: [10.5276, 76.2144], size: 0.08 }, // Thrissur
+      { location: [22.7196, 75.8577], size: 0.08 }, // Indore
+      { location: [17.6868, 83.2185], size: 0.08 }, // Visakhapatnam
+      { location: [11.0168, 76.9558], size: 0.08 }, // Coimbatore
+      { location: [22.3072, 73.1812], size: 0.08 }, // Vadodara
+      { location: [9.9252, 78.1198], size: 0.08 },  // Madurai
+      { location: [16.3067, 80.4365], size: 0.08 }, // Vijayawada
+      { location: [31.3260, 75.5762], size: 0.08 }, // Jalandhar
+      { location: [26.1445, 91.7362], size: 0.08 }, // Guwahati
+      { location: [23.3441, 85.3096], size: 0.08 }, // Ranchi
+      
+      // Additional smaller cities and towns (appear at higher slider values)
+      { location: [27.1767, 78.0081], size: 0.06 }, // Agra
+      { location: [19.8762, 75.3433], size: 0.06 }, // Aurangabad
+      { location: [21.2514, 81.6296], size: 0.06 }, // Raipur
+      { location: [16.5062, 80.6480], size: 0.06 }, // Guntur
+      { location: [29.9457, 78.1642], size: 0.06 }, // Dehradun
+      { location: [25.3176, 82.9739], size: 0.05 }, // Varanasi
+      { location: [18.6725, 78.0940], size: 0.05 }, // Nizamabad
+      { location: [24.5854, 73.7125], size: 0.05 }, // Udaipur
+    ];
+    
+    // Calculate how many markers to show based on slider value
+    const totalMarkers = getTotalMarkers();
+    return allMarkers.slice(0, Math.min(totalMarkers, allMarkers.length));
   };
 
   return (
@@ -58,7 +107,7 @@ const MarketComparisonSlider = () => {
           className="text-center mb-12"
         >
           <h2 className="text-5xl md:text-6xl font-bold mb-4">
-            See How Big Your <span className="text-blue-500">Real Market Is</span>
+            Scale <span className="text-blue-500">6X Faster</span> with Scalysis. No Profit Leaks.
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Compare your current market reach with Scalysis-powered expansion
@@ -85,52 +134,12 @@ const MarketComparisonSlider = () => {
                     theta: 0.3, // Added required property
                     devicePixelRatio: 2, // Added required property
                     dark: 0, // Added required property
-                    glowColor: isScalysisView ? [0.3, 0.6, 1] : [0.5, 0.5, 0.5],
-                    baseColor: isScalysisView ? [0.3, 0.3, 1] : [0.2, 0.2, 0.2],
+                    glowColor: isScalysisView ? [0.3, 0.6, 1] : [0.8, 0.8, 0.8],
+                    baseColor: [0.95, 0.95, 0.95], // Whiteish color
                     markerColor: isScalysisView 
                       ? [66/255, 135/255, 245/255] 
                       : [120/255, 120/255, 120/255],
-                    markers: isScalysisView 
-                      ? [
-                          // Tier 1 cities with bigger size
-                          { location: [19.076, 72.8777], size: 0.15 }, // Mumbai
-                          { location: [28.6139, 77.2090], size: 0.15 }, // Delhi
-                          { location: [12.9716, 77.5946], size: 0.15 }, // Bangalore
-                          { location: [13.0827, 80.2707], size: 0.15 }, // Chennai
-                          { location: [17.3850, 78.4867], size: 0.15 }, // Hyderabad
-                          { location: [22.5726, 88.3639], size: 0.15 }, // Kolkata
-                          
-                          // Many Tier 2 & 3 cities
-                          { location: [23.0225, 72.5714], size: 0.1 }, // Ahmedabad
-                          { location: [18.5204, 73.8567], size: 0.1 }, // Pune
-                          { location: [26.9124, 75.7873], size: 0.1 }, // Jaipur
-                          { location: [25.5941, 85.1376], size: 0.1 }, // Patna
-                          { location: [26.8467, 80.9462], size: 0.1 }, // Lucknow
-                          { location: [21.1458, 79.0882], size: 0.1 }, // Nagpur
-                          { location: [30.7333, 76.7794], size: 0.1 }, // Chandigarh
-                          { location: [20.2961, 85.8245], size: 0.1 }, // Bhubaneswar
-                          { location: [23.2599, 77.4126], size: 0.1 }, // Bhopal
-                          { location: [9.9312, 76.2673], size: 0.08 },  // Kochi
-                          { location: [10.5276, 76.2144], size: 0.08 }, // Thrissur
-                          { location: [22.7196, 75.8577], size: 0.08 }, // Indore
-                          { location: [17.6868, 83.2185], size: 0.08 }, // Visakhapatnam
-                          { location: [11.0168, 76.9558], size: 0.08 }, // Coimbatore
-                          { location: [22.3072, 73.1812], size: 0.08 }, // Vadodara
-                          { location: [9.9252, 78.1198], size: 0.08 },  // Madurai
-                          { location: [16.3067, 80.4365], size: 0.08 }, // Vijayawada
-                          { location: [31.3260, 75.5762], size: 0.08 }, // Jalandhar
-                          { location: [26.1445, 91.7362], size: 0.08 }, // Guwahati
-                          { location: [23.3441, 85.3096], size: 0.08 }, // Ranchi
-                        ]
-                      : [
-                          // Only Tier 1 cities with small size
-                          { location: [19.076, 72.8777], size: 0.1 },   // Mumbai
-                          { location: [28.6139, 77.2090], size: 0.1 },  // Delhi
-                          { location: [12.9716, 77.5946], size: 0.1 },  // Bangalore
-                          { location: [13.0827, 80.2707], size: 0.1 },  // Chennai
-                          { location: [17.3850, 78.4867], size: 0.1 },  // Hyderabad
-                          { location: [22.5726, 88.3639], size: 0.1 },  // Kolkata
-                        ],
+                    markers: getMarkers(),
                     mapSamples: 20000,
                     mapBrightness: isScalysisView ? 3 : 1.2,
                     diffuse: isScalysisView ? 0.8 : 0.4,
@@ -196,9 +205,9 @@ const MarketComparisonSlider = () => {
               
               <Slider
                 value={[sliderValue]}
-                onValueChange={handleSliderChange}
+                onValueChange={(value) => setSliderValue(value[0])}
                 max={100}
-                step={100}
+                step={1}
                 className="w-full"
               />
               
@@ -279,17 +288,15 @@ const MarketComparisonSlider = () => {
             )}
             
             <div className="mt-8 text-center">
-              <motion.p 
+              <p 
                 className={`inline-block py-2 px-4 rounded-full text-lg font-semibold ${
                   isScalysisView 
                     ? 'bg-blue-100 text-blue-700' 
                     : 'bg-gray-100 text-gray-700'
                 }`}
-                animate={{ scale: isScalysisView ? [1, 1.05, 1] : 1 }}
-                transition={{ duration: 1, repeat: isScalysisView ? Infinity : 0, repeatType: "loop" }}
               >
                 {isScalysisView ? "Scalysis = Profitable COD TAM" : "Prepaid = Limited TAM"}
-              </motion.p>
+              </p>
             </div>
           </motion.div>
         </div>
