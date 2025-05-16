@@ -1,6 +1,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { Check } from "lucide-react";
 
 const BuiltForDropshippers = () => {
   return (
@@ -14,10 +15,10 @@ const BuiltForDropshippers = () => {
           className="text-center mb-12"
         >
           <h2 className="text-5xl md:text-6xl font-bold leading-tight mb-4">
-            Offer COD <span className="text-blue-500">without fear.</span>
+            Built for <span className="text-blue-500">COD-Heavy D2C & Dropshippers</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Built for dropshippers, D2C brands, and anyone scaling with COD.
+            Cut RTO Rates by 50% with smart order selection
           </p>
         </motion.div>
 
@@ -32,8 +33,23 @@ const BuiltForDropshippers = () => {
           >
             <div className="space-y-4">
               <p className="text-lg text-gray-700 leading-relaxed">
-                Scalysis picks your highest-quality orders daily — cutting RTO, saving on shipping, and driving profit. Scale with COD.
+                Indian customers love COD — it builds trust, boosts sales, and reaches everyone. But brands fear it due to RTO losses. Scalysis Smart Order Selection removes that fear by letting you accept all COD orders, then intelligently picking only the best ones to ship — protecting ad spend and maximizing profit.
               </p>
+              
+              <div className="space-y-3 mt-6">
+                <div className="flex items-start gap-3">
+                  <Check className="h-6 w-6 text-blue-500 flex-shrink-0 mt-0.5" />
+                  <p className="text-gray-700">Builds first-time trust</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Check className="h-6 w-6 text-blue-500 flex-shrink-0 mt-0.5" />
+                  <p className="text-gray-700">Offer your brand to all Indian audience</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Check className="h-6 w-6 text-blue-500 flex-shrink-0 mt-0.5" />
+                  <p className="text-gray-700">Scale 500% more with COD</p>
+                </div>
+              </div>
             </div>
           </motion.div>
 

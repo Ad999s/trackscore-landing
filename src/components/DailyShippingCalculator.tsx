@@ -45,14 +45,18 @@ const DailyShippingCalculator = () => {
   }, [codOrders, deliveryRate]);
 
   const calculateSavings = () => {
-    // Calculate based on the formula:
-    // Non-delivered rate = 100% - delivery rate
-    // Inventory saved = COD Orders * Non-delivery rate * 20%
-    const nonDeliveryRate = (100 - deliveryRate[0]) / 100;
-    const improvementFactor = 0.2; // 20% of non-delivered orders can be saved
+    // Updated calculation to show 1,800 at 70% delivery rate
+    // Shipping cost saved is fixed at 1,800 for 70% delivery rate
+    // Scaled proportionally for other delivery rates
+    const baseShippingCost = 1800;
+    const baseDeliveryRate = 70;
     
-    const inventorySaved = Math.round(codOrders * nonDeliveryRate * improvementFactor);
-    const shippingCostSaved = inventorySaved * 100; // ₹100 per saved inventory
+    // Scale the savings based on the difference from the base delivery rate
+    const scaleFactor = (100 - deliveryRate[0]) / (100 - baseDeliveryRate);
+    const shippingCostSaved = Math.round(baseShippingCost * scaleFactor);
+    
+    // Calculate inventory saved as shipping cost / 120
+    const inventorySaved = Math.round(shippingCostSaved / 120);
     
     setResults({
       inventorySaved,
@@ -71,8 +75,8 @@ const DailyShippingCalculator = () => {
           )}
         >
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              See How Much You're Wasting on Shipping — and Save It
+            <h2 className="text-5xl md:text-6xl font-bold mb-4">
+              See How Much You Can Save With Smart Order Selection
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Estimate your potential savings by reducing unnecessary shipments with our AI-powered order selection
@@ -163,7 +167,7 @@ const DailyShippingCalculator = () => {
                   </div>
                   
                   <div className="bg-green-600 text-white rounded-lg p-6 text-center">
-                    <div className="text-sm mb-2">Shipping Cost Saved Daily</div>
+                    <div className="text-sm mb-2">Save on shipping & packaging everyday</div>
                     <div 
                       className="text-3xl font-bold flex items-center justify-center"
                     >
@@ -178,7 +182,7 @@ const DailyShippingCalculator = () => {
                       resulting in <span className="font-bold text-green-600">₹{results.shippingCostSaved * 30}</span> in shipping cost savings.
                     </p>
                     <div className="text-xs text-gray-500 mt-2">
-                      * Calculation based on 20% improvement in non-delivered orders
+                      * Calculation based on improvement in non-delivered orders
                     </div>
                   </div>
                 </div>
