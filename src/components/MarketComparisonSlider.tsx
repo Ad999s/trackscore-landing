@@ -80,6 +80,11 @@ const MarketComparisonSlider = () => {
                   config={{
                     width: 800,
                     height: 800,
+                    onRender: () => {}, // Added required property
+                    phi: 0, // Added required property
+                    theta: 0.3, // Added required property
+                    devicePixelRatio: 2, // Added required property
+                    dark: 0, // Added required property
                     glowColor: isScalysisView ? [0.3, 0.6, 1] : [0.5, 0.5, 0.5],
                     baseColor: isScalysisView ? [0.3, 0.3, 1] : [0.2, 0.2, 0.2],
                     markerColor: isScalysisView 
