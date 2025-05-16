@@ -11,17 +11,17 @@ export function GoogleGeminiEffectDemo() {
     offset: ["start start", "end start"],
   });
 
-  // Make animation complete faster to avoid excess scrolling
-  // Changed from 0.08 to 0.05 to make animation complete sooner
-  const pathLengthFirst = useTransform(scrollYProgress, [0, 0.05], [0.2, 1.2]);
-  const pathLengthSecond = useTransform(scrollYProgress, [0, 0.05], [0.15, 1.2]);
-  const pathLengthThird = useTransform(scrollYProgress, [0, 0.05], [0.1, 1.2]);
-  const pathLengthFourth = useTransform(scrollYProgress, [0, 0.05], [0.05, 1.2]);
-  const pathLengthFifth = useTransform(scrollYProgress, [0, 0.05], [0, 1.2]);
+  // Reduce the scroll range to complete the animation faster
+  // Changed from 0.15 to 0.08 to make animation complete sooner
+  const pathLengthFirst = useTransform(scrollYProgress, [0, 0.08], [0.2, 1.2]);
+  const pathLengthSecond = useTransform(scrollYProgress, [0, 0.08], [0.15, 1.2]);
+  const pathLengthThird = useTransform(scrollYProgress, [0, 0.08], [0.1, 1.2]);
+  const pathLengthFourth = useTransform(scrollYProgress, [0, 0.08], [0.05, 1.2]);
+  const pathLengthFifth = useTransform(scrollYProgress, [0, 0.08], [0, 1.2]);
 
   return (
     <div
-      className="h-[75vh] bg-black w-full dark:border dark:border-white/[0.1] rounded-md relative pt-40 overflow-clip"
+      className="h-[100vh] bg-black w-full dark:border dark:border-white/[0.1] rounded-md relative pt-40 overflow-clip"
       ref={ref}
     >
       <GoogleGeminiEffect
