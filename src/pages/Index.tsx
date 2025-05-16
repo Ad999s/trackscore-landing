@@ -21,6 +21,7 @@ import CodMarketStats from "@/components/CodMarketStats";
 import MarketComparisonSlider from "@/components/MarketComparisonSlider";
 import Features from "@/components/Features";
 import TrustedPartners from "@/components/TrustedPartners";
+import FeaturesGrid from "@/components/FeaturesGrid";
 
 const Index = () => {
   useEffect(() => {
@@ -45,6 +46,7 @@ const Index = () => {
         <Hero />
         <TrustedPartners />
         <GoogleGeminiEffectDemo />
+        <FeaturesGrid />
         <BuiltForDropshippers />
         <MarketComparisonSlider />
         <CodMarketStats />
