@@ -1,5 +1,4 @@
 
-
 "use client";
 import { useScroll, useTransform } from "framer-motion";
 import React from "react";
@@ -12,16 +11,16 @@ export function GoogleGeminiEffectDemo() {
     offset: ["start start", "end start"],
   });
 
-  // Further increase scroll speed by reducing the range to complete faster
-  const pathLengthFirst = useTransform(scrollYProgress, [0, 0.25], [0.2, 1.2]);
-  const pathLengthSecond = useTransform(scrollYProgress, [0, 0.25], [0.15, 1.2]);
-  const pathLengthThird = useTransform(scrollYProgress, [0, 0.25], [0.1, 1.2]);
-  const pathLengthFourth = useTransform(scrollYProgress, [0, 0.25], [0.05, 1.2]);
-  const pathLengthFifth = useTransform(scrollYProgress, [0, 0.25], [0, 1.2]);
+  // Reduce the scroll range to complete the animation faster
+  const pathLengthFirst = useTransform(scrollYProgress, [0, 0.15], [0.2, 1.2]);
+  const pathLengthSecond = useTransform(scrollYProgress, [0, 0.15], [0.15, 1.2]);
+  const pathLengthThird = useTransform(scrollYProgress, [0, 0.15], [0.1, 1.2]);
+  const pathLengthFourth = useTransform(scrollYProgress, [0, 0.15], [0.05, 1.2]);
+  const pathLengthFifth = useTransform(scrollYProgress, [0, 0.15], [0, 1.2]);
 
   return (
     <div
-      className="h-[200vh] bg-black w-full dark:border dark:border-white/[0.1] rounded-md relative pt-40 overflow-clip"
+      className="h-[140vh] bg-black w-full dark:border dark:border-white/[0.1] rounded-md relative pt-40 overflow-clip"
       ref={ref}
     >
       <GoogleGeminiEffect

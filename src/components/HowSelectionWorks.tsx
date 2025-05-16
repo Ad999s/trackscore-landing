@@ -88,22 +88,22 @@ const HowSelectionWorks = () => {
     },
     {
       number: 2,
-      title: "Extract tracking status + maintain Database",
+      title: "Extract Tracking Status + Maintain Database",
       description: "Our proprietary algorithm extracts tracking information and maintains a comprehensive database for all your shipments."
     },
     {
       number: 3,
-      title: "AI Trains on data + Product Specific Training",
+      title: "AI Trains on Data + Product Specific Training",
       description: "Each order is analyzed and the AI learns from your specific product categories and customer behaviors to improve predictions."
     },
     {
       number: 4,
-      title: "Accurately Order Selection + 3 modes of shipping",
+      title: "Accurate Real-Time Predictions + 3 Modes of Shipping",
       description: "Orders are intelligently routed through three optimized shipping modes based on their scores to maximize delivery success rates."
     },
     {
       number: 5,
-      title: "AI Gets Better With Fresh Data Overtime",
+      title: "AI Retrains & Gets Better Overtime",
       description: "Save working capital on shipping costs as our AI continuously learns from new data, improving predictions and reducing waste."
     }
   ];
@@ -184,15 +184,15 @@ const HowSelectionWorks = () => {
                       <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center">
-                            <span className="font-medium text-green-600">ML</span>
+                            <span className="font-medium text-green-600">AWB</span>
                           </div>
                           <div>
-                            <p className="font-medium">Data Processing</p>
-                            <p className="text-sm text-gray-500">Order metadata extraction</p>
+                            <p className="font-medium">AWB Link Extraction</p>
+                            <p className="text-sm text-gray-500">Automated tracking setup</p>
                           </div>
                         </div>
                         <div className="flex items-center">
-                          <span className="text-sm text-green-600 font-medium mr-2">Synced</span>
+                          <span className="text-sm text-green-600 font-medium mr-2">Active</span>
                           <ArrowRight size={20} className="text-gray-400" />
                         </div>
                       </div>
@@ -222,37 +222,56 @@ const HowSelectionWorks = () => {
                       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
                         <Check size={18} className="text-blue-600" />
                       </div>
-                      Order Scoring Parameters
+                      Tracking Database
                     </h3>
                     
-                    <div className="grid grid-cols-2 gap-4 mt-4">
-                      {[
-                        { name: "Past Purchase History", value: 85, color: "bg-green-500" },
-                        { name: "Time on Website", value: 72, color: "bg-blue-500" },
-                        { name: "Cross-site History", value: 65, color: "bg-amber-500" },
-                        { name: "Time to Order", value: 78, color: "bg-purple-500" },
-                        { name: "Intent Score", value: 88, color: "bg-indigo-500" },
-                        { name: "Product Category", value: 75, color: "bg-red-500" }
-                      ].map((factor) => (
-                        <div key={factor.name} className="bg-gray-50 p-3 rounded-lg">
-                          <p className="text-sm font-medium mb-1">{factor.name}</p>
-                          <div className="w-full bg-gray-200 rounded-full h-2 mb-1">
-                            <div 
-                              className={`h-2 rounded-full ${factor.color}`} 
-                              style={{ width: `${factor.value}%` }}
-                            ></div>
+                    <div className="space-y-3 mt-4">
+                      <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
+                            <span className="font-medium text-blue-600">ETL</span>
                           </div>
-                          <div className="text-xs text-right font-medium text-gray-500">
-                            Weight: {factor.value}%
+                          <div>
+                            <p className="font-medium">Data Processing</p>
+                            <p className="text-sm text-gray-500">Extracting tracking data</p>
                           </div>
                         </div>
-                      ))}
-                    </div>
-                    
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <p className="font-medium mb-2">Parameter Analysis</p>
-                      <div className="text-sm text-gray-600">
-                        Our proprietary algorithm uses 35+ data points to determine order quality and likelihood of successful delivery.
+                        <div className="flex items-center">
+                          <span className="text-sm text-green-600 font-medium mr-2">Active</span>
+                          <ArrowRight size={20} className="text-gray-400" />
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center">
+                            <span className="font-medium text-purple-600">SQL</span>
+                          </div>
+                          <div>
+                            <p className="font-medium">Database Storage</p>
+                            <p className="text-sm text-gray-500">Maintaining history</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center">
+                          <span className="text-sm text-green-600 font-medium mr-2">Indexed</span>
+                          <ArrowRight size={20} className="text-gray-400" />
+                        </div>
+                      </div>
+                      
+                      <div className="bg-gray-50 p-4 rounded-lg">
+                        <div className="font-medium mb-2">Recent Tracking Updates</div>
+                        <div className="space-y-2 text-sm">
+                          {[
+                            { id: "AWB-112233", status: "Out for Delivery", time: "12 min ago" },
+                            { id: "AWB-445566", status: "In Transit", time: "45 min ago" },
+                            { id: "AWB-778899", status: "Delivered", time: "2 hrs ago" }
+                          ].map(item => (
+                            <div key={item.id} className="flex justify-between">
+                              <span>{item.id}: <span className="text-blue-600">{item.status}</span></span>
+                              <span className="text-gray-500">{item.time}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -264,49 +283,57 @@ const HowSelectionWorks = () => {
                       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
                         <Check size={18} className="text-blue-600" />
                       </div>
-                      Orders Ranked by Intent Score
+                      AI Training Process
                     </h3>
                     
-                    <div className="mt-4 space-y-4">
-                      {[
-                        { id: "ORD-7845", score: 92, intent: "High" },
-                        { id: "ORD-7846", score: 76, intent: "Medium" },
-                        { id: "ORD-7847", score: 58, intent: "Medium" },
-                        { id: "ORD-7848", score: 38, intent: "Low" },
-                        { id: "ORD-7849", score: 22, intent: "Very Low" },
-                        { id: "ORD-7850", score: 12, intent: "Very Low" }
-                      ].map((order) => (
-                        <div 
-                          key={order.id} 
-                          className="flex items-center justify-between p-3 rounded-lg border border-gray-100 bg-white"
-                        >
-                          <div className="font-medium">{order.id}</div>
-                          <div className="flex items-center gap-3">
-                            <div 
-                              className={cn(
-                                "text-xs font-medium px-2 py-1 rounded",
-                                order.intent === "High" ? "bg-green-50 text-green-600" :
-                                order.intent === "Medium" ? "bg-yellow-50 text-yellow-600" :
-                                order.intent === "Low" ? "bg-orange-50 text-orange-600" :
-                                "bg-red-50 text-red-600"
-                              )}
-                            >
-                              {order.intent} Intent
-                            </div>
-                            <div 
-                              className={cn(
-                                "w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium",
-                                order.score >= 80 ? "bg-green-50 text-green-600" :
-                                order.score >= 50 ? "bg-yellow-50 text-yellow-600" :
-                                order.score >= 30 ? "bg-orange-50 text-orange-600" :
-                                "bg-red-50 text-red-600"
-                              )}
-                            >
-                              {order.score}
-                            </div>
+                    <div className="space-y-3 mt-4">
+                      <div className="p-3 border border-blue-100 bg-blue-50 rounded-lg">
+                        <div className="font-medium mb-2">Customer Behavior Analysis</div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm">Learning progress:</span>
+                          <span className="text-sm text-blue-600 font-medium">87%</span>
+                        </div>
+                        <div className="w-full bg-white rounded-full h-2 mt-1 mb-3">
+                          <div className="bg-blue-500 h-2 rounded-full" style={{ width: "87%" }}></div>
+                        </div>
+                        <div className="text-xs text-gray-600">
+                          25,482 order patterns analyzed
+                        </div>
+                      </div>
+                      
+                      <div className="p-3 border border-purple-100 bg-purple-50 rounded-lg">
+                        <div className="font-medium mb-2">Product Category Training</div>
+                        <div className="grid grid-cols-2 gap-2 text-sm">
+                          <div>
+                            <div className="font-medium text-purple-700">Electronics</div>
+                            <div className="text-xs">3,451 orders</div>
+                          </div>
+                          <div>
+                            <div className="font-medium text-purple-700">Fashion</div>
+                            <div className="text-xs">8,927 orders</div>
+                          </div>
+                          <div>
+                            <div className="font-medium text-purple-700">Home Goods</div>
+                            <div className="text-xs">2,189 orders</div>
+                          </div>
+                          <div>
+                            <div className="font-medium text-purple-700">Beauty</div>
+                            <div className="text-xs">5,732 orders</div>
                           </div>
                         </div>
-                      ))}
+                      </div>
+                      
+                      <div className="p-3 border border-green-100 bg-green-50 rounded-lg">
+                        <div className="font-medium mb-1">Model Training Metrics</div>
+                        <div className="flex justify-between text-sm mb-1">
+                          <span>Accuracy:</span>
+                          <span className="font-medium">95.4%</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span>Precision:</span>
+                          <span className="font-medium">92.8%</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -317,26 +344,26 @@ const HowSelectionWorks = () => {
                       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
                         <Check size={18} className="text-blue-600" />
                       </div>
-                      3 Mode Shipping
+                      Smart Shipping Modes
                     </h3>
                     
                     <div className="space-y-3 mt-4">
                       <div className="p-3 border border-green-100 bg-green-50 rounded-lg">
                         <div className="flex justify-between mb-1">
-                          <span className="font-medium text-green-700">Ship All</span>
+                          <span className="font-medium text-green-700">Maximum Success Mode</span>
                           <div className="flex items-center gap-2">
-                            <span className="text-sm bg-green-200 text-green-800 px-2 py-0.5 rounded">Delivery Success: 60%</span>
+                            <span className="text-sm bg-green-200 text-green-800 px-2 py-0.5 rounded">Success: 85%</span>
                             <span className="text-sm bg-blue-200 text-blue-800 px-2 py-0.5 rounded">Profit: Medium</span>
                           </div>
                         </div>
-                        <p className="text-sm text-green-700">Ship all orders - balanced approach with medium profit</p>
+                        <p className="text-sm text-green-700">Ship highest-quality orders for maximum delivery success</p>
                       </div>
                       
                       <div className="p-3 border border-blue-100 bg-blue-50 rounded-lg">
                         <div className="flex justify-between mb-1">
-                          <span className="font-medium text-blue-700">Peak Profit</span>
+                          <span className="font-medium text-blue-700">Peak Profit Mode</span>
                           <div className="flex items-center gap-2">
-                            <span className="text-sm bg-green-200 text-green-800 px-2 py-0.5 rounded">Delivery Success: 70%</span>
+                            <span className="text-sm bg-green-200 text-green-800 px-2 py-0.5 rounded">Success: 70%</span>
                             <span className="text-sm bg-blue-200 text-blue-800 px-2 py-0.5 rounded">Profit: Maximum</span>
                           </div>
                         </div>
@@ -345,21 +372,31 @@ const HowSelectionWorks = () => {
                       
                       <div className="p-3 border border-yellow-100 bg-yellow-50 rounded-lg">
                         <div className="flex justify-between mb-1">
-                          <span className="font-medium text-yellow-700">Least RTO</span>
+                          <span className="font-medium text-yellow-700">Balance Mode</span>
                           <div className="flex items-center gap-2">
-                            <span className="text-sm bg-green-200 text-green-800 px-2 py-0.5 rounded">Delivery Success: 85%</span>
-                            <span className="text-sm bg-blue-200 text-blue-800 px-2 py-0.5 rounded">Profit: Medium</span>
+                            <span className="text-sm bg-green-200 text-green-800 px-2 py-0.5 rounded">Success: 75%</span>
+                            <span className="text-sm bg-blue-200 text-blue-800 px-2 py-0.5 rounded">Profit: Balanced</span>
                           </div>
                         </div>
-                        <p className="text-sm text-yellow-700">Focus on minimizing returns while maintaining profit</p>
+                        <p className="text-sm text-yellow-700">Balanced approach for consistent results</p>
                       </div>
                     </div>
                     
-                    <div className="bg-blue-50 p-4 rounded-lg">
-                      <p className="font-medium text-blue-800">Recommended Mode: Peak Profit</p>
-                      <div className="mt-2 flex justify-between">
-                        <span className="text-sm text-blue-700">Estimated Delivery Success: 70%</span>
-                        <span className="text-sm text-blue-700">Estimated Profit: ₹42,500 monthly</span>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <p className="font-medium mb-1">Today's Prediction Summary</p>
+                      <div className="space-y-1 text-sm">
+                        <div className="flex justify-between">
+                          <span>Predicted High Value Orders:</span>
+                          <span className="font-medium">32</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Expected RTO Reduction:</span>
+                          <span className="font-medium text-green-600">-48%</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Projected Profit Increase:</span>
+                          <span className="font-medium text-green-600">+29%</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -371,40 +408,54 @@ const HowSelectionWorks = () => {
                       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
                         <Check size={18} className="text-blue-600" />
                       </div>
-                      Efficient Cashflow System
+                      Continuous AI Improvement
                     </h3>
                     
                     <div className="grid grid-cols-3 gap-3">
                       <div className="p-3 text-center bg-green-50 rounded-lg">
-                        <div className="text-2xl font-bold text-green-600">90%</div>
-                        <div className="text-sm text-gray-600">Delivery Success</div>
+                        <div className="text-2xl font-bold text-green-600">94%</div>
+                        <div className="text-sm text-gray-600">Model Accuracy</div>
+                        <div className="text-xs text-green-600">↑ 4% this month</div>
                       </div>
                       <div className="p-3 text-center bg-blue-50 rounded-lg">
-                        <div className="text-2xl font-bold text-blue-600">-40%</div>
-                        <div className="text-sm text-gray-600">Shipping Cost</div>
+                        <div className="text-2xl font-bold text-blue-600">-52%</div>
+                        <div className="text-sm text-gray-600">RTO Reduction</div>
+                        <div className="text-xs text-blue-600">↑ 7% this month</div>
                       </div>
                       <div className="p-3 text-center bg-purple-50 rounded-lg">
-                        <div className="text-2xl font-bold text-purple-600">-40%</div>
-                        <div className="text-sm text-gray-600">Inventory Usage</div>
+                        <div className="text-2xl font-bold text-purple-600">+38%</div>
+                        <div className="text-sm text-gray-600">Profit Margin</div>
+                        <div className="text-xs text-purple-600">↑ 5% this month</div>
                       </div>
                     </div>
                     
                     <div className="bg-gray-50 p-4 rounded-lg">
-                      <p className="font-medium mb-1">Business Impact</p>
-                      <div className="flex items-center justify-between text-sm">
-                        <span>Monthly Orders: 1,000</span>
-                        <span className="text-green-600 font-medium">+₹45,000 Monthly Profit</span>
+                      <p className="font-medium mb-2">Model Improvement Timeline</p>
+                      <div className="relative">
+                        <div className="border-l-2 border-blue-300 absolute h-full left-0 ml-2"></div>
+                        <div className="ml-8 space-y-3">
+                          <div className="relative">
+                            <div className="absolute w-4 h-4 bg-blue-500 rounded-full -left-10 top-1"></div>
+                            <p className="text-sm font-medium">Initial Model Deployment</p>
+                            <p className="text-xs text-gray-500">85% accuracy</p>
+                          </div>
+                          <div className="relative">
+                            <div className="absolute w-4 h-4 bg-blue-500 rounded-full -left-10 top-1"></div>
+                            <p className="text-sm font-medium">First Data Retraining</p>
+                            <p className="text-xs text-gray-500">88% accuracy</p>
+                          </div>
+                          <div className="relative">
+                            <div className="absolute w-4 h-4 bg-blue-500 rounded-full -left-10 top-1"></div>
+                            <p className="text-sm font-medium">Algorithm Optimization</p>
+                            <p className="text-xs text-gray-500">91% accuracy</p>
+                          </div>
+                          <div className="relative">
+                            <div className="absolute w-4 h-4 bg-green-500 rounded-full -left-10 top-1"></div>
+                            <p className="text-sm font-medium">Current Model Performance</p>
+                            <p className="text-xs text-gray-500">94% accuracy</p>
+                          </div>
+                        </div>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
-                        <div className="bg-green-500 h-2 rounded-full" style={{ width: "75%" }}></div>
-                      </div>
-                    </div>
-                    
-                    <div className="p-4 border border-blue-100 bg-blue-50 rounded-lg">
-                      <p className="font-medium text-blue-800">Save working capital today!</p>
-                      <p className="text-sm text-blue-700 mt-1">
-                        Avoid unnecessary wasted shipments that were never meant to convert.
-                      </p>
                     </div>
                   </div>
                 )}
