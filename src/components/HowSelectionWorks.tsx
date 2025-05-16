@@ -83,28 +83,28 @@ const HowSelectionWorks = () => {
   const steps = [
     {
       number: 1,
-      title: "Scans All COD Shopify Orders",
+      title: "Fetch AWB Links From Each Shopify Order",
       description: "Our AI engine automatically scans and processes all of your Cash-on-Delivery orders from your Shopify store in real-time."
     },
     {
       number: 2,
-      title: "Scores Each Order",
-      description: "Our proprietary algorithm assigns a confidence score to predict the likelihood of successful delivery and payment collection."
+      title: "Extract tracking status + maintain Database",
+      description: "Our proprietary algorithm extracts tracking information and maintains a comprehensive database for all your shipments."
     },
     {
       number: 3,
-      title: "Ranks All Orders Internally",
-      description: "Each order is analyzed and ranked based on multiple parameters including location, customer history, and product category."
+      title: "AI Trains on data + Product Specific Training",
+      description: "Each order is analyzed and the AI learns from your specific product categories and customer behaviors to improve predictions."
     },
     {
       number: 4,
-      title: "3 Mode Shipping",
+      title: "Accurately Order Selection + 3 modes of shipping",
       description: "Orders are intelligently routed through three optimized shipping modes based on their scores to maximize delivery success rates."
     },
     {
       number: 5,
-      title: "Efficient Cashflow System",
-      description: "Save working capital on shipping costs, unnecessary wasted shipments that were never meant to convert."
+      title: "AI Gets Better With Fresh Data Overtime",
+      description: "Save working capital on shipping costs as our AI continuously learns from new data, improving predictions and reducing waste."
     }
   ];
 
