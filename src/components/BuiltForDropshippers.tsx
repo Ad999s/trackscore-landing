@@ -15,7 +15,7 @@ const BuiltForDropshippers = () => {
           className="text-center mb-12"
         >
           <h2 className="text-5xl md:text-6xl font-bold leading-tight mb-4">
-            Built for <span className="text-blue-500">COD-Heavy D2C & Dropshippers</span>
+            Purely Built for <span className="text-blue-500">COD-Heavy D2C & Dropshippers</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Cut RTO Rates by 50% with smart order selection
