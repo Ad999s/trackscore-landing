@@ -121,7 +121,7 @@ const CodMarketStats = () => {
         >
           {/* All COD Market Size */}
           <div className="bg-blue-50 p-6 rounded-lg shadow-sm text-center">
-            <h3 className="text-lg text-blue-700 mb-1">All COD Market Size</h3>
+            <h3 className="text-lg text-blue-700 mb-1">Total Indian COD Market Size</h3>
             <p className="text-2xl md:text-3xl text-blue-600">
               <AnimatedCounter prefix="$" end={79.9} suffix="B" duration={2500} />
             </p>
@@ -129,7 +129,7 @@ const CodMarketStats = () => {
           
           {/* Clean COD Market */}
           <div className="bg-blue-100 p-6 rounded-lg shadow-sm text-center">
-            <h3 className="text-lg text-blue-800 mb-1">Clean COD Market</h3>
+            <h3 className="text-lg text-blue-800 mb-1">Scalysis Real COD Market</h3>
             <p className="text-2xl md:text-3xl text-blue-700">
               <AnimatedCounter prefix="$" end={47.94} suffix="B" duration={2700} />
             </p>
