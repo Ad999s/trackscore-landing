@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+
+import React from "react";
 import { motion } from "framer-motion";
-import { Globe } from "@/components/ui/globe";
 
 // Animated counter component
 const AnimatedCounter = ({ 
@@ -14,11 +14,11 @@ const AnimatedCounter = ({
   prefix?: string; 
   suffix?: string;
 }) => {
-  const [count, setCount] = useState(0);
-  const countRef = useRef<HTMLSpanElement>(null);
-  const [isInView, setIsInView] = useState(false);
+  const [count, setCount] = React.useState(0);
+  const countRef = React.useRef<HTMLSpanElement>(null);
+  const [isInView, setIsInView] = React.useState(false);
   
-  useEffect(() => {
+  React.useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -39,7 +39,7 @@ const AnimatedCounter = ({
     };
   }, []);
   
-  useEffect(() => {
+  React.useEffect(() => {
     if (!isInView) return;
     
     let startTime: number;
@@ -89,58 +89,73 @@ const CodMarketStats = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8"
         >
           <h2 className="text-5xl md:text-6xl font-bold leading-tight mb-4">
-            India loves COD. <span className="text-blue-500">65% Of All Ecom Transactions.</span>
+            <span className="text-blue-500">Scalysis = COD TAM - Fake Orders, Cleaned for Profit.</span>
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Globe Visualization */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative h-[400px] lg:h-[500px]"
-          >
-            <Globe />
-          </motion.div>
+        {/* New body text */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center mb-12"
+        >
+          <p className="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto">
+            Scalysis helps you tap into the massive COD market — but only the part that actually converts. 
+            We filter out fake, bot, and high-risk orders so you reach the real buyers — 
+            the ones who accept delivery and drive profit.
+          </p>
+        </motion.div>
 
-          {/* Stats Display - Normalized text sizes */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="space-y-8"
-          >
-            {/* Ecom Market Size - Reduced text size */}
-            <div className="bg-blue-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-lg text-blue-700 mb-1">Ecom Market Size</h3>
-              <p className="text-2xl md:text-3xl text-blue-600">
-                <AnimatedCounter prefix="$" end={123} suffix="B" duration={2500} />
-              </p>
-            </div>
-            
-            {/* COD Market Size - Reduced text size */}
-            <div className="bg-blue-100 p-6 rounded-lg shadow-sm">
-              <h3 className="text-lg text-blue-800 mb-1">COD Market Size</h3>
-              <p className="text-2xl md:text-3xl text-blue-700">
-                <AnimatedCounter prefix="$" end={79.9} suffix="B" duration={2700} />
-              </p>
-            </div>
-            
-            {/* Indian Shopify Stores - Reduced text size */}
-            <div className="bg-blue-600 p-6 rounded-lg shadow-sm text-white">
-              <h3 className="text-lg mb-1">Indian Shopify Stores</h3>
-              <p className="text-2xl md:text-3xl">
-                <AnimatedCounter end={89} suffix=",000+" duration={2900} />
-              </p>
-            </div>
-          </motion.div>
-        </div>
+        {/* Horizontal Stats Display */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
+        >
+          {/* All COD Market Size */}
+          <div className="bg-blue-50 p-6 rounded-lg shadow-sm text-center">
+            <h3 className="text-lg text-blue-700 mb-1">All COD Market Size</h3>
+            <p className="text-2xl md:text-3xl text-blue-600">
+              <AnimatedCounter prefix="$" end={79.9} suffix="B" duration={2500} />
+            </p>
+          </div>
+          
+          {/* Clean COD Market */}
+          <div className="bg-blue-100 p-6 rounded-lg shadow-sm text-center">
+            <h3 className="text-lg text-blue-800 mb-1">Clean COD Market</h3>
+            <p className="text-2xl md:text-3xl text-blue-700">
+              <AnimatedCounter prefix="$" end={47.94} suffix="B" duration={2700} />
+            </p>
+          </div>
+          
+          {/* Indian Shopify Stores */}
+          <div className="bg-blue-600 p-6 rounded-lg shadow-sm text-white text-center">
+            <h3 className="text-lg mb-1">Indian Shopify Stores</h3>
+            <p className="text-2xl md:text-3xl">
+              <AnimatedCounter end={89} suffix=",000+" duration={2900} />
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Subtext */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center"
+        >
+          <p className="text-lg font-medium text-blue-600 italic">
+            Scalysis Is the Secret Behind Your Competitor's Clean COD Scale.
+          </p>
+        </motion.div>
       </div>
     </section>
   );
