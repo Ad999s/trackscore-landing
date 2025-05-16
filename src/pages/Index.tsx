@@ -19,6 +19,7 @@ import { motion } from "framer-motion";
 import SmartLearning from "@/components/SmartLearning";
 import BuiltForDropshippers from "@/components/BuiltForDropshippers";
 import CodMarketStats from "@/components/CodMarketStats";
+import MarketComparisonSlider from "@/components/MarketComparisonSlider";
 
 const Index = () => {
   useEffect(() => {
@@ -42,8 +43,9 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <GoogleGeminiEffectDemo />
-        <CodMarketStats />
         <BuiltForDropshippers />
+        <MarketComparisonSlider />
+        <CodMarketStats />
         <motion.div
           initial="hidden"
           whileInView="visible"
