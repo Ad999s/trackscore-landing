@@ -36,13 +36,16 @@ export function Globe({
   config?: COBEOptions
 }) {
   // Fixed phi for India (centered on India's longitude)
-  const phi = 4.5; // This value centers on India's longitude
+  const phi = 1.35; // Adjusted value to center on India's longitude
   const theta = 0.5; // Slightly tilted for better view
   let width = 0;
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  
+  // We don't need these for static globe
   const pointerInteracting = useRef(null)
   const pointerInteractionMovement = useRef(0)
 
+  // These handlers won't change phi anymore to keep the globe static on India
   const updatePointerInteraction = (value: any) => {
     pointerInteracting.current = value
     if (canvasRef.current) {
@@ -54,7 +57,7 @@ export function Globe({
     if (pointerInteracting.current !== null) {
       const delta = clientX - pointerInteracting.current
       pointerInteractionMovement.current = delta
-      // We're not updating phi anymore to keep the globe static
+      // Not updating phi to keep the globe static on India
     }
   }
 
@@ -66,7 +69,7 @@ export function Globe({
       state.width = width * 2
       state.height = width * 2
     },
-    [],
+    [phi, theta],
   )
 
   const onResize = () => {
@@ -88,8 +91,16 @@ export function Globe({
       theta, // Use our fixed theta
     })
 
-    setTimeout(() => (canvasRef.current!.style.opacity = "1"))
-    return () => globe.destroy()
+    setTimeout(() => {
+      if (canvasRef.current) {
+        canvasRef.current.style.opacity = "1"
+      }
+    })
+    
+    return () => {
+      window.removeEventListener("resize", onResize)
+      globe.destroy()
+    }
   }, [config, onRender])
 
   return (

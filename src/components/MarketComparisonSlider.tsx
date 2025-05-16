@@ -142,7 +142,7 @@ const MarketComparisonSlider = () => {
                     width: 800,
                     height: 800,
                     onRender: () => {}, // Required property
-                    phi: 4.5, // Centered on India
+                    phi: 1.35, // Adjusted value to center on India
                     theta: 0.5, // Tilted view
                     devicePixelRatio: 2, // Required property
                     dark: 0, // Required property
