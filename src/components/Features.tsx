@@ -1,9 +1,11 @@
 
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 const Features = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [activeTab, setActiveTab] = useState("pnl"); // "pnl" or "cashflow"
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,6 +51,57 @@ const Features = () => {
             <p className="text-lg text-gray-600">
               Save 21% daily on shipping costs, packaging costs & supplier payments without hurting the potential revenue. Add 3% to your profit margins.
             </p>
+            
+            {/* Tab Buttons */}
+            <div className="flex space-x-4 pt-4">
+              <Button
+                variant={activeTab === "pnl" ? "default" : "outline"}
+                onClick={() => setActiveTab("pnl")}
+                className="flex-1"
+              >
+                Auto PnL Tracking
+              </Button>
+              <Button
+                variant={activeTab === "cashflow" ? "default" : "outline"}
+                onClick={() => setActiveTab("cashflow")}
+                className="flex-1"
+              >
+                30 Day Cash Flow
+              </Button>
+            </div>
+            
+            {/* Tab Content */}
+            <div className="p-4 bg-white rounded-lg shadow-sm border border-gray-100 min-h-40">
+              {activeTab === "pnl" ? (
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-blue-600">Automatic PnL Tracking</h3>
+                  <p>
+                    Automatically tracks your profit and loss across all your orders. Integrates with 
+                    your Shopify store and gives you real-time insights into your business performance.
+                  </p>
+                  <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                    <li>Real-time profit margin calculation</li>
+                    <li>Cost tracking across suppliers</li>
+                    <li>Shipping and packaging cost analysis</li>
+                    <li>COD fees and charges monitoring</li>
+                  </ul>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-green-600">Predict 30 Day Cash Flow</h3>
+                  <p>
+                    Get accurate predictions of your cash flow for the next 30 days. Know exactly when money 
+                    will come in and go out, helping you make better business decisions.
+                  </p>
+                  <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                    <li>Accurate COD remittance forecasting</li>
+                    <li>Supplier payment scheduling</li>
+                    <li>Expected delivery and RTO projections</li>
+                    <li>Daily, weekly, and monthly breakdown</li>
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Right Column - Feature Illustration */}
@@ -59,11 +112,19 @@ const Features = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-xl blur-xl"></div>
               <div className="relative bg-white rounded-xl shadow-medium overflow-hidden border border-gray-100">
-                <img 
-                  src="/lovable-uploads/c408b62f-1bf7-42d2-8132-857456402690.png" 
-                  alt="Smart Order Selection AI Dashboard" 
-                  className="w-full h-auto" 
-                />
+                {activeTab === "pnl" ? (
+                  <img 
+                    src="/lovable-uploads/c408b62f-1bf7-42d2-8132-857456402690.png" 
+                    alt="Auto PnL Tracking Dashboard" 
+                    className="w-full h-auto" 
+                  />
+                ) : (
+                  <img 
+                    src="/lovable-uploads/f02f2d55-07d3-4d98-9dc7-9443cc8b8759.png" 
+                    alt="30 Day Cash Flow Prediction" 
+                    className="w-full h-auto" 
+                  />
+                )}
               </div>
             </div>
           </div>

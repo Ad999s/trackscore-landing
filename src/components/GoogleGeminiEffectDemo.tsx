@@ -12,15 +12,16 @@ export function GoogleGeminiEffectDemo() {
   });
 
   // Reduce the scroll range to complete the animation faster
-  const pathLengthFirst = useTransform(scrollYProgress, [0, 0.15], [0.2, 1.2]);
-  const pathLengthSecond = useTransform(scrollYProgress, [0, 0.15], [0.15, 1.2]);
-  const pathLengthThird = useTransform(scrollYProgress, [0, 0.15], [0.1, 1.2]);
-  const pathLengthFourth = useTransform(scrollYProgress, [0, 0.15], [0.05, 1.2]);
-  const pathLengthFifth = useTransform(scrollYProgress, [0, 0.15], [0, 1.2]);
+  // Changed from 0.15 to 0.08 to make animation complete sooner
+  const pathLengthFirst = useTransform(scrollYProgress, [0, 0.08], [0.2, 1.2]);
+  const pathLengthSecond = useTransform(scrollYProgress, [0, 0.08], [0.15, 1.2]);
+  const pathLengthThird = useTransform(scrollYProgress, [0, 0.08], [0.1, 1.2]);
+  const pathLengthFourth = useTransform(scrollYProgress, [0, 0.08], [0.05, 1.2]);
+  const pathLengthFifth = useTransform(scrollYProgress, [0, 0.08], [0, 1.2]);
 
   return (
     <div
-      className="h-[140vh] bg-black w-full dark:border dark:border-white/[0.1] rounded-md relative pt-40 overflow-clip"
+      className="h-[100vh] bg-black w-full dark:border dark:border-white/[0.1] rounded-md relative pt-40 overflow-clip"
       ref={ref}
     >
       <GoogleGeminiEffect

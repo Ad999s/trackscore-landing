@@ -10,7 +10,6 @@ import SmartMetaTargeting from "@/components/SmartMetaTargeting";
 import AutoPnLTracking from "@/components/AutoPnLTracking";
 import PredictCashFlow from "@/components/PredictCashFlow";
 import PincodeBlocker from "@/components/PincodeBlocker";
-import Stats from "@/components/Stats";
 import HowItWorks from "@/components/HowItWorks";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -20,6 +19,7 @@ import SmartLearning from "@/components/SmartLearning";
 import BuiltForDropshippers from "@/components/BuiltForDropshippers";
 import CodMarketStats from "@/components/CodMarketStats";
 import MarketComparisonSlider from "@/components/MarketComparisonSlider";
+import Features from "@/components/Features";
 
 const Index = () => {
   useEffect(() => {
@@ -85,15 +85,7 @@ const Index = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={sectionVariants}
         >
-          <AutoPnLTracking />
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
-          <PredictCashFlow />
+          <Features />
         </motion.div>
         <motion.div
           initial="hidden"
@@ -102,14 +94,6 @@ const Index = () => {
           variants={sectionVariants}
         >
           <PincodeBlocker />
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
-          <Stats />
         </motion.div>
         <motion.div
           initial="hidden"

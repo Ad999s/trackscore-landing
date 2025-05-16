@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Package, TrendingUp, IndianRupeeIcon } from "lucide-react";
+import { ArrowRight, Package, TrendingUp, IndianRupeeIcon, Calendar } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 
 const DailyShippingCalculator = () => {
@@ -76,7 +76,7 @@ const DailyShippingCalculator = () => {
         >
           <div className="text-center mb-10">
             <h2 className="text-5xl md:text-6xl font-bold mb-4">
-              See How Much You Can Save With Smart Order Selection
+              See How Much You Can Save With <span className="text-blue-600">Smart Order Selection</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Estimate your potential savings by reducing unnecessary shipments with our AI-powered order selection
@@ -140,7 +140,7 @@ const DailyShippingCalculator = () => {
               </CardContent>
             </Card>
             
-            {/* Results Section */}
+            {/* Results Section - Updated with Monthly Metrics */}
             <Card className={cn(
               "shadow-md transition-all duration-700 border border-blue-100 bg-gradient-to-br from-blue-50 to-white",
               isVisible ? "animate-slideUp animation-delay-200" : "opacity-0 translate-y-8"
@@ -148,7 +148,7 @@ const DailyShippingCalculator = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <TrendingUp className="text-blue-600" size={22} />
-                  Your Daily Savings
+                  Your Savings
                 </CardTitle>
                 <CardDescription>
                   Based on your current order volume and delivery rate
@@ -156,23 +156,40 @@ const DailyShippingCalculator = () => {
               </CardHeader>
               <CardContent>
                 <div className="space-y-6">
-                  <div className="bg-blue-600 text-white rounded-lg p-6 text-center">
-                    <div className="text-sm mb-2">Inventory Saved Daily</div>
-                    <div 
-                      className="text-3xl font-bold flex items-center justify-center"
-                    >
-                      <Package size={24} className="mr-2" />
-                      <CountUp end={results.inventorySaved} /> units
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-blue-600 text-white rounded-lg p-4 text-center">
+                      <div className="text-sm mb-1">Daily Inventory Saved</div>
+                      <div className="text-2xl font-bold flex items-center justify-center">
+                        <Package size={20} className="mr-2" />
+                        <CountUp end={results.inventorySaved} /> units
+                      </div>
+                    </div>
+                    
+                    <div className="bg-blue-600 text-white rounded-lg p-4 text-center">
+                      <div className="text-sm mb-1">Monthly Inventory Saved</div>
+                      <div className="text-2xl font-bold flex items-center justify-center">
+                        <Package size={20} className="mr-2" />
+                        <CountUp end={results.inventorySaved * 30} /> units
+                      </div>
                     </div>
                   </div>
                   
-                  <div className="bg-green-600 text-white rounded-lg p-6 text-center">
-                    <div className="text-sm mb-2">Save on shipping & packaging everyday</div>
-                    <div 
-                      className="text-3xl font-bold flex items-center justify-center"
-                    >
-                      <IndianRupeeIcon size={24} className="mr-1" />
-                      <CountUp end={results.shippingCostSaved} />
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-green-600 text-white rounded-lg p-4 text-center">
+                      <div className="text-sm mb-1">Daily Savings</div>
+                      <div className="text-2xl font-bold flex items-center justify-center">
+                        <IndianRupeeIcon size={20} className="mr-1" />
+                        <CountUp end={results.shippingCostSaved} />
+                      </div>
+                    </div>
+                    
+                    <div className="bg-green-600 text-white rounded-lg p-4 text-center">
+                      <div className="text-sm mb-1">Monthly Savings</div>
+                      <div className="text-2xl font-bold flex items-center justify-center">
+                        <Calendar size={20} className="mr-1" />
+                        <IndianRupeeIcon size={16} className="mr-1" />
+                        <CountUp end={results.shippingCostSaved * 30} />
+                      </div>
                     </div>
                   </div>
                   

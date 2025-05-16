@@ -111,32 +111,32 @@ const CodMarketStats = () => {
           </p>
         </motion.div>
 
-        {/* Horizontal Stats Display */}
+        {/* Horizontal Stats Display - Updated with middle box bigger */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
+          className="grid grid-cols-1 md:grid-cols-7 gap-6 mb-8"
         >
-          {/* All COD Market Size */}
-          <div className="bg-blue-50 p-6 rounded-lg shadow-sm text-center">
+          {/* All COD Market Size - Smaller */}
+          <div className="md:col-span-2 bg-blue-50 p-6 rounded-lg shadow-sm text-center">
             <h3 className="text-lg text-blue-700 mb-1">Total Indian COD Market Size</h3>
             <p className="text-2xl md:text-3xl text-blue-600">
               <AnimatedCounter prefix="$" end={79.9} suffix="B" duration={2500} />
             </p>
           </div>
           
-          {/* Clean COD Market */}
-          <div className="bg-blue-100 p-6 rounded-lg shadow-sm text-center">
+          {/* Clean COD Market - Larger */}
+          <div className="md:col-span-3 bg-blue-100 p-6 rounded-lg shadow-sm text-center">
             <h3 className="text-lg text-blue-800 mb-1">Scalysis Real COD Market</h3>
-            <p className="text-2xl md:text-3xl text-blue-700">
+            <p className="text-2xl md:text-4xl text-blue-700">
               <AnimatedCounter prefix="$" end={47.94} suffix="B" duration={2700} />
             </p>
           </div>
           
-          {/* Indian Shopify Stores */}
-          <div className="bg-blue-600 p-6 rounded-lg shadow-sm text-white text-center">
+          {/* Indian Shopify Stores - Smaller */}
+          <div className="md:col-span-2 bg-blue-600 p-6 rounded-lg shadow-sm text-white text-center">
             <h3 className="text-lg mb-1">Indian Shopify Stores</h3>
             <p className="text-2xl md:text-3xl">
               <AnimatedCounter end={89} suffix=",000+" duration={2900} />
@@ -144,7 +144,7 @@ const CodMarketStats = () => {
           </div>
         </motion.div>
 
-        {/* Subtext */}
+        {/* Subtext - Updated */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -153,7 +153,7 @@ const CodMarketStats = () => {
           className="text-center"
         >
           <p className="text-lg font-medium text-blue-600 italic">
-            Scalysis Is the Secret Behind Your Competitor's Clean COD Scale.
+            Scalysis helps you tap into goldmine of COD Audience, Scale without RTO.
           </p>
         </motion.div>
       </div>
