@@ -119,24 +119,24 @@ const CodMarketStats = () => {
           >
             {/* Ecom Market Size */}
             <div className="bg-blue-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-lg text-blue-700 mb-1">Ecom Market Size</h3>
-              <p className="text-3xl md:text-4xl text-blue-600">
+              <h3 className="text-xl text-blue-700 mb-1">Ecom Market Size</h3>
+              <p className="text-4xl md:text-5xl text-blue-600">
                 <AnimatedCounter prefix="$" end={123} suffix="B" duration={2500} />
               </p>
             </div>
             
             {/* COD Market Size */}
             <div className="bg-blue-100 p-6 rounded-lg shadow-sm">
-              <h3 className="text-lg text-blue-800 mb-1">COD Market Size</h3>
-              <p className="text-3xl md:text-4xl text-blue-700">
+              <h3 className="text-xl text-blue-800 mb-1">COD Market Size</h3>
+              <p className="text-4xl md:text-5xl text-blue-700">
                 <AnimatedCounter prefix="$" end={79.9} suffix="B" duration={2700} />
               </p>
             </div>
             
             {/* Indian Shopify Stores */}
             <div className="bg-blue-600 p-6 rounded-lg shadow-sm text-white">
-              <h3 className="text-lg mb-1">Indian Shopify Stores</h3>
-              <p className="text-3xl md:text-4xl">
+              <h3 className="text-xl mb-1">Indian Shopify Stores</h3>
+              <p className="text-4xl md:text-5xl">
                 <AnimatedCounter end={89} suffix=",000+" duration={2900} />
               </p>
             </div>

@@ -42,9 +42,8 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <GoogleGeminiEffectDemo />
-        <SavingStats />
-        <BuiltForDropshippers />
         <CodMarketStats />
+        <BuiltForDropshippers />
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -53,6 +52,7 @@ const Index = () => {
         >
           <HowSelectionWorks />
         </motion.div>
+        <SavingStats />
         <motion.div
           initial="hidden"
           whileInView="visible"

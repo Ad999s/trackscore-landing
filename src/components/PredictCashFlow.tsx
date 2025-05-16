@@ -60,7 +60,7 @@ const PredictCashFlow = () => {
             <p className="inline-block text-sm font-medium px-3 py-1 bg-primary/10 text-primary rounded-full mb-4">
               Cashflow Forecasting
             </p>
-            <h2 className="text-5xl md:text-6xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Predict <span className="text-gradient">30 Day Cashflow</span>
             </h2>
             <p className="text-lg text-gray-600">
