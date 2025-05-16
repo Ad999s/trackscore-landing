@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Slider } from "@/components/ui/slider";
 import { Map } from "lucide-react";
@@ -13,7 +14,7 @@ const MarketComparisonSlider = () => {
     setIsScalysisView(sliderValue >= 50);
   }, [sliderValue]);
 
-  // Animation variants
+  // Animation variants for map
   const mapVariants = {
     prepaid: {
       scale: 1,
@@ -88,6 +89,18 @@ const MarketComparisonSlider = () => {
       { location: [25.3176, 82.9739] as [number, number], size: 0.05 }, // Varanasi
       { location: [18.6725, 78.0940] as [number, number], size: 0.05 }, // Nizamabad
       { location: [24.5854, 73.7125] as [number, number], size: 0.05 }, // Udaipur
+      
+      // Add even more smaller markers for higher density at max slider
+      { location: [26.2006, 92.9376] as [number, number], size: 0.04 }, // Tezpur
+      { location: [24.7914, 85.0002] as [number, number], size: 0.04 }, // Gaya
+      { location: [21.4668, 83.9756] as [number, number], size: 0.04 }, // Sambalpur
+      { location: [15.8281, 78.0373] as [number, number], size: 0.04 }, // Kurnool
+      { location: [25.2138, 75.8648] as [number, number], size: 0.04 }, // Kota
+      { location: [22.3039, 70.8022] as [number, number], size: 0.04 }, // Rajkot
+      { location: [28.9845, 77.7064] as [number, number], size: 0.04 }, // Meerut
+      { location: [20.7141, 77.0025] as [number, number], size: 0.04 }, // Akola
+      { location: [14.4426, 79.9865] as [number, number], size: 0.04 }, // Nellore
+      { location: [30.9084, 75.8570] as [number, number], size: 0.04 }, // Ludhiana
     ];
     
     // Calculate how many markers to show based on slider value
@@ -128,11 +141,11 @@ const MarketComparisonSlider = () => {
                   config={{
                     width: 800,
                     height: 800,
-                    onRender: () => {}, // Added required property
-                    phi: 0, // Added required property
-                    theta: 0.3, // Added required property
-                    devicePixelRatio: 2, // Added required property
-                    dark: 0, // Added required property
+                    onRender: () => {}, // Required property
+                    phi: 4.5, // Centered on India
+                    theta: 0.5, // Tilted view
+                    devicePixelRatio: 2, // Required property
+                    dark: 0, // Required property
                     glowColor: isScalysisView ? [0.3, 0.6, 1] : [0.8, 0.8, 0.8],
                     baseColor: [0.95, 0.95, 0.95], // Whiteish color
                     markerColor: isScalysisView 
@@ -164,22 +177,6 @@ const MarketComparisonSlider = () => {
                   </p>
                 </motion.div>
               </div>
-
-              {/* Pulse animation for Scalysis view */}
-              {isScalysisView && (
-                <motion.div 
-                  className="absolute inset-0 bg-blue-400/10 rounded-lg"
-                  animate={{
-                    scale: [1, 1.05, 1],
-                    opacity: [0, 0.3, 0]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    repeatType: "loop"
-                  }}
-                />
-              )}
               
               {/* Map icon */}
               <div className="absolute top-4 left-4 bg-white/80 p-2 rounded-full">
@@ -287,13 +284,11 @@ const MarketComparisonSlider = () => {
             )}
             
             <div className="mt-8 text-center">
-              <p 
-                className={`inline-block py-2 px-4 rounded-full text-lg font-semibold ${
-                  isScalysisView 
-                    ? 'bg-blue-100 text-blue-700' 
-                    : 'bg-gray-100 text-gray-700'
-                }`}
-              >
+              <p className={`inline-block py-2 px-4 rounded-full text-lg font-semibold ${
+                isScalysisView 
+                  ? 'bg-blue-100 text-blue-700' 
+                  : 'bg-gray-100 text-gray-700'
+              }`}>
                 {isScalysisView ? "Scalysis = Profitable COD TAM" : "Prepaid = Limited TAM"}
               </p>
             </div>
