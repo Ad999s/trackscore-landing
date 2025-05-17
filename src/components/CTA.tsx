@@ -1,8 +1,8 @@
 
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
 const CTA = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -58,15 +58,14 @@ const CTA = () => {
                   Join hundreds of businesses across India that are saving money and improving customer satisfaction with Scalysis.
                 </p>
                 <div className="flex flex-wrap gap-4 pt-2">
-                  <Button asChild size="lg" variant="secondary" className="group text-primary">
-                    <a href="#contact">
-                      Try 30 Days Free
-                      <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                    </a>
-                  </Button>
-                  <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10">
-                    <a href="#contact">Watch Demo</a>
-                  </Button>
+                  <InteractiveHoverButton 
+                    text="Try 30 Days Free" 
+                    className="w-40 bg-white text-primary hover:bg-white border-white"
+                  />
+                  <InteractiveHoverButton 
+                    text="Watch Demo" 
+                    className="w-40 bg-transparent text-white hover:bg-white/10 border-white"
+                  />
                 </div>
               </div>
               

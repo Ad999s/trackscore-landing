@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -79,9 +80,11 @@ const Navbar = () => {
                 Contact
               </a>
             </Button>
-            <Button asChild>
-              <a href="#get-started">Get Started</a>
-            </Button>
+            <InteractiveHoverButton 
+              text="Get Started" 
+              className="w-32 bg-blue-600 text-white hover:bg-blue-600 border-blue-600"
+              onClick={() => window.location.href = "#get-started"}
+            />
           </nav>
 
           {/* Mobile Menu Button */}
@@ -126,14 +129,14 @@ const Navbar = () => {
               >
                 Contact
               </a>
-              <Button asChild>
-                <a 
-                  href="#get-started"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Get Started
-                </a>
-              </Button>
+              <InteractiveHoverButton 
+                text="Get Started" 
+                className="w-32 bg-blue-600 text-white hover:bg-blue-600 border-blue-600"
+                onClick={() => {
+                  window.location.href = "#get-started";
+                  setIsMobileMenuOpen(false);
+                }}
+              />
             </nav>
           </div>
         )}

@@ -1,7 +1,7 @@
 
-import { Button } from "@/components/ui/button";
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -70,11 +70,10 @@ Unlock True Profitable With COD with no RTO Mess.</p>
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                <a href="#get-started" className="flex items-center">
-                  Explore App: 30 Day Trial
-                </a>
-              </Button>
+              <InteractiveHoverButton 
+                text="Explore App" 
+                className="w-40 bg-blue-600 text-white hover:bg-blue-600 border-blue-600"
+              />
             </motion.div>
           </motion.div>
 
