@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import { GoogleGeminiEffectDemo } from "@/components/GoogleGeminiEffectDemo";
 import SavingStats from "@/components/SavingStats";
 import HowSelectionWorks from "@/components/HowSelectionWorks";
 import BeforeAfterFlip from "@/components/BeforeAfterFlip";
@@ -21,6 +20,7 @@ import CodMarketStats from "@/components/CodMarketStats";
 import MarketComparisonSlider from "@/components/MarketComparisonSlider";
 import Features from "@/components/Features";
 import WhatsInsideScalysis from "@/components/WhatsInsideScalysis";
+import OldVsNew from "@/components/OldVsNew";
 
 const Index = () => {
   useEffect(() => {
@@ -43,7 +43,6 @@ const Index = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
-        <GoogleGeminiEffectDemo />
         <WhatsInsideScalysis />
         <BuiltForDropshippers />
         <MarketComparisonSlider />
@@ -57,6 +56,7 @@ const Index = () => {
           <HowSelectionWorks />
         </motion.div>
         <SavingStats />
+        <OldVsNew />
         <motion.div
           initial="hidden"
           whileInView="visible"
