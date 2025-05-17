@@ -122,27 +122,12 @@ const MarketComparisonSlider = () => {
               variants={mapVariants}
               transition={{ duration: 0.5 }}
             >
-              {/* Globe underneath */}
+              {/* Globe underneath with interactive features */}
               <div className="absolute inset-0 opacity-90">
                 <Globe 
-                  config={{
-                    width: 800,
-                    height: 800,
-                    onRender: () => {}, // Added required property
-                    phi: 0, // Added required property
-                    theta: 0.3, // Added required property
-                    devicePixelRatio: 2, // Added required property
-                    dark: 0, // Added required property
-                    glowColor: isScalysisView ? [0.3, 0.6, 1] : [0.8, 0.8, 0.8],
-                    baseColor: [0.95, 0.95, 0.95], // Whiteish color
-                    markerColor: isScalysisView 
-                      ? [66/255, 135/255, 245/255] 
-                      : [120/255, 120/255, 120/255],
-                    markers: getMarkers(),
-                    mapSamples: 20000,
-                    mapBrightness: isScalysisView ? 3 : 1.2,
-                    diffuse: isScalysisView ? 0.8 : 0.4,
-                  }}
+                  isScalysisView={isScalysisView}
+                  enableRotation={true}
+                  enableZoom={true}
                 />
               </div>
               
