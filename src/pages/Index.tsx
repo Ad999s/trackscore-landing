@@ -1,8 +1,8 @@
+
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import { GoogleGeminiEffectDemo } from "@/components/GoogleGeminiEffectDemo";
-import AITrainingDashboard from "@/components/AITrainingDashboard";
 import SavingStats from "@/components/SavingStats";
 import HowSelectionWorks from "@/components/HowSelectionWorks";
 import BeforeAfterFlip from "@/components/BeforeAfterFlip";
@@ -21,8 +21,6 @@ import CodMarketStats from "@/components/CodMarketStats";
 import MarketComparisonSlider from "@/components/MarketComparisonSlider";
 import Features from "@/components/Features";
 import WhatsInsideScalysis from "@/components/WhatsInsideScalysis";
-import { ScalysisTimelineDemo } from "@/components/ui/scalysis-timeline-demo";
-import { ScalysisGeminiSection } from "@/components/ui/scalysis-gemini-section";
 
 const Index = () => {
   useEffect(() => {
@@ -46,10 +44,7 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <GoogleGeminiEffectDemo />
-        <ScalysisGeminiSection />
-        <AITrainingDashboard />
         <WhatsInsideScalysis />
-        <ScalysisTimelineDemo />
         <BuiltForDropshippers />
         <MarketComparisonSlider />
         <CodMarketStats />

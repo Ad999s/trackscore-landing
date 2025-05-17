@@ -11,13 +11,13 @@ export function GoogleGeminiEffectDemo() {
     offset: ["start start", "end start"],
   });
 
-  // Extend the animation duration by reducing the range values even more
-  // Changed to make animation last about 2x longer
-  const pathLengthFirst = useTransform(scrollYProgress, [0, 0.08], [0.2, 1.2]);
-  const pathLengthSecond = useTransform(scrollYProgress, [0, 0.08], [0.15, 1.2]);
-  const pathLengthThird = useTransform(scrollYProgress, [0, 0.08], [0.1, 1.2]);
-  const pathLengthFourth = useTransform(scrollYProgress, [0, 0.08], [0.05, 1.2]);
-  const pathLengthFifth = useTransform(scrollYProgress, [0, 0.08], [0, 1.2]);
+  // Extend the animation duration by reducing the range values
+  // Changed to make animation 70% longer
+  const pathLengthFirst = useTransform(scrollYProgress, [0, 0.136], [0.2, 1.2]);
+  const pathLengthSecond = useTransform(scrollYProgress, [0, 0.136], [0.15, 1.2]);
+  const pathLengthThird = useTransform(scrollYProgress, [0, 0.136], [0.1, 1.2]);
+  const pathLengthFourth = useTransform(scrollYProgress, [0, 0.136], [0.05, 1.2]);
+  const pathLengthFifth = useTransform(scrollYProgress, [0, 0.136], [0, 1.2]);
 
   return (
     <div
