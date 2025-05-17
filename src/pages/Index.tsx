@@ -21,6 +21,7 @@ import MarketComparisonSlider from "@/components/MarketComparisonSlider";
 import Features from "@/components/Features";
 import WhatsInsideScalysis from "@/components/WhatsInsideScalysis";
 import OldVsNew from "@/components/OldVsNew";
+import { GoogleGeminiEffectDemo } from "@/components/GoogleGeminiEffectDemo";
 
 const Index = () => {
   useEffect(() => {
@@ -45,6 +46,7 @@ const Index = () => {
         <Hero />
         <WhatsInsideScalysis />
         <BuiltForDropshippers />
+        <GoogleGeminiEffectDemo />
         <MarketComparisonSlider />
         <CodMarketStats />
         <motion.div
