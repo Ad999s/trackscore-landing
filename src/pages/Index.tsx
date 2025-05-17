@@ -21,6 +21,7 @@ import MarketComparisonSlider from "@/components/MarketComparisonSlider";
 import Features from "@/components/Features";
 import WhatsInsideScalysis from "@/components/WhatsInsideScalysis";
 import OldVsNew from "@/components/OldVsNew";
+import { GoogleGeminiEffectDemo } from "@/components/GoogleGeminiEffectDemo";
 
 const Index = () => {
   useEffect(() => {
@@ -43,6 +44,7 @@ const Index = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
+        <GoogleGeminiEffectDemo />
         <WhatsInsideScalysis />
         <BuiltForDropshippers />
         <MarketComparisonSlider />
