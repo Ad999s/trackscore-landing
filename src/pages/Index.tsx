@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import { GoogleGeminiEffectDemo } from "@/components/GoogleGeminiEffectDemo";
+import AITrainingDashboard from "@/components/AITrainingDashboard";
 import SavingStats from "@/components/SavingStats";
 import HowSelectionWorks from "@/components/HowSelectionWorks";
 import BeforeAfterFlip from "@/components/BeforeAfterFlip";
@@ -44,6 +45,7 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <GoogleGeminiEffectDemo />
+        <AITrainingDashboard />
         <WhatsInsideScalysis />
         <BuiltForDropshippers />
         <MarketComparisonSlider />
