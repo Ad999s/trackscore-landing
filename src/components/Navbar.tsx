@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -80,11 +80,14 @@ const Navbar = () => {
                 Contact
               </a>
             </Button>
-            <InteractiveHoverButton 
-              text="Get Started" 
-              className="w-32 bg-blue-600 text-white hover:bg-blue-600 border-blue-600"
+            <ShimmerButton 
+              background="rgba(37, 99, 235, 1)" 
+              shimmerColor="rgba(255, 255, 255, 0.4)"
+              className="w-32 text-white"
               onClick={() => window.location.href = "#get-started"}
-            />
+            >
+              <span className="text-sm font-medium">Get Started</span>
+            </ShimmerButton>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -129,14 +132,17 @@ const Navbar = () => {
               >
                 Contact
               </a>
-              <InteractiveHoverButton 
-                text="Get Started" 
-                className="w-32 bg-blue-600 text-white hover:bg-blue-600 border-blue-600"
+              <ShimmerButton 
+                background="rgba(37, 99, 235, 1)" 
+                shimmerColor="rgba(255, 255, 255, 0.4)"
+                className="w-32 text-white"
                 onClick={() => {
                   window.location.href = "#get-started";
                   setIsMobileMenuOpen(false);
                 }}
-              />
+              >
+                <span className="text-sm font-medium">Get Started</span>
+              </ShimmerButton>
             </nav>
           </div>
         )}

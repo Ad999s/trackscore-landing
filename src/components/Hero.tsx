@@ -1,7 +1,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -70,10 +70,13 @@ Unlock True Profitable With COD with no RTO Mess.</p>
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              <InteractiveHoverButton 
-                text="Explore App" 
-                className="w-40 bg-blue-600 text-white hover:bg-blue-600 border-blue-600"
-              />
+              <ShimmerButton 
+                background="rgba(37, 99, 235, 1)" 
+                shimmerColor="rgba(255, 255, 255, 0.4)"
+                className="w-40"
+              >
+                <span className="text-sm font-medium">Explore App</span>
+              </ShimmerButton>
             </motion.div>
           </motion.div>
 
