@@ -22,6 +22,7 @@ import CodMarketStats from "@/components/CodMarketStats";
 import MarketComparisonSlider from "@/components/MarketComparisonSlider";
 import Features from "@/components/Features";
 import WhatsInsideScalysis from "@/components/WhatsInsideScalysis";
+import { ScalysisTimelineDemo } from "@/components/ui/scalysis-timeline-demo";
 
 const Index = () => {
   useEffect(() => {
@@ -47,6 +48,7 @@ const Index = () => {
         <GoogleGeminiEffectDemo />
         <AITrainingDashboard />
         <WhatsInsideScalysis />
+        <ScalysisTimelineDemo />
         <BuiltForDropshippers />
         <MarketComparisonSlider />
         <CodMarketStats />
