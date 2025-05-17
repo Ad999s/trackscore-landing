@@ -22,6 +22,7 @@ import Features from "@/components/Features";
 import WhatsInsideScalysis from "@/components/WhatsInsideScalysis";
 import OldVsNew from "@/components/OldVsNew";
 import { GoogleGeminiEffectDemo } from "@/components/GoogleGeminiEffectDemo";
+import { ShimmerButtonDemo } from "@/components/ShimmerButtonDemo";
 
 const Index = () => {
   useEffect(() => {
@@ -45,6 +46,7 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <GoogleGeminiEffectDemo />
+        <ShimmerButtonDemo />
         <WhatsInsideScalysis />
         <BuiltForDropshippers />
         <MarketComparisonSlider />
