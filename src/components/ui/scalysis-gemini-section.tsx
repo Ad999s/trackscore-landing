@@ -25,7 +25,7 @@ const GeminiButton = ({
 
 export function ScalysisGeminiSection() {
   return (
-    <div className="relative w-full h-screen flex flex-col items-center justify-center bg-black overflow-hidden">
+    <div className="relative w-full min-h-screen py-20 flex flex-col items-center justify-center bg-black overflow-hidden">
       {/* Background stars/sparkles */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="star-sm absolute top-[15%] right-[20%] w-1 h-1 bg-blue-300 rounded-full animate-pulse"></div>
@@ -130,13 +130,13 @@ export function ScalysisGeminiSection() {
 
       {/* Main headline */}
       <div className="text-center z-10 mb-10">
-        <h1 className="text-7xl font-light mb-8">
+        <h1 className="text-4xl md:text-7xl font-light mb-8">
           <span className="text-white">The </span>
           <span className="text-blue-400 font-normal">Scalysis</span>
           <span className="text-white"> era</span>
         </h1>
         
-        <p className="text-gray-300 max-w-lg mx-auto text-xl">
+        <p className="text-gray-300 max-w-lg mx-auto text-lg md:text-xl px-4">
           Smarter COD order selection for greater profitability
         </p>
       </div>
@@ -154,7 +154,7 @@ export function ScalysisGeminiSection() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.8 }}
-        className="absolute bottom-16 right-16 max-w-xs"
+        className="absolute bottom-16 right-16 max-w-xs hidden md:block"
       >
         <div className="backdrop-blur-sm bg-black/50 border border-blue-900/30 rounded-lg p-4">
           <div className="text-blue-400 text-sm mb-2">Scalysis Performance</div>
@@ -180,7 +180,7 @@ export function ScalysisGeminiSection() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.7, duration: 0.8 }}
-        className="absolute bottom-16 right-48 max-w-xs hidden lg:block"
+        className="absolute bottom-16 left-16 max-w-xs hidden lg:block"
       >
         <div className="backdrop-blur-sm bg-black/50 border border-blue-900/30 rounded-lg p-3">
           <div className="text-blue-500 text-xs mb-1 font-mono">model.accuracy</div>
