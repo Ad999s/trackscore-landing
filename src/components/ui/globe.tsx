@@ -1,4 +1,3 @@
-
 "use client"
 
 import createGlobe, { COBEOptions } from "cobe"
@@ -6,10 +5,16 @@ import { useCallback, useEffect, useRef, useState } from "react"
 
 import { cn } from "@/lib/utils"
 
+// Define the Marker type to match what cobe expects
+type Marker = {
+  location: [number, number]; // Explicitly a tuple of two numbers
+  size: number;
+};
+
 // Custom markers for India with many small dots for heatmap-like effect
-const getIndiaHeatmapMarkers = (isScalysisView: boolean = false) => {
+const getIndiaHeatmapMarkers = (isScalysisView: boolean = false): Marker[] => {
   // Base major Indian cities (always visible)
-  const baseMarkers = [
+  const baseMarkers: Marker[] = [
     { location: [19.076, 72.8777], size: 0.04 }, // Mumbai
     { location: [28.6139, 77.2090], size: 0.04 }, // Delhi
     { location: [12.9716, 77.5946], size: 0.04 }, // Bangalore
@@ -19,7 +24,7 @@ const getIndiaHeatmapMarkers = (isScalysisView: boolean = false) => {
   ];
 
   // Smaller cities and towns throughout India for dense coverage in Scalysis view
-  const indiaHeatmapMarkers = [
+  const indiaHeatmapMarkers: Marker[] = [
     // Northern India
     { location: [26.9124, 75.7873], size: 0.02 }, // Jaipur
     { location: [30.7333, 76.7794], size: 0.02 }, // Chandigarh
@@ -61,12 +66,12 @@ const getIndiaHeatmapMarkers = (isScalysisView: boolean = false) => {
   ];
   
   // Add 15 random micro-dots for smaller towns (only in Scalysis view)
-  const randomMicroMarkers = isScalysisView ? Array(30).fill(0).map(() => {
+  const randomMicroMarkers: Marker[] = isScalysisView ? Array(30).fill(0).map(() => {
     // Rough boundaries of India's mainland
     const lat = 8 + Math.random() * 27; // ~ 8°N to 35°N
     const lon = 68 + Math.random() * 22; // ~ 68°E to 90°E
     return { 
-      location: [lat, lon], 
+      location: [lat, lon] as [number, number], 
       size: 0.005 + Math.random() * 0.01 // Tiny varying sizes
     };
   }) : [];
@@ -80,7 +85,7 @@ const getIndiaHeatmapMarkers = (isScalysisView: boolean = false) => {
 };
 
 // Standard markers for other locations
-const STANDARD_MARKERS = [
+const STANDARD_MARKERS: Marker[] = [
   { location: [14.5995, 120.9842], size: 0.03 }, // Manila
   { location: [23.8103, 90.4125], size: 0.05 }, // Dhaka
   { location: [30.0444, 31.2357], size: 0.07 }, // Cairo
