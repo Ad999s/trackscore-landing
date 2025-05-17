@@ -2,7 +2,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Chat, Create, Analyze, Activity } from "lucide-react";
+import { MessageCircle, Pencil, LineChart, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const GeminiButton = ({ 
@@ -143,9 +143,9 @@ export function ScalysisGeminiSection() {
 
       {/* Action buttons */}
       <div className="flex flex-wrap justify-center gap-6 z-10">
-        <GeminiButton icon={Chat} label="Chat" />
-        <GeminiButton icon={Create} label="Create" />
-        <GeminiButton icon={Analyze} label="Analyze" />
+        <GeminiButton icon={MessageCircle} label="Chat" />
+        <GeminiButton icon={Pencil} label="Create" />
+        <GeminiButton icon={LineChart} label="Analyze" />
         <GeminiButton icon={Activity} label="Build" />
       </div>
 
