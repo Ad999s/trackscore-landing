@@ -1,8 +1,8 @@
-
 "use client";
 import { cn } from "@/lib/utils";
 import { motion, MotionValue } from "framer-motion";
 import React from "react";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 const transition = {
   duration: 0,
@@ -25,17 +25,28 @@ export const GoogleGeminiEffect = ({
   return (
   <div className={cn("sticky top-[70%] -translate-y-[150%]", className)}>
       <p className="text-lg md:text-7xl font-extrabold pb-4 text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-300 font-bold">
-        {title || `Build with Aceternity UI`}
+        {title || ⁠ Build with Aceternity UI ⁠}
       </p>
       <p className="text-xs md:text-xl font-normal text-center text-neutral-400 mt-4 max-w-lg mx-auto">
         {description ||
           `Scroll this component and see the bottom SVG come to life wow this
         works!`}
       </p>
-      <div className="w-full h-[890px] -top-60 md:-top-40  flex items-center justify-center bg-red-transparent absolute ">
-        <button className="font-bold bg-white rounded-full md:px-4 md:py-2 px-2 py-1 md:mt-24 mt-8 z-30 md:text-base text-black text-xs  w-fit mx-auto ">
-          {buttonText || "ui.aceternity.com"}
-        </button>
+      <div className="w-full h-[1200px] -top-60 md:-top-40  flex items-center justify-center bg-red-transparent absolute ">
+        <motion.div 
+              className="flex justify-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              <ShimmerButton 
+                background="rgb(253, 253, 253)" 
+                shimmerColor="rgba(22, 1, 1, 0.4)"
+                className="w-40"
+                  >
+                <span className="text-sm font-medium text-black font-semibold">AI-Powered</span>
+              </ShimmerButton>
+            </motion.div>
       </div>
       <svg
         width="1440"
