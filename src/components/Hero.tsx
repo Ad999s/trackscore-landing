@@ -55,7 +55,7 @@ const Hero = () => {
               transition={{ delay: 0.2, duration: 0.6 }}
             >
               <p className="inline-block text-sm font-medium px-3 py-1 bg-blue-50 text-blue-600 rounded-full">
-                Reduce RTO rates upto 55%
+                97.3% of RTOs last week came from just 11 pincodes.
               </p>
               <h1 className="text-5xl md:text-6xl font-bold leading-tight">
                 Scale COD 10x Faster.<br /><span className="text-blue-500">Without RTO.</span>
