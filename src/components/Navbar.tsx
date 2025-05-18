@@ -31,18 +31,18 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "py-2 glass-morphism shadow-soft"
-          : "py-4 bg-transparent"
+          ? "py-1 sm:py-2 glass-morphism shadow-soft"
+          : "py-2 sm:py-4 bg-transparent"
       )}
     >
-      <div className="container mx-auto px-10 sm:px-10 lg:px-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-10">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <a href="#" className="flex items-center space-x-2">
               <img 
                 src="https://framerusercontent.com/images/qOi3xuJUI1I1c13AATXI63xs.png?" 
                 alt="Scalysis Logo" 
-                className="h-20" 
+                className="h-14 sm:h-20" 
                 onError={(e) => {
                   console.error("Logo failed to load");
                   e.currentTarget.style.display = "none";
@@ -100,34 +100,34 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - With Frosted Glass Effect */}
         {isMobileMenuOpen && (
           <div className="md:hidden pt-4 pb-2 animate-fadeIn">
-            <nav className="flex flex-col space-y-4">
+            <nav className="flex flex-col space-y-4 backdrop-blur-md bg-white/70 rounded-lg p-4 border border-gray-200/50 shadow-md">
               <a
                 href="#features"
-                className="text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+                className="text-sm font-medium text-gray-700 hover:text-primary transition-colors px-2 py-1.5 rounded-md hover:bg-gray-100/50"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Features
               </a>
               <a
                 href="#how-it-works"
-                className="text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+                className="text-sm font-medium text-gray-700 hover:text-primary transition-colors px-2 py-1.5 rounded-md hover:bg-gray-100/50"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 How It Works
               </a>
               <a
                 href="#stats"
-                className="text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+                className="text-sm font-medium text-gray-700 hover:text-primary transition-colors px-2 py-1.5 rounded-md hover:bg-gray-100/50"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Results
               </a>
               <a
                 href="#contact"
-                className="text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+                className="text-sm font-medium text-gray-700 hover:text-primary transition-colors px-2 py-1.5 rounded-md hover:bg-gray-100/50"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact
@@ -135,7 +135,7 @@ const Navbar = () => {
               <ShimmerButton 
                 background="rgba(37, 99, 235, 1)" 
                 shimmerColor="rgba(255, 255, 255, 0.4)"
-                className="w-32 text-white"
+                className="w-full text-white"
                 onClick={() => {
                   window.location.href = "#get-started";
                   setIsMobileMenuOpen(false);

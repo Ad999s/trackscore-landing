@@ -74,6 +74,18 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-size: 16px;
+  }
+  
+  /* Responsive font sizing */
+  @media (max-width: 640px) {
+    html {
+      font-size: 14px;
+    }
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
   }
 }
 
@@ -89,6 +101,16 @@
 
 .shadow-medium {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Glass morphism effect */
+.glass-morphism {
+  @apply backdrop-blur-md bg-white/80 border-b border-gray-200/50;
+}
+
+/* Mobile glass effect */
+.mobile-glass {
+  @apply backdrop-blur-md bg-white/80 border border-gray-200/50 shadow-md rounded-lg;
 }
 
 /* Animation delays */
