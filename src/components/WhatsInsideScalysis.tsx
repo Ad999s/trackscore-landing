@@ -79,7 +79,7 @@ const WhatsInsideScalysis = () => {
               <div>
                 <h3 className="text-xl font-bold mb-2">Smart Meta Targeting</h3>
                 <p className="text-white/90">
-                  Same ad spend, better audience. No CPM hikes.
+                  Same ad spend, better audience. Save 4% of monthly ad spend and 6% better delivery rate.
                 </p>
               </div>
             </div>
