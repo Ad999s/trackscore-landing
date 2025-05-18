@@ -75,7 +75,7 @@ Full-Control Dashboard. Complete Protection. Built To Scale.</p>
                 shimmerColor="rgba(255, 255, 255, 0.4)"
                 className="w-40"
               >
-                <span className="text-sm font-medium">Explore App</span>
+                <span className="text-sm font-medium">Start 30 Day Trial</span>
               </ShimmerButton>
             </motion.div>
           </motion.div>
