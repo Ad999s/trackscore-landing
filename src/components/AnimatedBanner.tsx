@@ -1,7 +1,6 @@
 
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ChevronRight } from "lucide-react";
 
 interface AnimatedBannerProps {
   text: string;
@@ -10,7 +9,7 @@ interface AnimatedBannerProps {
 }
 
 const AnimatedBanner = ({ text, linkText, targetId }: AnimatedBannerProps) => {
-  const rectRef = useRef<SVGRectElement>(null);
+  const borderRef = useRef<HTMLDivElement>(null);
   
   // Smoothly scroll to the target section when clicked
   const scrollToSection = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -23,18 +22,18 @@ const AnimatedBanner = ({ text, linkText, targetId }: AnimatedBannerProps) => {
 
   useEffect(() => {
     // Animation for the border
-    const rect = rectRef.current;
-    if (!rect) return;
+    const border = borderRef.current;
+    if (!border) return;
 
     let position = 0;
     let direction = 1;
     let speed = 1;
     const maxSpeed = 15;
     const acceleration = 0.2;
-    const totalLength = (rect.width.baseVal.value * 2) + (rect.height.baseVal.value * 2);
+    const totalLength = (border.offsetWidth * 2) + (border.offsetHeight * 2);
     
     const animate = () => {
-      if (!rect) return;
+      if (!border) return;
       
       position = (position + speed * direction) % totalLength;
       
@@ -45,14 +44,17 @@ const AnimatedBanner = ({ text, linkText, targetId }: AnimatedBannerProps) => {
         speed = 1; // Reset to slow
       }
       
+      // Calculate which side of the rectangle we're on
+      let dashOffset = -position;
+      
       // Update the dash offset
-      rect.style.strokeDashoffset = (-position).toString();
+      border.style.strokeDashoffset = dashOffset.toString();
       
       requestAnimationFrame(animate);
     };
     
     // Set up the dash pattern to match the perimeter
-    rect.style.strokeDasharray = totalLength.toString();
+    border.style.strokeDasharray = totalLength.toString();
     
     // Start the animation
     const animationId = requestAnimationFrame(animate);
@@ -66,7 +68,7 @@ const AnimatedBanner = ({ text, linkText, targetId }: AnimatedBannerProps) => {
   return (
     <div 
       onClick={scrollToSection}
-      className="h-[32px] max-w-[440px] max-sm:w-[328px] mx-auto relative overflow-hidden rounded-full cursor-pointer group my-4"
+      className="w-full max-w-3xl mx-auto relative py-4 px-6 my-4 cursor-pointer group"
     >
       {/* SVG border with animation */}
       <svg 
@@ -74,27 +76,22 @@ const AnimatedBanner = ({ text, linkText, targetId }: AnimatedBannerProps) => {
         xmlns="http://www.w3.org/2000/svg"
       >
         <rect
-          ref={rectRef}
-          x="0.5"
-          y="0.5"
-          width="calc(100% - 1px)"
-          height="calc(100% - 1px)"
-          rx="16"
-          strokeWidth="1"
+          ref={borderRef}
+          x="1"
+          y="1"
+          width="calc(100% - 2px)"
+          height="calc(100% - 2px)"
+          rx="25"
+          strokeWidth="2"
           stroke="rgba(59, 130, 246, 0.8)"
           fill="transparent"
         />
       </svg>
       
-      <div className="flex items-center justify-center h-full">
-        <div className="card-content rounded-full px-3 flex items-center h-full">
-          <p className="text-[12.25px] md:text-[12.75px] text-gray-600 font-medium">
-            {text} <span className="text-indigo-600 max-sm:hidden">• {linkText}</span>
-            <span className="text-indigo-600 sm:hidden ml-1">
-              <ChevronRight className="h-4 w-4" />
-            </span>
-          </p>
-        </div>
+      <div className="flex items-center justify-center text-center">
+        <p className="text-gray-700 font-medium">
+          {text} <span className="text-blue-600 group-hover:underline">• {linkText}</span>
+        </p>
       </div>
     </div>
   );

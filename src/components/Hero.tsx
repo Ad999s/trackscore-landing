@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
@@ -41,10 +42,10 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center">
-          {/* Animated Banner - Now smaller and more concise */}
+          {/* Animated Banner */}
           <AnimatedBanner 
             text="97.3% of RTOs last week came from just 11 pincodes."
-            linkText="Read TechCrunch"
+            linkText="Auto-block them"
             targetId="built-for-dropshippers"
           />
           
