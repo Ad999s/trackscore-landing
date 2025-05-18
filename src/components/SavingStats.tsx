@@ -16,13 +16,13 @@ const SavingStats = () => {
           transition={{ duration: 0.6 }}
         >
           <motion.div 
-            className="text-xl md:text-2xl font-medium text-center md:text-left w-full"
+            className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight text-center md:text-left w-full"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p>Start 30 Day Free Trial Today</p>
+            <p>START 30 DAY FREE TRIAL TODAY</p>
           </motion.div>
           
           <motion.div
