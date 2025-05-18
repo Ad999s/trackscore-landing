@@ -61,7 +61,7 @@ const Hero = () => {
                 Scale COD 10x Faster.<br /><span className="text-blue-500">Without RTO.</span>
               </h1>
               <p className="text-xl text-gray-600 mt-4 mx-auto">
-Full-Control Dashboard. Built to Scale 10K Orders/Day. No RTO Surprises.</p>
+Full-Control Dashboard. Complete Protection. Built To Scale.</p>
             </motion.div>
 
             <motion.div 
