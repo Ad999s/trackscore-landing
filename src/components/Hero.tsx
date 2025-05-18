@@ -1,7 +1,8 @@
-
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
+import { AnimatePresence } from "framer-motion";
+
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,6 +22,22 @@ const Hero = () => {
     setIsLoaded(true);
   }, []);
 
+  const messages = [
+  "Your warehouse shipped 8,434 risky orders this week. • Auto-filter them",
+  "XpressBees delay up 11% in East India. • Switch smarter",
+  "97.3% of RTOs last week came from just 11 pincodes. • Auto-block them",
+  "Scalysis flagged 22 fake names trending in Haryana. • Avoid the trap",
+];
+
+const [index, setIndex] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setIndex((prev) => (prev + 1) % messages.length);
+  }, 3000);
+  return () => clearInterval(interval);
+}, []);
+
   return (
     <motion.section 
       ref={sectionRef}
@@ -39,7 +56,7 @@ const Hero = () => {
         ></motion.div>
       </motion.div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-5">
         <div className="flex flex-col items-center text-center">
           {/* Centered Text Content */}
           <motion.div 
@@ -48,15 +65,26 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
+            
             <motion.div 
               className="space-y-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              <p className="inline-block text-sm font-medium px-3 py-1 bg-blue-50 text-blue-600 rounded-full">
-               • 97.3% of RTOs last week came from just 11 pincodes.
-              </p>
+              <AnimatePresence mode="wait">
+              <motion.p
+                key={index}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.4 }}
+                className="inline-block text-sm font-medium px-3 py-1 bg-blue-50 text-blue-600 rounded-full"
+              >
+                {messages[index]}
+              </motion.p>
+              </AnimatePresence>
+
               <h1 className="text-5xl md:text-6xl font-bold leading-tight">
                 Scale COD 10x Faster.<br /><span className="text-blue-500">Without RTO.</span>
               </h1>
@@ -75,7 +103,7 @@ Full-Control Dashboard. Complete Protection. Built To Scale.</p>
                 shimmerColor="rgba(255, 255, 255, 0.4)"
                 className="w-40"
               >
-                <span className="text-sm font-medium">Start 30 Day Trial</span>
+                <span className="text-sm font-medium">Explore App</span>
               </ShimmerButton>
             </motion.div>
           </motion.div>

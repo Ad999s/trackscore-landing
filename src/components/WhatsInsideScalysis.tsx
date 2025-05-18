@@ -1,4 +1,3 @@
-
 import React from "react";
 import { cn } from "@/lib/utils";
 import { 
@@ -54,10 +53,23 @@ const WhatsInsideScalysis = () => {
           className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12"
         >
           {/* Smart Order Selection */}
-          <motion.div 
+          <motion.div
             variants={item}
-            className="bg-primary rounded-xl p-4 sm:p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.01]"
+            className="rounded-xl p-4 sm:p-6 text-white bg-cover bg-center bg-no-repeat shadow-lg hover:shadow-xl transition-[background-size,box-shadow] duration-500 ease-in-out"
+            style={{
+              backgroundImage: 'url(https://framerusercontent.com/images/4i9FPdNBCCe7MA9cLPYtlp0TxRc.png)',
+              backgroundSize: '100%',
+              backgroundPosition: 'left 1%',
+              transform: 'scaleY(-1)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundSize = '105%';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundSize = '100%';
+            }}
           >
+
             <div className="flex items-start gap-3 sm:gap-4">
               <BoxIcon className="h-6 w-6 sm:h-8 sm:w-8 mt-1 flex-shrink-0" />
               <div>
@@ -72,7 +84,18 @@ const WhatsInsideScalysis = () => {
           {/* Smart Meta Targeting */}
           <motion.div 
             variants={item}
-            className="bg-primary rounded-xl p-4 sm:p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.01]"
+            className="rounded-xl p-4 sm:p-6 text-white bg-cover bg-center bg-no-repeat shadow-lg hover:shadow-xl transition-[background-size,box-shadow] duration-500 ease-in-out"
+            style={{
+              backgroundImage: 'url(https://framerusercontent.com/images/4i9FPdNBCCe7MA9cLPYtlp0TxRc.png)',
+              backgroundSize: '100%',
+              
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundSize = '105%';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundSize = '100%';
+            }}
           >
             <div className="flex items-start gap-3 sm:gap-4">
               <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8 mt-1 flex-shrink-0" />
@@ -97,7 +120,7 @@ const WhatsInsideScalysis = () => {
           {/* RTO Adjusted PNL Tracker */}
           <motion.div 
             variants={item}
-            className="bg-gray-100 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02]"
+            className="bg-gray-100/50 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02]"
           >
             <div className="flex items-start gap-3 mb-2 sm:mb-3">
               <BarChart className="h-6 w-6 sm:h-7 sm:w-7 text-primary flex-shrink-0" />
@@ -111,7 +134,7 @@ const WhatsInsideScalysis = () => {
           {/* Auto AWB Status Tracker */}
           <motion.div 
             variants={item}
-            className="bg-gray-100 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02]"
+            className="bg-gray-100/50 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02]"
           >
             <div className="flex items-start gap-3 mb-2 sm:mb-3">
               <BoxIcon className="h-6 w-6 sm:h-7 sm:w-7 text-primary flex-shrink-0" />
@@ -125,7 +148,7 @@ const WhatsInsideScalysis = () => {
           {/* 30 Day Cashflow Projection */}
           <motion.div 
             variants={item}
-            className="bg-gray-100 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02]"
+            className="bg-gray-100/50 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02]"
           >
             <div className="flex items-start gap-3 mb-2 sm:mb-3">
               <TrendingUp className="h-6 w-6 sm:h-7 sm:w-7 text-primary flex-shrink-0" />
@@ -139,7 +162,7 @@ const WhatsInsideScalysis = () => {
           {/* Real Time Overview Dashboard */}
           <motion.div 
             variants={item}
-            className="bg-gray-100 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02]"
+            className="bg-gray-100/50 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02]"
           >
             <div className="flex items-start gap-3 mb-2 sm:mb-3">
               <Database className="h-6 w-6 sm:h-7 sm:w-7 text-primary flex-shrink-0" />
@@ -153,7 +176,7 @@ const WhatsInsideScalysis = () => {
           {/* Business Health Score */}
           <motion.div 
             variants={item}
-            className="bg-gray-100 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02]"
+            className="bg-gray-100/50 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02]"
           >
             <div className="flex items-start gap-3 mb-2 sm:mb-3">
               <ShieldCheckIcon className="h-6 w-6 sm:h-7 sm:w-7 text-primary flex-shrink-0" />
@@ -167,7 +190,7 @@ const WhatsInsideScalysis = () => {
           {/* 24/7 Monitoring - only show on desktop/large screens for balanced grid */}
           <motion.div 
             variants={item}
-            className="hidden lg:block bg-gray-100 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02]"
+            className="hidden lg:block bg-gray-100/50 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02]"
           >
             <div className="flex items-start gap-3 mb-2 sm:mb-3">
               <Clock className="h-6 w-6 sm:h-7 sm:w-7 text-primary flex-shrink-0" />
