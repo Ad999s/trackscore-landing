@@ -47,40 +47,40 @@ const OldVsNew = () => {
               isVisible ? "animate-slideUp" : "opacity-0 translate-y-8"
             )}>
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-100 text-red-700 px-4 py-1 rounded-full font-medium text-sm">
-                Traditional RTO Tools (Outdated Approach)
+                ❌ Traditional RTO Tools (Before Scalysis)
               </div>
               <div className="mt-6 space-y-5">
                 <div className="p-3 sm:p-4 border-b border-gray-100">
                   <div className="flex items-center">
                     <div className="min-w-3 h-3 bg-red-400 rounded-full mr-3"></div>
-                    <p className="text-gray-800 font-medium text-sm sm:text-base">Blanket tagging applied to every order</p>
+                    <p className="text-gray-800 font-medium text-sm sm:text-base">Blanket tagging on every order</p>
                   </div>
                 </div>
                 
                 <div className="p-3 sm:p-4 border-b border-gray-100">
                   <div className="flex items-center">
                     <div className="min-w-3 h-3 bg-red-400 rounded-full mr-3"></div>
-                    <p className="text-gray-800 font-medium text-sm sm:text-base">Vague risk scores (High / Medium / Low)</p>
+                    <p className="text-gray-800 font-medium text-sm sm:text-base">Vague labels: High / Medium / Low</p>
                   </div>
                 </div>
                 
                 <div className="p-3 sm:p-4 border-b border-gray-100">
                   <div className="flex items-center">
                     <div className="min-w-3 h-3 bg-red-400 rounded-full mr-3"></div>
-                    <p className="text-gray-800 font-medium text-sm sm:text-base">Over-blocking leads to lost revenue</p>
+                    <p className="text-gray-800 font-medium text-sm sm:text-base">Over-blocking → lost revenue</p>
                   </div>
                 </div>
                 
                 <div className="p-3 sm:p-4 border-b border-gray-100">
                   <div className="flex items-center">
                     <div className="min-w-3 h-3 bg-red-400 rounded-full mr-3"></div>
-                    <p className="text-gray-800 font-medium text-sm sm:text-base">One-size-fits-all logic with no learning</p>
+                    <p className="text-gray-800 font-medium text-sm sm:text-base">No learning or personalization</p>
                   </div>
                 </div>
                 
                 <div className="mt-6 flex justify-center">
                   <div className="bg-red-100 text-red-700 px-4 py-2 rounded-lg text-sm sm:text-base">
-                    <span className="font-bold">50-60%</span> prediction accuracy
+                    <span className="font-bold">~50-60%</span> accuracy
                   </div>
                 </div>
               </div>
@@ -92,40 +92,40 @@ const OldVsNew = () => {
               isVisible ? "animate-slideUp animation-delay-300" : "opacity-0 translate-y-8"
             )}>
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-100 text-green-700 px-4 py-1 rounded-full font-medium text-sm">
-                Scalysis Precision Engine (Built for 2025 Brands)
+                ✅ Scalysis Precision Engine (2025-Ready)
               </div>
               <div className="mt-6 space-y-5">
                 <div className="p-3 sm:p-4 border-b border-gray-100">
                   <div className="flex items-center">
                     <div className="min-w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-                    <p className="text-gray-800 font-medium text-sm sm:text-base">Hyper-targeted, order-level decisioning</p>
+                    <p className="text-gray-800 font-medium text-sm sm:text-base">Targeted, per-order decisions</p>
                   </div>
                 </div>
                 
                 <div className="p-3 sm:p-4 border-b border-gray-100">
                   <div className="flex items-center">
                     <div className="min-w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-                    <p className="text-gray-800 font-medium text-sm sm:text-base">Trained on your actual delivery and fraud data</p>
+                    <p className="text-gray-800 font-medium text-sm sm:text-base">Trained on your brand's real order data</p>
                   </div>
                 </div>
                 
                 <div className="p-3 sm:p-4 border-b border-gray-100">
                   <div className="flex items-center">
                     <div className="min-w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-                    <p className="text-gray-800 font-medium text-sm sm:text-base">Smart filtering that preserves revenue and ROAS</p>
+                    <p className="text-gray-800 font-medium text-sm sm:text-base">Smart filtering that protects profit</p>
                   </div>
                 </div>
                 
                 <div className="p-3 sm:p-4 border-b border-gray-100">
                   <div className="flex items-center">
                     <div className="min-w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-                    <p className="text-gray-800 font-medium text-sm sm:text-base">Brand-personalized AI model, not generic scoring</p>
+                    <p className="text-gray-800 font-medium text-sm sm:text-base">Learns from your actual delivery trends</p>
                   </div>
                 </div>
                 
                 <div className="mt-6 flex justify-center">
                   <div className="bg-green-100 text-green-700 px-4 py-2 rounded-lg text-sm sm:text-base">
-                    <span className="font-bold">95%+</span> precision on confident decisions
+                    <span className="font-bold">95%+</span> precision where it matters
                   </div>
                 </div>
               </div>
