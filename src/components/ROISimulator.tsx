@@ -23,12 +23,15 @@ const ROISimulator = () => {
     const savingsPerOrder = avgOrderValue * 0.25; // Assuming 25% of order value is saved
     const totalSavings = preventableRtoOrders * savingsPerOrder;
     
-    // Scale inventory protected based on delivery rate
-    const inventoryProtected = Math.round(15 * (rtoRate / 25)); // Scale based on RTO rate
+    // Scale inventory protected based on delivery rate and order count
+    // This will now scale with both order count and RTO rate
+    const baseInventoryProtected = 15;
+    const inventoryProtectedScale = (rtoRate / 25) * (orderCount / 100);
+    const inventoryProtected = Math.round(baseInventoryProtected * inventoryProtectedScale);
     
     setSavings({
       total: Math.round(totalSavings),
-      inventoryProtected: Math.max(5, Math.min(25, inventoryProtected)) // Keep between 5 and 25
+      inventoryProtected: Math.max(5, Math.min(50, inventoryProtected)) // Keep between 5 and 50
     });
   }, [orderCount, avgOrderValue, deliveryRate]);
   
@@ -70,7 +73,7 @@ const ROISimulator = () => {
               Calculate your Savings
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Your last 100 orders. Here's what we would've saved you.
+              See how much you could save based on your order volume.
             </p>
           </div>
           
@@ -141,7 +144,7 @@ const ROISimulator = () => {
                   
                   <div className="space-y-8 flex-grow flex flex-col justify-center">
                     <div className="bg-green-50 rounded-lg p-6 text-center">
-                      <div className="text-sm text-gray-500 mb-2">Total Savings per 100 Order COD</div>
+                      <div className="text-sm text-gray-500 mb-2">Total Savings (₹)</div>
                       <div className="flex items-center justify-center text-3xl font-bold text-green-600">
                         <IndianRupeeIcon size={24} />
                         {new Intl.NumberFormat('en-IN').format(savings.total)}
@@ -159,7 +162,7 @@ const ROISimulator = () => {
                   
                   <div className="mt-6 pt-6 border-t border-gray-200">
                     <p className="text-sm text-gray-600">
-                      Based on your current order volume and delivery rate, Scalysis could help you save up to <span className="font-bold text-primary">{Math.round((100 - deliveryRate[0]) * 0.35)}%</span> of your RTO costs.
+                      Based on your {orderCount} orders with a delivery rate of {deliveryRate[0]}%, Scalysis could help you save up to <span className="font-bold text-primary">{Math.round((100 - deliveryRate[0]) * 0.35)}%</span> of your RTO costs.
                     </p>
                   </div>
                 </div>
