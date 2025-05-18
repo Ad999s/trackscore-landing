@@ -34,7 +34,6 @@ export function GeminiEffectSection() {
         ]}
         title="Machine Learning. Built Only for COD."
         description="Trained on crores of order patterns, understands why RTO happens, tracks buying intent and every move on your Shopify site — with over 95% prediction accuracy."
-        buttonText="AI Order Selection"
       />
     </div>
   );
