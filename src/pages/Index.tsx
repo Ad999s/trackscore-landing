@@ -45,10 +45,11 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <GeminiEffectSection />
+        <WhatsInsideScalysis />
         <BuiltForDropshippers />
         <MarketComparisonSlider />
         <CodMarketStats />
-        <WhatsInsideScalysis />
+        
         <motion.div
           initial="hidden"
           whileInView="visible"
