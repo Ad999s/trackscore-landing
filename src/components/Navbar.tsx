@@ -86,7 +86,7 @@ const Navbar = () => {
               className="w-32 text-white"
               onClick={() => window.location.href = "#get-started"}
             >
-              <span className="text-sm font-medium">Start 30 Day Trial</span>
+              <span className="text-sm font-medium">30 Free Day Trial</span>
             </ShimmerButton>
           </nav>
 
