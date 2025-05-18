@@ -122,7 +122,7 @@ const Index = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={sectionVariants}
         >
-          <CTA />
+      
         </motion.div>
       </main>
       <Footer />
