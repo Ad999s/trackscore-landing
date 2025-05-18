@@ -144,7 +144,7 @@ const WhatsInsideScalysis = () => {
             <div className="flex items-start gap-4 mb-3">
               <Database className="h-7 w-7 text-primary flex-shrink-0" />
               <div>
-                <h4 className="font-semibold text-gray-900 text-lg">Real Time Overview Dashboard</h4>
+                <h4 className="font-semibold text-gray-900 text-lg">Centralized Live Dashboard</h4>
               </div>
             </div>
             <p className="text-gray-600 ml-11">Customizable by team. Made for speed</p>
