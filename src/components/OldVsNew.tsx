@@ -47,7 +47,7 @@ const OldVsNew = () => {
               isVisible ? "animate-slideUp" : "opacity-0 translate-y-8"
             )}>
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-100 text-red-700 px-4 py-1 rounded-full font-medium text-sm">
-                ❌ Traditional RTO Tools (Before Scalysis)
+                Old RTO Tools
               </div>
               <div className="mt-6 space-y-5">
                 <div className="p-3 sm:p-4 border-b border-gray-100">
@@ -92,7 +92,7 @@ const OldVsNew = () => {
               isVisible ? "animate-slideUp animation-delay-300" : "opacity-0 translate-y-8"
             )}>
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-100 text-green-700 px-4 py-1 rounded-full font-medium text-sm">
-                ✅ Scalysis Precision Engine (2025-Ready)
+                2025 RTO Engine
               </div>
               <div className="mt-6 space-y-5">
                 <div className="p-3 sm:p-4 border-b border-gray-100">
