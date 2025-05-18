@@ -2,6 +2,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
+import AnimatedBanner from "./AnimatedBanner";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -24,7 +25,7 @@ const Hero = () => {
   return (
     <motion.section 
       ref={sectionRef}
-      className="relative pt-28 pb-20 overflow-hidden"
+      className="relative pt-16 pb-20 overflow-hidden"
       style={{ opacity }}
     >
       {/* Background Elements */}
@@ -41,6 +42,13 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center">
+          {/* Animated Banner */}
+          <AnimatedBanner 
+            text="97.3% of RTOs last week came from just 11 pincodes."
+            linkText="Auto-block them"
+            targetId="built-for-dropshippers"
+          />
+          
           {/* Centered Text Content */}
           <motion.div 
             className={`space-y-8 max-w-3xl mb-12 ${isLoaded ? 'animate-fadeIn' : 'opacity-0'}`}
