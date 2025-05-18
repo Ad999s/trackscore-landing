@@ -61,14 +61,14 @@ const CTA = () => {
                   <ShimmerButton 
                     background="white" 
                     shimmerColor="rgba(59, 130, 246, 0.5)"
-                    className="w-40 text-primary hover:bg-white border-white"
+                    className="w-auto px-4 text-primary hover:bg-white border-white"
                   >
-                    <span className="text-sm font-medium">Try 30 Days Free</span>
+                    <span className="text-sm font-medium">Start 30 Day Trial</span>
                   </ShimmerButton>
                   <ShimmerButton 
                     background="transparent" 
                     shimmerColor="rgba(255, 255, 255, 0.5)"
-                    className="w-40 text-white hover:bg-white/10 border-white"
+                    className="w-auto px-4 text-white hover:bg-white/10 border-white"
                   >
                     <span className="text-sm font-medium">Watch Demo</span>
                   </ShimmerButton>

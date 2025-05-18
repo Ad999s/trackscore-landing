@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -29,13 +28,13 @@ const Index = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Animation variants for staggered section reveals
+  // Animation variants for staggered section reveals - simplified for mobile
   const sectionVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 10 }, // Reduced y offset for mobile
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.6 }
+      transition: { duration: 0.5 } // Slightly faster animation for mobile
     }
   };
 
@@ -47,83 +46,104 @@ const Index = () => {
         <GeminiEffectSection />
         <WhatsInsideScalysis />
         <BuiltForDropshippers />
-        <MarketComparisonSlider />
-        <CodMarketStats />
         
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
+        {/* Mobile optimization: Use simpler animations on mobile */}
+        <div className="md:hidden">
+          <MarketComparisonSlider />
+          <CodMarketStats />
           <HowSelectionWorks />
-        </motion.div>
-        <SavingStats />
-        <OldVsNew />
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
+          <SavingStats />
+          <OldVsNew />
           <DailyShippingCalculator />
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
           <BeforeAfterFlip />
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
           <SmartMetaTargeting />
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
           <Features />
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
           <PincodeBlocker />
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
           <SmartLearning />
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
           <HowItWorks />
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
           <CTA />
-        </motion.div>
+        </div>
+        
+        {/* Keep full animations on desktop */}
+        <div className="hidden md:block">
+          <MarketComparisonSlider />
+          <CodMarketStats />
+          
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={sectionVariants}
+          >
+            <HowSelectionWorks />
+          </motion.div>
+          <SavingStats />
+          <OldVsNew />
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={sectionVariants}
+          >
+            <DailyShippingCalculator />
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={sectionVariants}
+          >
+            <BeforeAfterFlip />
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={sectionVariants}
+          >
+            <SmartMetaTargeting />
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={sectionVariants}
+          >
+            <Features />
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={sectionVariants}
+          >
+            <PincodeBlocker />
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={sectionVariants}
+          >
+            <SmartLearning />
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={sectionVariants}
+          >
+            <HowItWorks />
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={sectionVariants}
+          >
+            <CTA />
+          </motion.div>
+        </div>
       </main>
       <Footer />
     </div>

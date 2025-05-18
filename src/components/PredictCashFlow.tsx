@@ -29,12 +29,12 @@ const PredictCashFlow = () => {
   }, []);
 
   return (
-    <section className="py-20">
+    <section className="py-12 sm:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div 
           id="cashflow-prediction-section"
           className={cn(
-            "grid md:grid-cols-2 gap-12 items-center transition-all duration-500",
+            "grid md:grid-cols-2 gap-8 md:gap-12 items-center transition-all duration-500",
             isVisible ? "animate-fadeIn" : "opacity-0"
           )}
         >
@@ -56,14 +56,14 @@ const PredictCashFlow = () => {
           </div>
           
           {/* Right Column - Text Content */}
-          <div className="space-y-6">
-            <p className="inline-block text-sm font-medium px-3 py-1 bg-primary/10 text-primary rounded-full mb-4">
+          <div className="space-y-4 sm:space-y-6">
+            <p className="inline-block text-xs sm:text-sm font-medium px-3 py-1 bg-primary/10 text-primary rounded-full mb-2 sm:mb-4">
               Cashflow Forecasting
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4">
               Predict <span className="text-gradient">30 Day Cashflow</span>
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600">
               AI, correctly synced with remittance cycles and daily spending, can accurately predict automatic COD cash flow cycles.
             </p>
           </div>
