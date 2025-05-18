@@ -45,18 +45,21 @@ const DailyShippingCalculator = () => {
   }, [codOrders, deliveryRate]);
 
   const calculateSavings = () => {
-    // Updated calculation to show 1,800 at 70% delivery rate
-    // Shipping cost saved is fixed at 1,800 for 70% delivery rate
-    // Scaled proportionally for other delivery rates
-    const baseShippingCost = 1800;
-    const baseDeliveryRate = 70;
+    // Calculate RTO rate (percentage of orders that aren't delivered)
+    const rtoRate = 100 - deliveryRate[0];
     
-    // Scale the savings based on the difference from the base delivery rate
-    const scaleFactor = (100 - deliveryRate[0]) / (100 - baseDeliveryRate);
-    const shippingCostSaved = Math.round(baseShippingCost * scaleFactor);
+    // Calculate number of RTO orders
+    const rtoOrders = codOrders * (rtoRate / 100);
     
-    // Calculate inventory saved as shipping cost / 120
-    const inventorySaved = Math.round(shippingCostSaved / 120);
+    // Calculate preventable RTO orders (assume 35% of RTO orders can be prevented)
+    const preventableRtoOrders = rtoOrders * 0.35;
+    
+    // Calculate shipping cost saved (assume ₹120 per order)
+    const shippingCostPerOrder = 120;
+    const shippingCostSaved = Math.round(preventableRtoOrders * shippingCostPerOrder);
+    
+    // Calculate inventory saved (each prevented RTO is one unit of inventory)
+    const inventorySaved = Math.round(preventableRtoOrders);
     
     setResults({
       inventorySaved,
