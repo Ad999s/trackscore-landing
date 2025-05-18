@@ -21,7 +21,7 @@ export function GeminiEffectSection() {
 
   return (
     <div
-      className="h-[150vh] sm:h-[200vh] bg-black w-full dark:border dark:border-white/[0.1] rounded-md relative pt-20 sm:pt-40 overflow-clip"
+      className="h-[200vh] bg-black w-full dark:border dark:border-white/[0.1] rounded-md relative pt-40 overflow-clip"
       ref={ref}
     >
       <GoogleGeminiEffect
