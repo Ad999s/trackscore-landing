@@ -18,7 +18,7 @@ const BuiltForDropshippers = () => {
             Purely Built for <span className="text-blue-500">COD-Heavy D2C & Dropshippers</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Cut RTO Rates by 50% with smart order selection
+            Unlimited scale. Zero RTO risk. No ROAS drop.
           </p>
         </motion.div>
 
