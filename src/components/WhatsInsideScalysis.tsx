@@ -39,10 +39,10 @@ const WhatsInsideScalysis = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            What's Inside <span className="text-gradient">Scalysis</span>
+            All Your RTO Problems.<span className="text-gradient"> One Ecosystem</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Scalysis: The Backbone of ALL Indian E-commerce businesses
+           Get Everything At One Place
           </p>
         </motion.div>
 
