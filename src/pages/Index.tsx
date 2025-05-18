@@ -90,7 +90,7 @@ const Index = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={sectionVariants}
         >
-          <Features />
+         
         </motion.div>
         <motion.div
           initial="hidden"
@@ -98,7 +98,7 @@ const Index = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={sectionVariants}
         >
-          <PincodeBlocker />
+
         </motion.div>
         <motion.div
           initial="hidden"
@@ -106,7 +106,7 @@ const Index = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={sectionVariants}
         >
-          <SmartLearning />
+  
         </motion.div>
         <motion.div
           initial="hidden"
@@ -114,7 +114,7 @@ const Index = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={sectionVariants}
         >
-          <HowItWorks />
+       
         </motion.div>
         <motion.div
           initial="hidden"
