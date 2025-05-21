@@ -92,7 +92,7 @@ const CodMarketStats = () => {
           className="text-center mb-8"
         >
           <h2 className="text-5xl md:text-6xl font-bold leading-tight mb-4">
-            Scalysis = <span className="text-blue-500">(COD TAM − Junk Orders)</span> → Scalable Market
+            Scalysis = <span className="text-blue-500">(COD TAM − Junk Orders)</span> → Scalable COD Market
           </h2>
         </motion.div>
 
