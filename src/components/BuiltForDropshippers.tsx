@@ -33,8 +33,7 @@ const BuiltForDropshippers = () => {
           >
             <div className="space-y-4">
               <p className="text-lg text-gray-700 leading-relaxed">
-                Indian customers love COD — it builds trust, boosts sales, and reaches everyone. But brands fear it due to RTO losses. Scalysis Smart Order Selection removes that fear by letting you accept all COD orders, then intelligently picking only the best ones to ship — protecting ad spend and maximizing profit.
-              </p>
+Indian customers love COD — Scalysis lets you accept every order without fear, then smartly selects only the best ones to ship, protecting your ad spend and maximizing profit.              </p>
               
               <div className="space-y-3 mt-6">
                 <div className="flex items-start gap-3">
