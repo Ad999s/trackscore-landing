@@ -38,15 +38,15 @@ Indian customers love COD — Scalysis lets you accept every order without fear,
               <div className="space-y-3 mt-6">
                 <div className="flex items-start gap-3">
                   <Check className="h-6 w-6 text-blue-500 flex-shrink-0 mt-0.5" />
-                  <p className="text-gray-700">Builds first-time trust</p>
+                  <p className="text-gray-700">Cater to wide audience</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <Check className="h-6 w-6 text-blue-500 flex-shrink-0 mt-0.5" />
-                  <p className="text-gray-700">Offer your brand to all Indian audience</p>
+                  <p className="text-gray-700">Protect All Revenue</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <Check className="h-6 w-6 text-blue-500 flex-shrink-0 mt-0.5" />
-                  <p className="text-gray-700">Scale 500% more with COD</p>
+                  <p className="text-gray-700">No Overblocking</p>
                 </div>
               </div>
             </div>
