@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { Check, ChevronRight, X, Zap, Brain, ArrowRight } from "lucide-react";
+import { Check, ChevronRight, X, Zap, Brain, ArrowRight, TrendingUp } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -35,7 +35,7 @@ const CoreValuePoints = () => {
   const valuePoints = [
     {
       icon: <ArrowRight className="h-5 w-5" />,
-      title: "High-Precision Order Tagging",
+      title: "Precision Tagging Engine",
       description: "Detects fake names, fraud loops, dead zones, timing abuse — and flags what kills profit.",
     },
     {
@@ -167,6 +167,35 @@ const CoreValuePoints = () => {
                   </div>
                 </div>
               ))}
+            </div>
+            
+            {/* New Stats Panel at the Bottom */}
+            <div className={cn(
+              "border-t border-gray-200 bg-gray-50 p-4",
+              isVisible ? "animate-fadeIn animation-delay-500" : "opacity-0"
+            )}>
+              <div className="divide-y divide-gray-200">
+                <div className="py-3">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="text-lg font-semibold">Estimated Savings: ₹ 168.40</p>
+                      <p className="text-gray-600">RTO Risk Prevented: 1 failed shipment</p>
+                    </div>
+                    <div className="flex items-center">
+                      <TrendingUp className="h-5 w-5 text-green-600 mr-2" />
+                      <p className="text-gray-700">Quality Score Impact: +0,3 this session</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="py-3">
+                  <p className="text-gray-700">
+                    Scalysis prevented a low-quality order from shipping. You just saved time, cost, and customer trust.
+                  </p>
+                </div>
+                <div className="py-3">
+                  <p className="text-lg font-semibold">Estimated Savings: ₹ 138.40</p>
+                </div>
+              </div>
             </div>
           </div>
           
