@@ -24,6 +24,7 @@ import OldVsNew from "@/components/OldVsNew";
 import GeminiEffectSection from "@/components/GeminiEffectSection";
 import YouDecideWhatShips from "@/components/YouDecideWhatShips";
 import GlassBoxSection from "@/components/GlassBoxSection";
+import CoreValuePoints from "@/components/CoreValuePoints";
 
 const Index = () => {
   useEffect(() => {
@@ -51,6 +52,15 @@ const Index = () => {
         <BuiltForDropshippers />
         <MarketComparisonSlider />
         <CodMarketStats />
+        
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <CoreValuePoints />
+        </motion.div>
         
         <motion.div
           initial="hidden"
