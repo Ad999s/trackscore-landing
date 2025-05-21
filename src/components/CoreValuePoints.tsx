@@ -84,7 +84,7 @@ const CoreValuePoints = () => {
               See <span className="text-blue-600">Pitfalls</span> Before They Cost You.
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Every risky order flagged. Every rupee protected.
+              Don’t Ship Blind.
             </p>
           </div>
           
