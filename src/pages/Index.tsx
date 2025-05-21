@@ -22,6 +22,8 @@ import Features from "@/components/Features";
 import WhatsInsideScalysis from "@/components/WhatsInsideScalysis";
 import OldVsNew from "@/components/OldVsNew";
 import GeminiEffectSection from "@/components/GeminiEffectSection";
+import YouDecideWhatShips from "@/components/YouDecideWhatShips";
+import GlassBoxSection from "@/components/GlassBoxSection";
 
 const Index = () => {
   useEffect(() => {
@@ -84,6 +86,27 @@ const Index = () => {
         >
           <SmartMetaTargeting />
         </motion.div>
+        
+        {/* New Section 4: YouDecideWhatShips */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <YouDecideWhatShips />
+        </motion.div>
+        
+        {/* New Section 5: GlassBoxSection */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <GlassBoxSection />
+        </motion.div>
+        
         <motion.div
           initial="hidden"
           whileInView="visible"
