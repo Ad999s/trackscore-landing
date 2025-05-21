@@ -38,10 +38,10 @@ const WhatsInsideScalysis = () => {
           className="text-center mb-8 sm:mb-12"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 px-2">
-            All Your RTO Problems.<span className="text-gradient"> Packed In One Ecosystem</span>
+            All Your RTO Problems.<span className="text-gradient"> Packed In One Ecosystem.</span>
           </h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-           Get Everything At One Place
+           Get Everything At One Place.
           </p>
         </motion.div>
 
