@@ -48,10 +48,11 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <GeminiEffectSection />
-        <WhatsInsideScalysis />
+        <CoreValuePoints />
         <BuiltForDropshippers />
         <MarketComparisonSlider />
         <CodMarketStats />
+        <WhatsInsideScalysis />
         
         <motion.div
           initial="hidden"
@@ -59,7 +60,6 @@ const Index = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={sectionVariants}
         >
-          <CoreValuePoints />
         </motion.div>
         
         <motion.div
