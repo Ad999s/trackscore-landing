@@ -35,7 +35,7 @@ const CoreValuePoints = () => {
   const valuePoints = [
     {
       icon: <ArrowRight className="h-5 w-5" />,
-      title: "Precision Tagging Engine",
+      title: "High-Precision Order Tagging",
       description: "Detects fake names, fraud loops, dead zones, timing abuse — and flags what kills profit.",
     },
     {
