@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { Check, ChevronRight, X, Zap, Brain, Dart } from "lucide-react";
+import { Check, ChevronRight, X, Zap, Brain, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -34,7 +34,7 @@ const CoreValuePoints = () => {
 
   const valuePoints = [
     {
-      icon: <Dart className="h-5 w-5" />,
+      icon: <ArrowRight className="h-5 w-5" />,
       title: "Precision Tagging Engine",
       description: "Detects fake names, fraud loops, dead zones, timing abuse — and flags what kills profit.",
     },
