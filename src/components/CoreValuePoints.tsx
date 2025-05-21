@@ -169,7 +169,7 @@ const CoreValuePoints = () => {
               ))}
             </div>
             
-            {/* New Stats Panel at the Bottom */}
+            {/* Stats Panel at the Bottom */}
             <div className={cn(
               "border-t border-gray-200 bg-gray-50 p-4",
               isVisible ? "animate-fadeIn animation-delay-500" : "opacity-0"
@@ -187,30 +187,8 @@ const CoreValuePoints = () => {
                     </div>
                   </div>
                 </div>
-                <div className="py-3">
-                  <p className="text-gray-700">
-                    Scalysis prevented a low-quality order from shipping. You just saved time, cost, and customer trust.
-                  </p>
-                </div>
-                <div className="py-3">
-                  <p className="text-lg font-semibold">Estimated Savings: ₹ 138.40</p>
-                </div>
               </div>
             </div>
-          </div>
-          
-          {/* Micro-Quote */}
-          <div className={cn(
-            "mt-16 max-w-3xl mx-auto text-center",
-            isVisible ? "animate-fadeIn animation-delay-500" : "opacity-0"
-          )}>
-            <Separator className="mb-8" />
-            <p className="text-xl font-medium text-gray-700 mb-2">
-              "We still decide what ships. Scalysis just makes sure we know what not to touch."
-            </p>
-            <p className="text-gray-500">
-              — Ops Head, 20k orders/month brand
-            </p>
           </div>
         </div>
       </div>
