@@ -15,10 +15,10 @@ const BuiltForDropshippers = () => {
           className="text-center mb-12"
         >
           <h2 className="text-5xl md:text-6xl font-bold leading-tight mb-4">
-            Now Offer COD Without <span className="text-blue-500">Second Thought.</span> 
+            Offer COD Without <span className="text-blue-500">Second Thought.</span> 
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Unlimited scale. Zero RTO risk. No ROAS drop.
+            Protect your D2C from RTO — without killing revenue.
           </p>
         </motion.div>
 
