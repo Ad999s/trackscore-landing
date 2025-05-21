@@ -81,10 +81,10 @@ const CoreValuePoints = () => {
         >
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Core Value <span className="text-blue-600">Points</span>
+              Scalysis Shows You the <span className="text-blue-600">Pitfalls</span> Before They Cost You.
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We built Scalysis to give you complete control with detailed insights
+              Every risky order flagged. Every rupee protected.
             </p>
           </div>
           
