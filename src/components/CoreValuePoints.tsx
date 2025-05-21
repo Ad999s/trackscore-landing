@@ -81,10 +81,10 @@ const CoreValuePoints = () => {
         >
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              See <span className="text-blue-600">Pitfalls</span> Before They Cost You.
+              Don't Ship <span className="text-blue-600">Blind.</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Don’t Ship Blind.
+             Scalysis catches fake names, fraud patterns, and loss-making zones — before they hit your balance sheet.
             </p>
           </div>
           
