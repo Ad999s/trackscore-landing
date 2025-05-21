@@ -125,7 +125,7 @@ const HowSelectionWorks = () => {
 
           </h2>
           <p className="text-lg text-gray-600">
-            Our AI-powered system optimizes your order fulfillment process to minimize returns and maximize profits.
+           Built for founders who care about every rupee, every order, every outcome.
           </p>
         </div>
         
