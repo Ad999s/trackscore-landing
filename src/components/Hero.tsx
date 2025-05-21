@@ -89,7 +89,7 @@ useEffect(() => {
                 Scale COD 10x Faster.<br /><span className="text-blue-500">Without RTO.</span>
               </h1>
               <p className="text-xl text-gray-600 mt-4 mx-auto">
-Full-Control Dashboard. Complete Protection. Built To Scale.</p>
+Build your brand on high-quality audience. Cut loss-making audience.</p>
             </motion.div>
 
             <motion.div 
