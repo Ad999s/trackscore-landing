@@ -89,7 +89,7 @@ useEffect(() => {
                 Scale COD 10x Faster.<br /><span className="text-blue-500">Without RTO.</span>
               </h1>
               <p className="text-xl text-gray-600 mt-4 mx-auto">
-Build your D2C with the right audience. Less RTOs, More Repeat Rates.</p>
+Build your D2C with the right audience. 90%+ delivery success. 2x repeat rate.</p>
             </motion.div>
 
             <motion.div 
