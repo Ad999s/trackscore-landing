@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { Check, ChevronRight, X } from "lucide-react";
+import { Check, ChevronRight, X, Zap, Brain, Dart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -34,16 +34,19 @@ const CoreValuePoints = () => {
 
   const valuePoints = [
     {
-      title: "Precision Scores",
-      description: "Every order gets a quality score based on 50+ real-world signals — fake names, COD timing, past behavior, unreachable zones.",
+      icon: <Dart className="h-5 w-5" />,
+      title: "Precision Tagging Engine",
+      description: "Detects fake names, fraud loops, dead zones, timing abuse — and flags what kills profit.",
     },
     {
-      title: "Full Override Access",
-      description: "Nothing moves without your say. Approve, block, or whitelist in one click.",
+      icon: <Zap className="h-5 w-5" />,
+      title: "10,000+ Orders Scanned in Seconds",
+      description: "Flags the junk instantly so your team never slows down.",
     },
     {
-      title: "Action-Ready Insights",
-      description: "We don't give you vague alerts. We show you exactly why each order was flagged — in plain language your ops team understands.",
+      icon: <Brain className="h-5 w-5" />,
+      title: "You See the Data. You Make the Call.",
+      description: "No auto-blocking. No guesswork. Just clear, explainable flags — and one-click control.",
     },
   ];
 
@@ -100,7 +103,7 @@ const CoreValuePoints = () => {
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="flex-shrink-0 bg-blue-100 rounded-full p-2 text-blue-600">
-                    <Check className="h-5 w-5" />
+                    {point.icon}
                   </div>
                   <h3 className="text-xl font-semibold">{point.title}</h3>
                 </div>
