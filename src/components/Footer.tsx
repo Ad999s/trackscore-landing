@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -91,7 +92,25 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <ul className="space-y-2">
-              {["Home", "Features", "How It Works", "Results", "Blog", "About Us", "Contact"].map((link) => (
+              {["Home"].map((link) => (
+                <li key={link}>
+                  <a 
+                    href={`#${link.toLowerCase().replace(/\s+/g, '-')}`} 
+                    className="text-gray-600 hover:text-primary transition-colors"
+                  >
+                    {link}
+                  </a>
+                </li>
+              ))}
+              <li>
+                <Link 
+                  to="/reduce-rto" 
+                  className="text-gray-600 hover:text-primary transition-colors"
+                >
+                  Reduce RTO Blog
+                </Link>
+              </li>
+              {["Features", "How It Works", "Results", "About Us", "Contact"].map((link) => (
                 <li key={link}>
                   <a 
                     href={`#${link.toLowerCase().replace(/\s+/g, '-')}`} 
