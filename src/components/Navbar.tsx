@@ -83,10 +83,10 @@ const Navbar = () => {
             <ShimmerButton 
               background="rgba(37, 99, 235, 1)" 
               shimmerColor="rgba(255, 255, 255, 0.4)"
-              className="w-32 text-white"
+              className="w-auto px-5 text-white"
               onClick={() => window.location.href = "#get-started"}
             >
-              <span className="text-sm font-medium">30 Day Trial</span>
+              <span className="text-sm font-medium">Try Scalysis Early</span>
             </ShimmerButton>
           </nav>
 
@@ -141,7 +141,7 @@ const Navbar = () => {
                   setIsMobileMenuOpen(false);
                 }}
               >
-                <span className="text-sm font-medium">Get Started</span>
+                <span className="text-sm font-medium">Try Scalysis Early</span>
               </ShimmerButton>
             </nav>
           </div>

@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 const AutoPnLTracking = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -49,6 +50,16 @@ const AutoPnLTracking = () => {
             <p className="text-lg text-gray-600">
               Scalysis integrates with logistics and marketing channels, creating daily automatic P&L sheets, comparing new performance, and unlocking new growth.
             </p>
+            <div className="pt-2">
+              <ShimmerButton 
+                background="rgba(37, 99, 235, 1)" 
+                shimmerColor="rgba(255, 255, 255, 0.4)"
+                className="w-auto px-5 text-white"
+                onClick={() => window.location.href = "#get-started"}
+              >
+                <span className="text-sm font-medium">Try Scalysis Early</span>
+              </ShimmerButton>
+            </div>
           </div>
 
           {/* Right Column - Image */}
