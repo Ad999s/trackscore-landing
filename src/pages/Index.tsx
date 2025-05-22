@@ -115,6 +115,7 @@ const Index = () => {
           variants={sectionVariants}
         >
           <GlassBoxSection />
+          <div data-tf-live="01JVWDWG3HHEAD58J2SYJYFMAG"></div><script src="//embed.typeform.com/next/embed.js"></script>
         </motion.div>
         
         <motion.div
