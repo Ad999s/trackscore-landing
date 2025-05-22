@@ -103,7 +103,7 @@ Build your D2C with the right audience. 90%+ delivery success. 2x repeat rate.</
                 shimmerColor="rgba(255, 255, 255, 0.4)"
                 className="w-40"
               >
-                <span className="text-sm font-medium">Start 30 Day Trial</span>
+                <span className="text-sm font-medium">Try Scalysis Early</span>
               </ShimmerButton>
             </motion.div>
           </motion.div>
