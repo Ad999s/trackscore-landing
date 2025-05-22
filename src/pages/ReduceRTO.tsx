@@ -1,7 +1,7 @@
 
 import React from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
@@ -91,9 +91,15 @@ const blogPosts = [
 ];
 
 const ReduceRTO = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleCTAClick = () => {
+    navigate("/#get-started");
+  }
 
   return (
     <>
@@ -126,6 +132,14 @@ const ReduceRTO = () => {
               </Link>
             </Card>
           ))}
+        </div>
+
+        <div className="mt-12 p-6 bg-blue-50 rounded-lg text-center">
+          <h2 className="text-xl font-bold mb-2">Want to see which orders not to ship this week?</h2>
+          <p className="mb-6">Get early access to Scalysis and start recovering lost margins.</p>
+          <Button className="bg-blue-500 hover:bg-blue-600" onClick={handleCTAClick}>
+            Try Scalysis Early
+          </Button>
         </div>
       </div>
       <Footer />

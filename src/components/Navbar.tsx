@@ -4,10 +4,12 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +28,20 @@ const Navbar = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const handleLogoClick = () => {
+    navigate("/");
+  };
+
+  const handleCTAClick = () => {
+    if (window.location.pathname === "/") {
+      // We're already on the home page, scroll to the form
+      document.getElementById("get-started")?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // Navigate to the home page and to the form
+      window.location.href = "/#get-started";
+    }
+  };
+
   return (
     <header
       className={cn(
@@ -38,7 +54,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-10">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <a href="#" className="flex items-center space-x-2">
+            <a onClick={handleLogoClick} className="flex items-center space-x-2 cursor-pointer">
               <img 
                 src="https://framerusercontent.com/images/qOi3xuJUI1I1c13AATXI63xs.png?" 
                 alt="Scalysis Logo" 
@@ -84,7 +100,7 @@ const Navbar = () => {
               background="rgba(37, 99, 235, 1)" 
               shimmerColor="rgba(255, 255, 255, 0.4)"
               className="w-auto px-5 text-white"
-              onClick={() => window.location.href = "#get-started"}
+              onClick={handleCTAClick}
             >
               <span className="text-sm font-medium">Try Scalysis Early</span>
             </ShimmerButton>
@@ -137,7 +153,7 @@ const Navbar = () => {
                 shimmerColor="rgba(255, 255, 255, 0.4)"
                 className="w-full text-white"
                 onClick={() => {
-                  window.location.href = "#get-started";
+                  handleCTAClick();
                   setIsMobileMenuOpen(false);
                 }}
               >

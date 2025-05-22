@@ -1,132 +1,102 @@
-
 import React, { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 
-// Content for the first blog post with improved readability
+// Content for the first blog post with clean, structured format
 const firstBlogContent = {
   title: "Reduce RTO by 40% in 30 Days",
   date: "May 20, 2025",
   readTime: "9 min read",
   content: `
     <h2>Understanding RTO in Indian E-commerce</h2>
-    <p>Return to Origin (RTO) silently damages COD-focused brands in India. Each returned package represents wasted spending on packaging, shipping, labor, advertising, and customer acquisition.</p>
+    <p>Return to Origin (RTO) is the silent killer of COD-focused brands in India. Each returned package represents wasted spending on packaging, shipping, labor, advertising, and customer acquisition.</p>
     
-    <h2>The Real Cost of RTO</h2>
-    <p>When parcels return undelivered, you lose more than just product value. You're paying twice for shipping while getting nothing in return.</p>
+    <h2>What is RTO (Return to Origin) and Why It's Rising in India</h2>
+    <p>RTO occurs when an order is shipped but never gets delivered — and is returned to the seller. With prepaid orders, it's rare. But with COD, it's rampant.</p>
     
-    <h2>Why RTO Rates Keep Rising</h2>
+    <h2>Why is RTO increasing?</h2>
     <ul>
-      <li>COD dominance: 60-80% of Indian e-commerce orders use Cash on Delivery</li>
-      <li>Impulse ordering: Many customers order without strong purchase intent</li>
-      <li>Lack of verification: No payment barrier means easier fake orders</li>
-      <li>Delivery challenges: Last-mile issues and address problems</li>
+      <li><strong>Rising COD preference:</strong> 60-80% of ecommerce orders in India are still COD.</li>
+      <li><strong>Low buyer intent:</strong> Many customers place orders impulsively.</li>
+      <li><strong>No digital verification:</strong> Unlike prepaid, there's no payment friction.</li>
+      <li><strong>Courier inefficiencies:</strong> Last-mile issues, wrong addresses, bad pin codes.</li>
     </ul>
+    <p>This creates a massive leak in cashflow, especially for D2C brands spending lakhs daily on ads.</p>
     
-    <h2>Three Main Drivers of High RTO</h2>
+    <h2>3 Main Causes of High RTO</h2>
+    <ol>
+      <li>
+        <h3>Fake or impulsive orders</h3>
+        <p>Customers use fake names (e.g. "Rahul Dravid", "Free Product") or abandoned carts.</p>
+      </li>
+      <li>
+        <h3>High-risk pin codes</h3>
+        <p>Certain regions have historically low delivery success rates. Couriers fail or customers refuse delivery.</p>
+      </li>
+      <li>
+        <h3>No smart filtering</h3>
+        <p>Brands ship every COD order — without knowing which ones are likely to fail.</p>
+      </li>
+    </ol>
     
-    <div class="bg-blue-50 p-4 rounded-lg my-6">
-      <h3>1. Fake and Impulse Orders</h3>
-      <p>Orders with fake names or abandoned carts that customers never intended to receive</p>
-    </div>
-    
-    <div class="bg-blue-50 p-4 rounded-lg my-6">
-      <h3>2. High-Risk Locations</h3>
-      <p>Certain pin codes consistently show poor delivery rates due to various factors</p>
-    </div>
-    
-    <div class="bg-blue-50 p-4 rounded-lg my-6">
-      <h3>3. Ineffective Filtering</h3>
-      <p>Shipping every order without identifying which ones are likely to fail</p>
-    </div>
-    
-    <h2>Why Traditional Fraud Tools Don't Work for COD</h2>
-    <p>Standard e-commerce fraud detection focuses on payment fraud, not delivery intent:</p>
+    <h2>Why Traditional Fraud Tools Fail on COD</h2>
+    <p>Most fraud detection tools are built for prepaid ecommerce. COD fraud is different:</p>
     <ul>
-      <li>COD risk is behavioral, not transactional</li>
-      <li>No payment data to analyze</li>
-      <li>Intent prediction matters more than identity verification</li>
+      <li>It's behavioral, not transactional.</li>
+      <li>There's no payment metadata.</li>
+      <li>The risk is not in payment — it's in intent.</li>
     </ul>
+    <p>COD fraud requires a new type of intelligence: Order intent prediction.</p>
     
-    <h2>Smart Order Selection: A 5-Step Solution</h2>
-    
-    <div class="bg-gray-50 p-4 rounded-lg my-4 border-l-4 border-blue-500">
-      <h3>Step 1: Score Each Order</h3>
-      <p>Analyze customer behavior, device signals, historical data, and location reliability</p>
-    </div>
-    
-    <div class="bg-gray-50 p-4 rounded-lg my-4 border-l-4 border-blue-500">
-      <h3>Step 2: Identify Risk Factors</h3>
-      <p>Flag suspicious patterns like unusual timing, first-time orders from high-risk zones</p>
-    </div>
-    
-    <div class="bg-gray-50 p-4 rounded-lg my-4 border-l-4 border-blue-500">
-      <h3>Step 3: Hold Risky Orders</h3>
-      <p>Pause suspicious orders for verification rather than shipping immediately</p>
-    </div>
-    
-    <div class="bg-gray-50 p-4 rounded-lg my-4 border-l-4 border-blue-500">
-      <h3>Step 4: Prioritize Quality Orders</h3>
-      <p>Focus resources on orders showing clear purchase intent and reliable delivery potential</p>
-    </div>
-    
-    <div class="bg-gray-50 p-4 rounded-lg my-4 border-l-4 border-blue-500">
-      <h3>Step 5: Continuous Improvement</h3>
-      <p>Use delivery outcome data to refine prediction models over time</p>
-    </div>
+    <h2>How Smart Order Selection Reduces RTO</h2>
+    <ol>
+      <li><strong>Score every order at checkout</strong> - Analyze buyer behavior, device signals, historical data, and pin code reliability.</li>
+      <li><strong>Identify low-quality orders</strong> - Flag late-night, first-time customers in high-risk zones.</li>
+      <li><strong>Auto-flag risky orders</strong> - Pause suspicious orders for verification.</li>
+      <li><strong>Ship only quality orders</strong> - Focus on orders with clear intent and reliable delivery potential.</li>
+      <li><strong>Feed data back into model</strong> - Improve prediction accuracy using delivery outcomes.</li>
+    </ol>
     
     <h2>Case Study: 48% to 19% RTO Reduction</h2>
     <p>A Mumbai skincare brand was losing ₹6L+ monthly to RTO, primarily from Instagram-sourced customers.</p>
     
-    <h3>Key Problems:</h3>
+    <h3>Problems:</h3>
     <ul>
-      <li>No order verification process</li>
-      <li>Unrestricted pin code shipping</li>
-      <li>Frequent fraudulent orders</li>
+      <li>No check on COD orders</li>
+      <li>Shipping to every pincode</li>
+      <li>Fake names and prank orders</li>
     </ul>
     
-    <h3>Solution Implementation:</h3>
+    <h3>Solution:</h3>
     <ul>
-      <li>Smart checkout scoring system</li>
-      <li>High-risk zone blocking</li>
-      <li>Fake order detection</li>
-      <li>Courier performance tracking</li>
+      <li>Smart scoring at checkout</li>
+      <li>Auto-blocking high-risk zones</li>
+      <li>Fake name detection</li>
+      <li>Weekly RTO mapping by courier</li>
     </ul>
     
-    <h3>30-Day Results:</h3>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
-      <div class="bg-blue-500 text-white p-3 rounded-lg text-center">
-        <div class="text-xl font-bold">48% → 19%</div>
-        <div>RTO Rate</div>
-      </div>
-      <div class="bg-blue-500 text-white p-3 rounded-lg text-center">
-        <div class="text-xl font-bold">₹3.4L</div>
-        <div>Saved</div>
-      </div>
-      <div class="bg-blue-500 text-white p-3 rounded-lg text-center">
-        <div class="text-xl font-bold">0%</div>
-        <div>Conversion Loss</div>
-      </div>
-      <div class="bg-blue-500 text-white p-3 rounded-lg text-center">
-        <div class="text-xl font-bold">+25%</div>
-        <div>Ad ROI</div>
-      </div>
-    </div>
+    <h3>Results:</h3>
+    <ul>
+      <li>RTO dropped from 48% → 19%</li>
+      <li>₹3.4L in monthly savings</li>
+      <li>No conversion rate drop</li>
+      <li>25% better ad ROI</li>
+    </ul>
     
-    <h2>Recommended Tools</h2>
+    <h2>Tools You Can Start Using Now</h2>
     <ul>
       <li><strong>Scalysis:</strong> AI-powered order scoring for COD businesses</li>
-      <li><strong>WhatsApp verification:</strong> Pre-delivery order confirmation</li>
-      <li><strong>RTO analytics:</strong> Courier performance tracking</li>
-      <li><strong>Risk database:</strong> High-risk pin code identification</li>
+      <li><strong>WhatsApp reconfirmation:</strong> Pre-delivery order verification</li>
+      <li><strong>RTO dashboards:</strong> Courier performance tracking</li>
+      <li><strong>Pin code database:</strong> High-risk zone identification</li>
     </ul>
   `,
 };
 
-// Content for other blog posts with improved readability 
+// Content for other blog posts with structured format
 const placeholderContent = {
   "true-cost-of-rto": {
     title: "True Cost of RTO in Indian E-commerce",
@@ -153,13 +123,9 @@ const placeholderContent = {
       </ul>
       
       <h2>Calculating Your True RTO Cost</h2>
-      <p>Use this simple formula to estimate your monthly RTO losses:</p>
-      <div class="bg-blue-50 p-4 rounded-lg my-4">
-        <p>Monthly RTO Cost = (Average Order Value + 2x Shipping Cost + Handling Cost) × RTO Orders</p>
-      </div>
+      <p>Monthly RTO Cost = (Average Order Value + 2x Shipping Cost + Handling Cost) × RTO Orders</p>
       
       <h2>Industry Benchmarks</h2>
-      <p>Compare your performance against industry standards:</p>
       <ul>
         <li>Fashion: 25-35% RTO rate</li>
         <li>Electronics: 15-25% RTO rate</li>
@@ -168,7 +134,6 @@ const placeholderContent = {
       </ul>
       
       <h2>Building an RTO Reduction Strategy</h2>
-      <p>Implement these approaches to minimize financial impact:</p>
       <ul>
         <li>Order quality filtering</li>
         <li>Pre-shipment verification</li>
@@ -195,7 +160,6 @@ const placeholderContent = {
       </ol>
       
       <h2>Detection Patterns</h2>
-      <p>Key signals that indicate higher rejection risk:</p>
       <ul>
         <li>Orders placed between 11PM-3AM</li>
         <li>First-time customers with high-value orders</li>
@@ -205,24 +169,16 @@ const placeholderContent = {
       </ul>
       
       <h2>Customer Segments Analysis</h2>
-      <p>Different customer profiles show varying RTO patterns:</p>
-      <div class="bg-blue-50 p-4 rounded-lg my-4">
-        <h3>First-time Buyers</h3>
-        <p>Highest RTO rate (30-40%) due to uncertainty and testing behavior</p>
-      </div>
+      <h3>First-time Buyers</h3>
+      <p>Highest RTO rate (30-40%) due to uncertainty and testing behavior</p>
       
-      <div class="bg-blue-50 p-4 rounded-lg my-4">
-        <h3>Repeat Customers</h3>
-        <p>Moderate RTO rate (15-25%) with more predictable patterns</p>
-      </div>
+      <h3>Repeat Customers</h3>
+      <p>Moderate RTO rate (15-25%) with more predictable patterns</p>
       
-      <div class="bg-blue-50 p-4 rounded-lg my-4">
-        <h3>Loyal Customers</h3>
-        <p>Lowest RTO rate (5-10%) with high order reliability</p>
-      </div>
+      <h3>Loyal Customers</h3>
+      <p>Lowest RTO rate (5-10%) with high order reliability</p>
       
       <h2>Prevention Strategies</h2>
-      <p>Implement these approaches to reduce rejection rates:</p>
       <ul>
         <li>SMS/WhatsApp order confirmation before shipping</li>
         <li>Customer scoring based on previous behavior</li>
@@ -666,6 +622,7 @@ const placeholderContent = {
 
 const BlogPost = () => {
   const { slug } = useParams();
+  const navigate = useNavigate();
   
   // Determine which content to display
   let blogContent;
@@ -681,9 +638,9 @@ const BlogPost = () => {
       date: "Coming Soon",
       readTime: "Coming Soon",
       content: `
-        <div class="py-12 text-center">
-          <h2 class="text-xl">This blog post is coming soon!</h2>
-          <p class="mt-4">Our team is working hard to create quality content about reducing RTO rates. Please check back later.</p>
+        <div>
+          <h2>This blog post is coming soon!</h2>
+          <p>Our team is working hard to create quality content about reducing RTO rates. Please check back later.</p>
         </div>
       `,
     };
@@ -698,12 +655,14 @@ const BlogPost = () => {
       <Navbar />
       <div className="container mx-auto px-4 py-16 max-w-4xl">
         <div className="mb-8">
-          <Link to="/reduce-rto">
-            <Button variant="outline" className="mb-8">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to all posts
-            </Button>
-          </Link>
+          <Button 
+            variant="outline" 
+            className="mb-8"
+            onClick={() => navigate("/reduce-rto")}
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to all posts
+          </Button>
           
           <h1 className="text-3xl md:text-4xl font-bold mb-4">{blogContent.title}</h1>
           
@@ -715,14 +674,19 @@ const BlogPost = () => {
           </div>
         </div>
 
-        <div className="prose max-w-none prose-lg prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-3"
+        <div className="prose max-w-none prose-lg"
              dangerouslySetInnerHTML={{ __html: blogContent.content }}>
         </div>
 
-        <div className="mt-12 p-6 bg-blue-50 rounded-lg text-center">
+        <div className="mt-12 p-6 bg-blue-50 rounded-lg">
           <h2 className="text-xl font-bold mb-2">Want to see which orders not to ship this week?</h2>
           <p className="mb-6">Get early access to Scalysis and start recovering lost margins.</p>
-          <Button className="bg-blue-500 hover:bg-blue-600" onClick={() => window.location.href = "/#get-started"}>
+          <Button 
+            className="bg-blue-500 hover:bg-blue-600" 
+            onClick={() => {
+              window.location.href = "/#get-started";
+            }}
+          >
             Try Scalysis Early
           </Button>
         </div>

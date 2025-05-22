@@ -13,11 +13,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,6 +50,16 @@ const Footer = () => {
     setEmail("");
     // Here you would typically send the email to your backend
   };
+
+  const handleCTAClick = () => {
+    if (window.location.pathname === "/") {
+      // We're already on the home page, scroll to the form
+      document.getElementById("get-started")?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // Navigate to the home page and to the form
+      window.location.href = "/#get-started";
+    }
+  };
   
   return (
     <footer id="contact" className="bg-gray-50 pt-16 pb-8">
@@ -66,7 +77,8 @@ const Footer = () => {
               <img 
                 src="/lovable-uploads/3c4756d4-83a0-499f-8d98-04970f61faa7.png" 
                 alt="Scalysis Logo" 
-                className="h-10 mr-2" 
+                className="h-10 mr-2 cursor-pointer" 
+                onClick={() => navigate("/")}
               />
             </div>
             <p className="text-gray-600">
@@ -92,16 +104,14 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <ul className="space-y-2">
-              {["Home"].map((link) => (
-                <li key={link}>
-                  <a 
-                    href={`#${link.toLowerCase().replace(/\s+/g, '-')}`} 
-                    className="text-gray-600 hover:text-primary transition-colors"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a 
+                  href="/"
+                  className="text-gray-600 hover:text-primary transition-colors"
+                >
+                  Home
+                </a>
+              </li>
               <li>
                 <Link 
                   to="/reduce-rto" 

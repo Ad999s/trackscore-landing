@@ -1,12 +1,15 @@
+
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -23,20 +26,24 @@ const Hero = () => {
   }, []);
 
   const messages = [
-  "Your warehouse shipped 8,434 risky orders this week. • Auto-filter them",
-  "XpressBees delay up 11% in East India. • Switch smarter",
-  "97.3% of RTOs last week came from just 11 pincodes. • Auto-block them",
-  "Scalysis flagged 22 fake names trending in Haryana. • Avoid the trap",
-];
+    "Your warehouse shipped 8,434 risky orders this week. • Auto-filter them",
+    "XpressBees delay up 11% in East India. • Switch smarter",
+    "97.3% of RTOs last week came from just 11 pincodes. • Auto-block them",
+    "Scalysis flagged 22 fake names trending in Haryana. • Avoid the trap",
+  ];
 
-const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0);
 
-useEffect(() => {
-  const interval = setInterval(() => {
-    setIndex((prev) => (prev + 1) % messages.length);
-  }, 3000);
-  return () => clearInterval(interval);
-}, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % messages.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleCTAClick = () => {
+    document.getElementById("get-started")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <motion.section 
@@ -89,7 +96,8 @@ useEffect(() => {
                 Scale COD 10x Faster.<br /><span className="text-blue-500">Without RTO.</span>
               </h1>
               <p className="text-xl text-gray-600 mt-4 mx-auto">
-Build your D2C with the right audience. 90%+ delivery success. 2x repeat rate.</p>
+                Build your D2C with the right audience. 90%+ delivery success. 2x repeat rate.
+              </p>
             </motion.div>
 
             <motion.div 
@@ -102,6 +110,7 @@ Build your D2C with the right audience. 90%+ delivery success. 2x repeat rate.</
                 background="rgba(37, 99, 235, 1)" 
                 shimmerColor="rgba(255, 255, 255, 0.4)"
                 className="w-40"
+                onClick={handleCTAClick}
               >
                 <span className="text-sm font-medium">Try Scalysis Early</span>
               </ShimmerButton>
