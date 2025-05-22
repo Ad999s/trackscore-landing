@@ -122,9 +122,7 @@ const CTA = () => {
             isVisible ? "animate-fadeIn animation-delay-300" : "opacity-0"
           )}
         >
-          <div className="p-4 bg-white rounded-2xl">
-            <div data-tf-live="01JVWDWG3HHEAD58J2SYJYFMAG" className="w-full aspect-video"></div>
-          </div>
+          
         </div>
       </div>
     </section>
