@@ -140,14 +140,14 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin size={18} className="text-primary mr-2 mt-0.5" />
                 <span className="text-gray-600">
-                  123 Tech Park, Electronic City<br />
+                  Tech Park, Electronic City<br />
                   Bangalore, 560100, India
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="text-primary mr-2" />
                 <a href="tel:+919876543210" className="text-gray-600 hover:text-primary transition-colors">
-                  +91 9876 543 210
+                  +91 9149874123
                 </a>
               </li>
               <li className="flex items-center">
