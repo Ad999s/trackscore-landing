@@ -183,7 +183,7 @@ const CoreValuePoints = () => {
                     </div>
                     <div className="flex items-center">
                       <TrendingUp className="h-5 w-5 text-green-600 mr-2" />
-                      <p className="text-gray-700">Quality Score Impact: +0,3 this session</p>
+                      <p className="text-gray-700">Quality Score Impact: +0.3 this session</p>
                     </div>
                   </div>
                 </div>
