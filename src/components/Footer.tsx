@@ -153,7 +153,7 @@ const Footer = () => {
               <li className="flex items-center">
                 <Mail size={18} className="text-primary mr-2" />
                 <a href="mailto:info@scalysis.com" className="text-gray-600 hover:text-primary transition-colors">
-                  info@scalysis.com
+                  aditya.kotwal@scalysis.com
                 </a>
               </li>
             </ul>
