@@ -25,7 +25,6 @@ import GeminiEffectSection from "@/components/GeminiEffectSection";
 import YouDecideWhatShips from "@/components/YouDecideWhatShips";
 import GlassBoxSection from "@/components/GlassBoxSection";
 import CoreValuePoints from "@/components/CoreValuePoints";
-import TypeformEmbed from "@/components/TypeformEmbed";
 
 const Index = () => {
   useEffect(() => {
@@ -150,18 +149,14 @@ const Index = () => {
         >
        
         </motion.div>
-        
-        {/* Adding TypeformEmbed Section */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={sectionVariants}
         >
-          <TypeformEmbed />
+      
         </motion.div>
-        
-        <CTA />
       </main>
       <Footer />
     </div>
