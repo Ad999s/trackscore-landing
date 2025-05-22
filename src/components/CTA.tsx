@@ -62,6 +62,10 @@ const CTA = () => {
                     background="white" 
                     shimmerColor="rgba(59, 130, 246, 0.5)"
                     className="w-40 text-primary hover:bg-white border-white"
+                    onClick={() => {
+                      // Open the Typeform in a new tab
+                      window.open("https://osm1wbvpesx.typeform.com/to/k9fg72uv", "_blank");
+                    }}
                   >
                     <span className="text-sm font-medium">Try 30 Days Free</span>
                   </ShimmerButton>
@@ -99,6 +103,24 @@ const CTA = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        
+        {/* Typeform Embed */}
+        <div 
+          className={cn(
+            "mt-16 max-w-4xl mx-auto transition-all duration-700 rounded-2xl overflow-hidden shadow-medium",
+            isVisible ? "animate-fadeIn animation-delay-300" : "opacity-0"
+          )}
+        >
+          <div className="relative aspect-video w-full">
+            <iframe 
+              src="https://osm1wbvpesx.typeform.com/to/k9fg72uv?typeform-embed=embed-widget" 
+              className="absolute inset-0 w-full h-full" 
+              allow="camera; microphone; autoplay; encrypted-media;" 
+              frameBorder="0"
+              title="Scalysis Contact Form"
+            ></iframe>
           </div>
         </div>
       </div>
