@@ -25,7 +25,7 @@ import GeminiEffectSection from "@/components/GeminiEffectSection";
 import YouDecideWhatShips from "@/components/YouDecideWhatShips";
 import GlassBoxSection from "@/components/GlassBoxSection";
 import CoreValuePoints from "@/components/CoreValuePoints";
-import TypeformEmbed from "@/components/TypeformEmbed";
+// Removing the import for TypeformEmbed since we're using CTA instead
 
 const Index = () => {
   useEffect(() => {
@@ -98,7 +98,6 @@ const Index = () => {
           <SmartMetaTargeting />
         </motion.div>
         
-        {/* New Section 4: YouDecideWhatShips */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -108,7 +107,6 @@ const Index = () => {
           <YouDecideWhatShips />
         </motion.div>
         
-        {/* New Section 5: GlassBoxSection */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -151,15 +149,7 @@ const Index = () => {
        
         </motion.div>
         
-        {/* Adding TypeformEmbed Section */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={sectionVariants}
-        >
-          <TypeformEmbed />
-        </motion.div>
+        {/* Removed the TypeformEmbed component to avoid duplicate forms */}
         
         <CTA />
       </main>
