@@ -8,6 +8,7 @@ const CTA = () => {
   const [isVisible, setIsVisible] = useState(false);
   
   useEffect(() => {
+    // Observer for fade-in animation
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -23,10 +24,18 @@ const CTA = () => {
       observer.observe(currentElement);
     }
     
+    // Load Typeform embed script
+    const script = document.createElement('script');
+    script.src = "//embed.typeform.com/next/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+    
     return () => {
       if (currentElement) {
         observer.unobserve(currentElement);
       }
+      // Clean up script if component unmounts
+      document.body.removeChild(script);
     };
   }, []);
   
@@ -106,21 +115,15 @@ const CTA = () => {
           </div>
         </div>
         
-        {/* Typeform Embed */}
+        {/* Typeform Live Embed */}
         <div 
           className={cn(
             "mt-16 max-w-4xl mx-auto transition-all duration-700 rounded-2xl overflow-hidden shadow-medium",
             isVisible ? "animate-fadeIn animation-delay-300" : "opacity-0"
           )}
         >
-          <div className="relative aspect-video w-full">
-            <iframe 
-              src="https://osm1wbvpesx.typeform.com/to/k9fg72uv?typeform-embed=embed-widget" 
-              className="absolute inset-0 w-full h-full" 
-              allow="camera; microphone; autoplay; encrypted-media;" 
-              frameBorder="0"
-              title="Scalysis Contact Form"
-            ></iframe>
+          <div className="p-4 bg-white rounded-2xl">
+            <div data-tf-live="01JVWDWG3HHEAD58J2SYJYFMAG" className="w-full aspect-video"></div>
           </div>
         </div>
       </div>
