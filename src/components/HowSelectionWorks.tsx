@@ -1,16 +1,14 @@
-
 import { useEffect, useState } from "react";
 import { Check, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const ProcessStep = ({ 
-  number, 
-  title, 
-  description, 
-  isActive, 
+const ProcessStep = ({
+  number,
+  title,
+  description,
+  isActive,
   isLast = false,
   onMouseEnter
-}: { 
+}: {
   number: number;
   title: string;
   description: string;
@@ -18,109 +16,68 @@ const ProcessStep = ({
   isLast?: boolean;
   onMouseEnter: () => void;
 }) => {
-  return (
-    <div 
-      className={cn(
-        "relative flex gap-6 cursor-pointer transition-all duration-300 group",
-        isActive ? "opacity-100" : "opacity-70 hover:opacity-90"
-      )}
-      onMouseEnter={onMouseEnter}
-    >
+  return <div className={cn("relative flex gap-6 cursor-pointer transition-all duration-300 group", isActive ? "opacity-100" : "opacity-70 hover:opacity-90")} onMouseEnter={onMouseEnter}>
       <div className="flex flex-col items-center">
-        <div className={cn(
-          "flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300",
-          isActive 
-            ? "border-2 border-blue-500 bg-blue-500 text-white" 
-            : "border-2 border-gray-300 text-gray-500"
-        )}>
+        <div className={cn("flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300", isActive ? "border-2 border-blue-500 bg-blue-500 text-white" : "border-2 border-gray-300 text-gray-500")}>
           {number}
         </div>
-        {!isLast && (
-          <div className={cn(
-            "mt-3 h-full w-0.5 transition-all duration-300",
-            isActive ? "bg-blue-500" : "bg-gray-200"
-          )}></div>
-        )}
+        {!isLast && <div className={cn("mt-3 h-full w-0.5 transition-all duration-300", isActive ? "bg-blue-500" : "bg-gray-200")}></div>}
       </div>
       <div className="pb-8">
-        <h3 className={cn(
-          "text-xl font-semibold mb-2 transition-all duration-300",
-          isActive ? "text-blue-600" : "text-gray-700"
-        )}>{title}</h3>
+        <h3 className={cn("text-xl font-semibold mb-2 transition-all duration-300", isActive ? "text-blue-600" : "text-gray-700")}>{title}</h3>
         <p className="text-gray-600">{description}</p>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 const HowSelectionWorks = () => {
   const [activeStep, setActiveStep] = useState(1);
   const [isVisible, setIsVisible] = useState(false);
-  
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+      }
+    }, {
+      threshold: 0.1
+    });
     const currentElement = document.getElementById("how-selection-works");
-    
     if (currentElement) {
       observer.observe(currentElement);
     }
-    
     return () => {
       if (currentElement) {
         observer.unobserve(currentElement);
       }
     };
   }, []);
-  
-  const steps = [
-    {
-      number: 1,
-      title: "Fetch AWB Links From Each Shopify Order",
-      description: "Our AI engine automatically scans and processes all of your Cash-on-Delivery orders from your Shopify store in real-time."
-    },
-    {
-      number: 2,
-      title: "Extract Tracking Status + Maintain Database",
-      description: "Our proprietary algorithm extracts tracking information and maintains a comprehensive database for all your shipments."
-    },
-    {
-      number: 3,
-      title: "AI Trains on Data + Product Specific Training",
-      description: "Each order is analyzed and the AI learns from your specific product categories and customer behaviors to improve predictions."
-    },
-    {
-      number: 4,
-      title: "Accurate Real-Time Predictions + 3 Modes of Shipping",
-      description: "Orders are intelligently routed through three optimized shipping modes based on their scores to maximize delivery success rates."
-    },
-    {
-      number: 5,
-      title: "AI Retrains & Gets Better Overtime",
-      description: "Save working capital on shipping costs as our AI continuously learns from new data, improving predictions and reducing waste."
-    }
-  ];
-
-  return (
-    <section id="how-selection-works" className="py-20 bg-gradient-to-b from-white to-blue-50">
+  const steps = [{
+    number: 1,
+    title: "Fetch AWB Links From Each Shopify Order",
+    description: "Our AI engine automatically scans and processes all of your Cash-on-Delivery orders from your Shopify store in real-time."
+  }, {
+    number: 2,
+    title: "Extract Tracking Status + Maintain Database",
+    description: "Our proprietary algorithm extracts tracking information and maintains a comprehensive database for all your shipments."
+  }, {
+    number: 3,
+    title: "AI Trains on Data + Product Specific Training",
+    description: "Each order is analyzed and the AI learns from your specific product categories and customer behaviors to improve predictions."
+  }, {
+    number: 4,
+    title: "Accurate Real-Time Predictions + 3 Modes of Shipping",
+    description: "Orders are intelligently routed through three optimized shipping modes based on their scores to maximize delivery success rates."
+  }, {
+    number: 5,
+    title: "AI Retrains & Gets Better Overtime",
+    description: "Save working capital on shipping costs as our AI continuously learns from new data, improving predictions and reducing waste."
+  }];
+  return <section id="how-selection-works" className="py-20 bg-gradient-to-b from-white to-blue-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div 
-          className={cn(
-            "text-center max-w-3xl mx-auto mb-16 transition-opacity duration-700",
-            isVisible ? "opacity-100" : "opacity-0"
-          )}
-        >
+        <div className={cn("text-center max-w-3xl mx-auto mb-16 transition-opacity duration-700", isVisible ? "opacity-100" : "opacity-0")}>
           <p className="inline-block text-sm font-medium px-3 py-1 bg-blue-50 text-blue-600 rounded-full mb-4">
             Our Process
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl font-bold mb-4 md:text-5xl">
             <span className="text-blue-500">Scalysis:</span> The Decision Engine Behind Your Profitable D2C Growth
 
           </h2>
@@ -131,33 +88,16 @@ const HowSelectionWorks = () => {
         
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Process Steps */}
-          <div className={cn(
-            "space-y-4 transition-all duration-700 delay-300",
-            isVisible ? "opacity-100" : "opacity-0 translate-y-10"
-          )}>
-            {steps.map((step, index) => (
-              <ProcessStep
-                key={step.number}
-                number={step.number}
-                title={step.title}
-                description={step.description}
-                isActive={activeStep === step.number}
-                isLast={index === steps.length - 1}
-                onMouseEnter={() => setActiveStep(step.number)}
-              />
-            ))}
+          <div className={cn("space-y-4 transition-all duration-700 delay-300", isVisible ? "opacity-100" : "opacity-0 translate-y-10")}>
+            {steps.map((step, index) => <ProcessStep key={step.number} number={step.number} title={step.title} description={step.description} isActive={activeStep === step.number} isLast={index === steps.length - 1} onMouseEnter={() => setActiveStep(step.number)} />)}
           </div>
           
           {/* Right Column - Visualization */}
-          <div className={cn(
-            "relative transition-all duration-700 delay-500",
-            isVisible ? "opacity-100" : "opacity-0 translate-y-10"
-          )}>
+          <div className={cn("relative transition-all duration-700 delay-500", isVisible ? "opacity-100" : "opacity-0 translate-y-10")}>
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-tr from-blue-100 to-accent/20 rounded-3xl blur-lg"></div>
               <div className="relative bg-white rounded-2xl shadow-medium overflow-hidden border border-gray-100 p-6">
-                {activeStep === 1 && (
-                  <div className="space-y-6 animate-fadeIn">
+                {activeStep === 1 && <div className="space-y-6 animate-fadeIn">
                     <h3 className="font-medium text-xl flex items-center gap-2">
                       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
                         <Check size={18} className="text-blue-600" />
@@ -214,11 +154,9 @@ const HowSelectionWorks = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  </div>}
                 
-                {activeStep === 2 && (
-                  <div className="space-y-6 animate-fadeIn">
+                {activeStep === 2 && <div className="space-y-6 animate-fadeIn">
                     <h3 className="font-medium text-xl flex items-center gap-2">
                       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
                         <Check size={18} className="text-blue-600" />
@@ -262,24 +200,28 @@ const HowSelectionWorks = () => {
                       <div className="bg-gray-50 p-4 rounded-lg">
                         <div className="font-medium mb-2">Recent Tracking Updates</div>
                         <div className="space-y-2 text-sm">
-                          {[
-                            { id: "AWB-112233", status: "Out for Delivery", time: "12 min ago" },
-                            { id: "AWB-445566", status: "In Transit", time: "45 min ago" },
-                            { id: "AWB-778899", status: "Delivered", time: "2 hrs ago" }
-                          ].map(item => (
-                            <div key={item.id} className="flex justify-between">
+                          {[{
+                        id: "AWB-112233",
+                        status: "Out for Delivery",
+                        time: "12 min ago"
+                      }, {
+                        id: "AWB-445566",
+                        status: "In Transit",
+                        time: "45 min ago"
+                      }, {
+                        id: "AWB-778899",
+                        status: "Delivered",
+                        time: "2 hrs ago"
+                      }].map(item => <div key={item.id} className="flex justify-between">
                               <span>{item.id}: <span className="text-blue-600">{item.status}</span></span>
                               <span className="text-gray-500">{item.time}</span>
-                            </div>
-                          ))}
+                            </div>)}
                         </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  </div>}
                 
-                {activeStep === 3 && (
-                  <div className="space-y-6 animate-fadeIn">
+                {activeStep === 3 && <div className="space-y-6 animate-fadeIn">
                     <h3 className="font-medium text-xl flex items-center gap-2">
                       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
                         <Check size={18} className="text-blue-600" />
@@ -295,7 +237,9 @@ const HowSelectionWorks = () => {
                           <span className="text-sm text-blue-600 font-medium">87%</span>
                         </div>
                         <div className="w-full bg-white rounded-full h-2 mt-1 mb-3">
-                          <div className="bg-blue-500 h-2 rounded-full" style={{ width: "87%" }}></div>
+                          <div className="bg-blue-500 h-2 rounded-full" style={{
+                        width: "87%"
+                      }}></div>
                         </div>
                         <div className="text-xs text-gray-600">
                           25,482 order patterns analyzed
@@ -336,11 +280,9 @@ const HowSelectionWorks = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  </div>}
                 
-                {activeStep === 4 && (
-                  <div className="space-y-6 animate-fadeIn">
+                {activeStep === 4 && <div className="space-y-6 animate-fadeIn">
                     <h3 className="font-medium text-xl flex items-center gap-2">
                       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
                         <Check size={18} className="text-blue-600" />
@@ -400,11 +342,9 @@ const HowSelectionWorks = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  </div>}
                 
-                {activeStep === 5 && (
-                  <div className="space-y-6 animate-fadeIn">
+                {activeStep === 5 && <div className="space-y-6 animate-fadeIn">
                     <h3 className="font-medium text-xl flex items-center gap-2">
                       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
                         <Check size={18} className="text-blue-600" />
@@ -458,15 +398,12 @@ const HowSelectionWorks = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  </div>}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HowSelectionWorks;
