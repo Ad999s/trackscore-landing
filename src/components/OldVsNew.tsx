@@ -1,51 +1,33 @@
-
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-
 const OldVsNew = () => {
   const [isVisible, setIsVisible] = useState(false);
-  
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+      }
+    }, {
+      threshold: 0.1
+    });
     const currentElement = document.getElementById("old-vs-new-section");
-    
     if (currentElement) {
       observer.observe(currentElement);
     }
-    
     return () => {
       if (currentElement) {
         observer.unobserve(currentElement);
       }
     };
   }, []);
-
-  return (
-    <section className="py-16 sm:py-20">
+  return <section className="py-16 sm:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div 
-          id="old-vs-new-section"
-          className={cn(
-            "max-w-6xl mx-auto transition-all duration-500",
-            isVisible ? "animate-fadeIn" : "opacity-0"
-          )}
-        >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-10 md:mb-16">RTO Models: Old vs 2025</h2>
+        <div id="old-vs-new-section" className={cn("max-w-6xl mx-auto transition-all duration-500", isVisible ? "animate-fadeIn" : "opacity-0")}>
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10 md:mb-16 lg:text-5xl">Scalysis Vs Traditional Tools</h2>
           
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             {/* Traditional Approach */}
-            <div className={cn(
-              "relative bg-white rounded-xl border border-gray-200 shadow-md p-5 sm:p-6 transition-all duration-700",
-              isVisible ? "animate-slideUp" : "opacity-0 translate-y-8"
-            )}>
+            <div className={cn("relative bg-white rounded-xl border border-gray-200 shadow-md p-5 sm:p-6 transition-all duration-700", isVisible ? "animate-slideUp" : "opacity-0 translate-y-8")}>
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-100 text-red-700 px-4 py-1 rounded-full font-medium text-sm">
                 Old RTO Tools
               </div>
@@ -87,10 +69,7 @@ const OldVsNew = () => {
             </div>
             
             {/* Scalysis Approach */}
-            <div className={cn(
-              "relative bg-white rounded-xl border border-gray-200 shadow-md p-5 sm:p-6 transition-all duration-700",
-              isVisible ? "animate-slideUp animation-delay-300" : "opacity-0 translate-y-8"
-            )}>
+            <div className={cn("relative bg-white rounded-xl border border-gray-200 shadow-md p-5 sm:p-6 transition-all duration-700", isVisible ? "animate-slideUp animation-delay-300" : "opacity-0 translate-y-8")}>
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-100 text-green-700 px-4 py-1 rounded-full font-medium text-sm">
                 2025 RTO Engine
               </div>
@@ -141,8 +120,6 @@ const OldVsNew = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default OldVsNew;
