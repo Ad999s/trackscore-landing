@@ -95,11 +95,7 @@ const CodMarketStats = () => {
         duration: 0.6,
         delay: 0.2
       }} className="text-center mb-12">
-          <p className="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto">
-            Scalysis helps you tap into the massive COD market — but only the part that actually converts. 
-            We filter out fake, bot, and high-risk orders so you reach the real buyers — 
-            the ones who accept delivery and drive profit.
-          </p>
+          <p className="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto">Scalysis filters the junk. You deliver to buyers who convert.</p>
         </motion.div>
 
         {/* Horizontal Stats Display - Updated with middle box bigger */}
