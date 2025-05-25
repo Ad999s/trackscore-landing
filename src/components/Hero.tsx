@@ -21,7 +21,7 @@ const Hero = () => {
   useEffect(() => {
     setIsLoaded(true);
   }, []);
-  const messages = ["Your warehouse shipped 8,434 risky orders this week. • Auto-filter them", "XpressBees delay up 11% in East India. • Switch smarter", "97.3% of RTOs last week came from just 11 pincodes. • Auto-block them", "Scalysis flagged 22 fake names trending in Haryana. • Avoid the trap"];
+  const messages = ["Instantly 20% Less Returns, from day one. • Save On Shipping", "Product Specific Training (PST) • Train Smarter", "Worst 10% Pincodes, accounts for 90% RTOs • Spot Them", "Smart Meta Targeting, Save 30% On Marketing • Every Rupee counts"];
   const [index, setIndex] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
