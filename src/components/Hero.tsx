@@ -88,7 +88,7 @@ const Hero = () => {
               <h1 className="text-5xl md:text-6xl font-bold leading-tight">
                 Scale COD 10x Faster.<br /><span className="text-blue-500">Without RTO.</span>
               </h1>
-              <p className="text-xl text-gray-600 mt-4 mx-auto">AI Powered Complete RTO Protection For Indian D2Cs</p>
+              <p className="text-xl text-gray-600 mt-4 mx-auto">GPT — but for your D2C brand. Built to kill RTO.</p>
             </motion.div>
 
             <motion.div className="flex justify-center" initial={{
