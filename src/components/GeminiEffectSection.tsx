@@ -32,7 +32,7 @@ export function GeminiEffectSection() {
           pathLengthFourth,
           pathLengthFifth,
         ]}
-        title="Machine Learning. Built Only for COD."
+        title="GPT. Built for Customer Intent."
         description="Trained on crores of order patterns, understands why RTO happens, tracks buying intent and every move on your Shopify site — with over 95% prediction accuracy."
       />
     </div>
