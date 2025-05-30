@@ -88,7 +88,7 @@ const Hero = () => {
               <h1 className="text-5xl md:text-6xl font-bold leading-tight">
                 Scale COD 10x Faster.<br /><span className="text-blue-500">Without RTO.</span>
               </h1>
-              <p className="text-xl text-gray-600 mt-4 mx-auto">GPT. Built for D2C. Fully Tuned for RTO.
+              <p className="text-xl text-gray-600 mt-4 mx-auto">GPT-Powered Decisioning — For Every D2C Order
 
             </p>
             </motion.div>
