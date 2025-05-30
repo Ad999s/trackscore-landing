@@ -32,7 +32,7 @@ export function GeminiEffectSection() {
           pathLengthFourth,
           pathLengthFifth,
         ]}
-        title="Built on GPT-4 Turbo. Customer intent."
+        title="GPT-4 Turbo, Built to Spot Customer Intent."
         description="Trained on crores of order patterns, understands why RTO happens, tracks buying intent and every move on your Shopify site — with over 95% prediction accuracy."
       />
     </div>
