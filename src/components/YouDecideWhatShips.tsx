@@ -1,37 +1,17 @@
-import { useState, useEffect } from "react";
-import { cn } from "@/lib/utils";
-import { Shield, ZapIcon, Layers, ToggleLeft } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+
+import React from 'react';
+
 const YouDecideWhatShips = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-      }
-    }, {
-      threshold: 0.1
-    });
-    const currentElement = document.getElementById("you-decide-section");
-    if (currentElement) {
-      observer.observe(currentElement);
-    }
-    return () => {
-      if (currentElement) {
-        observer.unobserve(currentElement);
-      }
-    };
-  }, []);
-  const keyPoints = [{
-    icon: <ToggleLeft className="h-6 w-6" />,
-    title: "Full override control built-in"
-  }, {
-    icon: <ZapIcon className="h-6 w-6" />,
-    title: "Smart suggestions, not auto-blocks"
-  }, {
-    icon: <Layers className="h-6 w-6" />,
-    title: "Transparency over automation"
-  }];
-  return;
+  return (
+    <div className="py-16 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-8">You Decide What Ships</h2>
+        <p className="text-lg text-gray-600 text-center max-w-2xl mx-auto">
+          Take control of your shipping decisions with our intelligent platform.
+        </p>
+      </div>
+    </div>
+  );
 };
+
 export default YouDecideWhatShips;

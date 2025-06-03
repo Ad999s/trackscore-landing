@@ -1,34 +1,19 @@
-import { useState, useEffect } from "react";
-import { cn } from "@/lib/utils";
-import { SearchCode, Bell, Info, Activity } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+
+import React from 'react';
+
 const GlassBoxSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-      }
-    }, {
-      threshold: 0.1
-    });
-    const currentElement = document.getElementById("glass-box-section");
-    if (currentElement) {
-      observer.observe(currentElement);
-    }
-    return () => {
-      if (currentElement) {
-        observer.unobserve(currentElement);
-      }
-    };
-  }, []);
-  const featureAlerts = [{
-    title: "Flagged: Name mismatch + Unreachable Pincode",
-    color: "bg-amber-50 border-amber-200 text-amber-700"
-  }, {
-    title: "Blocked: COD attempt after 5 failed deliveries in past 30 days",
-    color: "bg-red-50 border-red-200 text-red-700"
-  }];
-  return;
+  return (
+    <div className="py-16 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="glass-morphism p-8 rounded-lg">
+          <h2 className="text-3xl font-bold text-center mb-8">Glass Box Section</h2>
+          <p className="text-lg text-gray-600 text-center max-w-2xl mx-auto">
+            Transparent and clear insights into your business performance.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 };
+
 export default GlassBoxSection;
