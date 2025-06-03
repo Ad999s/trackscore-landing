@@ -32,7 +32,7 @@ export function GeminiEffectSection() {
           pathLengthFourth,
           pathLengthFifth,
         ]}
-        title="Intent LLM - Built on 300+ intent signals."
+        title="Custom-Built Intent AI for D2C Brands."
         description="Scalysis's 89% accuracy beats your calling team — 10x more precise."
       />
     </div>
