@@ -32,7 +32,7 @@ export function GeminiEffectSection() {
           pathLengthFourth,
           pathLengthFifth,
         ]}
-        title="Customer Intent AI — Built to prevent RTO."
+        title="Intent AI: 89% Accuracy Beats Manual Calls."
         description="Trained on crores of order patterns, understands why RTO happens, tracks buying intent and every move on your Shopify site — with over 95% prediction accuracy."
       />
     </div>
