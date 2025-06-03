@@ -87,7 +87,7 @@ const CoreValuePoints = () => {
           <span className="text-blue-600">Smart Shipping ></span> Blind Shipping.
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-             Scalysis catches fake names, fraud patterns, and loss-making zones — eyes on each order.
+             No checkout. No calls. No manual rules. Just Scalysis.
             </p>
           </div>
           
