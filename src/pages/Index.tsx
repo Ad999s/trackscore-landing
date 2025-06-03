@@ -49,9 +49,10 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <GeminiEffectSection />
+         <CoreValuePoints />
         <MarketComparisonSlider />
         <CodMarketStats />
-        <CoreValuePoints />
+       
         <BuiltForDropshippers />
         <WhatsInsideScalysis />
         
