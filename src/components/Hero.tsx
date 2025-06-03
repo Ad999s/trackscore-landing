@@ -1,8 +1,10 @@
+
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -88,7 +90,14 @@ const Hero = () => {
               <h1 className="text-5xl md:text-6xl font-bold leading-tight">
                 Scale D2C 10x Faster.<br /><span className="text-blue-500">Without RTO.</span>
               </h1>
-              <p className="text-xl text-gray-600 mt-4 mx-auto">30% of COD shoppers have low intent — our AI filters them out.</p>
+              <p className="text-xl text-black mt-4 mx-auto">
+                <span className="font-bold">30%</span> of COD shoppers have low intent — our AI filters them out.
+              </p>
+              
+              <p className="text-lg text-gray-700 mt-3 mx-auto flex items-center justify-center gap-2">
+                <span className="text-xl">👨‍💼</span>
+                Built by a ₹6Cr D2C founder — out of RTO pain.
+              </p>
             </motion.div>
 
             <motion.div className="flex justify-center" initial={{
@@ -127,4 +136,5 @@ const Hero = () => {
       </div>
     </motion.section>;
 };
+
 export default Hero;
