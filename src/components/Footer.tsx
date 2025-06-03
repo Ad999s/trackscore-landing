@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { 
   Mail, 
@@ -81,8 +80,8 @@ const Footer = () => {
                 onClick={() => navigate("/")}
               />
             </div>
-            <p className="text-gray-600">
-              Smart order selection for COD orders. Reducing RTO rates for e-commerce businesses across India.
+            <p className="text-gray-700 font-light">
+              <span className="font-semibold">Smart order selection</span> for COD orders. Reducing RTO rates for e-commerce businesses across India.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-600 hover:text-primary transition-colors">
@@ -102,8 +101,8 @@ const Footer = () => {
           
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Quick Links</h3>
-            <ul className="space-y-2">
+            <h3 className="text-lg font-medium">Quick Links</h3>
+            <ul className="space-y-2 font-light">
               <li>
                 <a 
                   href="/"
@@ -135,8 +134,8 @@ const Footer = () => {
           
           {/* Contact Info */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Contact Us</h3>
-            <ul className="space-y-3">
+            <h3 className="text-lg font-medium">Contact Us</h3>
+            <ul className="space-y-3 font-light">
               <li className="flex items-start">
                 <MapPin size={18} className="text-primary mr-2 mt-0.5" />
                 <span className="text-gray-600">
@@ -161,9 +160,9 @@ const Footer = () => {
           
           {/* Newsletter */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Subscribe to Our Newsletter</h3>
-            <p className="text-gray-600">
-              Get the latest updates on RTO reduction strategies and e-commerce optimization.
+            <h3 className="text-lg font-medium">Subscribe to Our Newsletter</h3>
+            <p className="text-gray-700 font-light">
+              Get the latest updates on <span className="font-semibold">RTO reduction strategies</span> and e-commerce optimization.
             </p>
             <form onSubmit={handleSubmit} className="flex space-x-2">
               <Input 
@@ -182,7 +181,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-gray-200 pt-8 mt-8 text-center">
-          <p className="text-gray-600 text-sm">
+          <p className="text-gray-600 text-sm font-light">
             &copy; {new Date().getFullYear()} Scalysis. All rights reserved.
           </p>
         </div>

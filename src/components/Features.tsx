@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -45,11 +44,11 @@ const Features = () => {
             <p className="inline-block text-sm font-medium px-3 py-1 bg-primary/10 text-primary rounded-full mb-4">
               Powerful Features
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ship <span className="text-gradient">Smart Every Day</span>
+            <h2 className="text-3xl md:text-4xl font-medium mb-4">
+              Ship <span className="text-gradient font-semibold">Smart Every Day</span>
             </h2>
-            <p className="text-lg text-gray-600">
-              Save 21% daily on shipping costs, packaging costs & supplier payments without hurting the potential revenue. Add 3% to your profit margins.
+            <p className="text-lg font-light text-gray-700">
+              Save <span className="font-semibold">21% daily</span> on shipping costs, packaging costs & supplier payments without hurting the potential revenue. Add <span className="font-semibold">3%</span> to your profit margins.
             </p>
             
             {/* Tab Buttons */}
@@ -74,13 +73,13 @@ const Features = () => {
             <div className="p-4 bg-white rounded-lg shadow-sm border border-gray-100 min-h-40">
               {activeTab === "pnl" ? (
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-blue-600">Automatic PnL Tracking</h3>
-                  <p>
+                  <h3 className="text-xl font-medium text-blue-600">Automatic PnL Tracking</h3>
+                  <p className="font-light text-gray-700">
                     Automatically tracks your profit and loss across all your orders. Integrates with 
-                    your Shopify store and gives you real-time insights into your business performance.
+                    your Shopify store and gives you <span className="font-semibold">real-time insights</span> into your business performance.
                   </p>
-                  <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                    <li>Real-time profit margin calculation</li>
+                  <ul className="list-disc pl-5 space-y-2 text-gray-700 font-light">
+                    <li><span className="font-medium">Real-time</span> profit margin calculation</li>
                     <li>Cost tracking across suppliers</li>
                     <li>Shipping and packaging cost analysis</li>
                     <li>COD fees and charges monitoring</li>
@@ -88,13 +87,13 @@ const Features = () => {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-green-600">Predict 30 Day Cash Flow</h3>
-                  <p>
-                    Get accurate predictions of your cash flow for the next 30 days. Know exactly when money 
+                  <h3 className="text-xl font-medium text-green-600">Predict 30 Day Cash Flow</h3>
+                  <p className="font-light text-gray-700">
+                    Get <span className="font-semibold">accurate predictions</span> of your cash flow for the next 30 days. Know exactly when money 
                     will come in and go out, helping you make better business decisions.
                   </p>
-                  <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                    <li>Accurate COD remittance forecasting</li>
+                  <ul className="list-disc pl-5 space-y-2 text-gray-700 font-light">
+                    <li><span className="font-medium">Accurate</span> COD remittance forecasting</li>
                     <li>Supplier payment scheduling</li>
                     <li>Expected delivery and RTO projections</li>
                     <li>Daily, weekly, and monthly breakdown</li>

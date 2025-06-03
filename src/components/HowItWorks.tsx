@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Link, Database, TrendingUp } from "lucide-react";
@@ -58,9 +59,9 @@ const Step = ({ number, title, description, icon, isLast = false, delay }: StepP
           <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
             {icon}
           </div>
-          <h3 className="text-xl font-semibold">{title}</h3>
+          <h3 className="text-xl font-medium">{title}</h3>
         </div>
-        <p className="text-gray-600">{description}</p>
+        <p className="text-gray-700 font-light">{description}</p>
       </div>
     </div>
   );
@@ -100,11 +101,11 @@ const HowItWorks = () => {
             <p className="inline-block text-sm font-medium px-3 py-1 bg-primary/10 text-primary rounded-full mb-4">
               Simple Process
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <span className="text-gradient">Get Started</span> in 3 Simple Steps
+            <h2 className="text-3xl md:text-4xl font-medium mb-4">
+              <span className="text-gradient font-semibold">Get Started</span> in 3 Simple Steps
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Our intuitive platform seamlessly integrates with your existing workflows to reduce RTO rates without disrupting your operations.
+            <p className="text-lg font-light text-gray-700 mb-8">
+              Our intuitive platform <span className="font-semibold">seamlessly integrates</span> with your existing workflows to reduce RTO rates without disrupting your operations.
             </p>
             
             <div className="space-y-4">
