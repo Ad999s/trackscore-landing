@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Check, ChevronRight, X, Zap, Brain, ArrowRight, TrendingUp } from "lucide-react";
@@ -84,7 +83,7 @@ const CoreValuePoints = () => {
         >
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-          <span className="text-blue-600">Smart Shipping ></span> Blind Shipping.
+              <span className="text-blue-600">Smart Shipping</span> <span className="text-gray-400">&gt;</span> <span className="text-gray-900">Blind Shipping.</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
              No checkout. No calls. No manual rules. Just Scalysis.

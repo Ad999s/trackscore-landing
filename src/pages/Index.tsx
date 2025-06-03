@@ -25,7 +25,7 @@ import GeminiEffectSection from "@/components/GeminiEffectSection";
 import YouDecideWhatShips from "@/components/YouDecideWhatShips";
 import GlassBoxSection from "@/components/GlassBoxSection";
 import CoreValuePoints from "@/components/CoreValuePoints";
-// Removing the import for TypeformEmbed since we're using CTA instead
+import FeatureEcosystem from "@/components/FeatureEcosystem";
 
 const Index = () => {
   useEffect(() => {
@@ -49,7 +49,8 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <GeminiEffectSection />
-         <CoreValuePoints />
+        <CoreValuePoints />
+        <FeatureEcosystem />
         <MarketComparisonSlider />
         <CodMarketStats />
        
@@ -149,8 +150,6 @@ const Index = () => {
         >
        
         </motion.div>
-        
-        {/* Removed the TypeformEmbed component to avoid duplicate forms */}
         
         <CTA />
       </main>
