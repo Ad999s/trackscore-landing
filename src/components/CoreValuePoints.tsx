@@ -86,7 +86,7 @@ const CoreValuePoints = () => {
               <span className="text-blue-600">Smart Shipping</span> <span className="text-gray-400">&gt;</span> <span className="text-gray-900">Blind Shipping.</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-             No checkout. No calls. No manual rules. Just Scalysis.
+             Less RTOs, More Savings and Faster Scaling.
             </p>
           </div>
           
