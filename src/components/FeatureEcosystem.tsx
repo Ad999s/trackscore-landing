@@ -1,8 +1,8 @@
-
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Zap, Shield, Target, TrendingUp, Brain, Activity, ArrowUp, ArrowDown } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const FeatureEcosystem = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,44 +33,44 @@ const FeatureEcosystem = () => {
 
   const features = [
     {
-      icon: <Brain className="h-6 w-6" />,
-      title: "Scalysis AI — Trained to Spot Customer Intent",
-      description: "No more manual blocking, general fraud rules, pincode blocking.",
-      highlight: "15% RTO drop from day 1 — scales to 45% in 60 days as new data flows in.",
+      icon: <Brain className="h-5 w-5" />,
+      title: "Scalysis AI — Spot Customer Intent",
+      description: "No manual blocking, general fraud rules, pincode blocking.",
+      highlight: "15% RTO drop from day 1 — scales to 45% in 60 days.",
       emoji: "⚡️"
     },
     {
-      icon: <Shield className="h-6 w-6" />,
-      title: "Smart Order Selection — 20% Reduction RTO",
-      description: "AI filters out fake, low-intent, and high-risk COD orders before they burn your money.",
+      icon: <Shield className="h-5 w-5" />,
+      title: "Smart Order Selection — 20% RTO Cut",
+      description: "AI filters fake, low-intent, and high-risk COD orders.",
       highlight: "No more wasted packaging, shipping, or reverse logistics.",
       emoji: "🚫"
     },
     {
-      icon: <Target className="h-6 w-6" />,
-      title: "Meta Targeting Block — Cut 8% Ad Waste, Drop RTO by 15%",
+      icon: <Target className="h-5 w-5" />,
+      title: "Meta Targeting Block — Cut 8% Ad Waste",
       description: "Auto-detects high RTO pin codes and bad ad audiences.",
-      highlight: "Block them at the ad level — before bad traffic enters your funnel.",
+      highlight: "Block them at ad level — before bad traffic enters funnel.",
       emoji: "📉"
     },
     {
-      icon: <TrendingUp className="h-6 w-6" />,
-      title: "Trends — Spot Next Scaling Regions, Kill Loss-Making Zones",
-      description: "Real-time insights on what's driving failed orders — SKUs, cities, campaigns, channels.",
+      icon: <TrendingUp className="h-5 w-5" />,
+      title: "Trends — Spot Scaling Regions",
+      description: "Real-time insights on failed orders — SKUs, cities, campaigns.",
       highlight: "Act fast before the damage spreads.",
       emoji: "📊"
     },
     {
-      icon: <Brain className="h-6 w-6" />,
-      title: "ScalysisGPT — Instant Answers, Replace Analyst",
-      description: "Ask: \"Which SKU causes most RTO in Tier 2?\" or \"How did RTO shift post-offer?\"",
+      icon: <Brain className="h-5 w-5" />,
+      title: "ScalysisGPT — Replace Analyst",
+      description: "Ask: \"Which SKU causes most RTO in Tier 2?\"",
       highlight: "Your AI business analyst, trained on your store.",
       emoji: "🧠"
     },
     {
-      icon: <Activity className="h-6 w-6" />,
-      title: "Health Dashboard — Current Status of Your AI Model",
-      description: "Track current model accuracy, rejection rate, delivery impact & future uplift.",
+      icon: <Activity className="h-5 w-5" />,
+      title: "Health Dashboard — AI Model Status",
+      description: "Track model accuracy, rejection rate, delivery impact.",
       highlight: "Know exactly how much better your shipping is getting.",
       emoji: "🎯"
     }
@@ -313,49 +313,53 @@ const FeatureEcosystem = () => {
           </div>
           
           <div className="grid lg:grid-cols-2 gap-16 items-start">
-            {/* Features List */}
-            <div className="space-y-8">
-              {features.map((feature, index) => (
-                <div 
-                  key={index} 
-                  className={cn(
-                    "transition-all duration-300 border-b border-gray-100 pb-6 last:border-b-0 cursor-pointer",
-                    "hover:bg-gray-50 p-4 rounded-lg",
-                    hoveredFeature === index ? "bg-blue-50 border-blue-200" : "",
-                    isVisible ? `animate-fadeIn animation-delay-${(index + 1) * 100}` : "opacity-0"
-                  )}
-                  onMouseEnter={() => setHoveredFeature(index)}
-                  onMouseLeave={() => setHoveredFeature(null)}
-                >
-                  <div className="flex gap-6">
-                    {/* Icon and Number */}
-                    <div className="flex-shrink-0 flex items-start gap-4">
-                      <div className="bg-blue-50 rounded-lg p-3 text-blue-600">
-                        {feature.icon}
-                      </div>
-                      <div className="text-xl font-light text-gray-400">
-                        {String(index + 1).padStart(2, '0')}
+            {/* Features List with Scroll */}
+            <div className="lg:h-[600px]">
+              <ScrollArea className="h-full pr-4">
+                <div className="space-y-6">
+                  {features.map((feature, index) => (
+                    <div 
+                      key={index} 
+                      className={cn(
+                        "transition-all duration-300 border-b border-gray-100 pb-4 last:border-b-0 cursor-pointer",
+                        "hover:bg-gray-50 p-3 rounded-lg",
+                        hoveredFeature === index ? "bg-blue-50 border-blue-200" : "",
+                        isVisible ? `animate-fadeIn animation-delay-${(index + 1) * 100}` : "opacity-0"
+                      )}
+                      onMouseEnter={() => setHoveredFeature(index)}
+                      onMouseLeave={() => setHoveredFeature(null)}
+                    >
+                      <div className="flex gap-4">
+                        {/* Icon and Number */}
+                        <div className="flex-shrink-0 flex items-start gap-3">
+                          <div className="bg-blue-50 rounded-lg p-2 text-blue-600">
+                            {feature.icon}
+                          </div>
+                          <div className="text-lg font-light text-gray-400">
+                            {String(index + 1).padStart(2, '0')}
+                          </div>
+                        </div>
+                        
+                        {/* Content */}
+                        <div className="flex-1 space-y-1">
+                          <h3 className="text-base font-medium text-black">
+                            {feature.title}
+                          </h3>
+                          <p className="text-sm font-light text-gray-700 leading-relaxed">
+                            {feature.description}
+                          </p>
+                          <div className="flex items-start gap-2">
+                            <span className="text-sm">{feature.emoji}</span>
+                            <p className="text-sm font-medium text-black">
+                              {feature.highlight}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    
-                    {/* Content */}
-                    <div className="flex-1 space-y-2">
-                      <h3 className="text-lg font-medium text-black">
-                        {feature.title}
-                      </h3>
-                      <p className="text-sm font-light text-gray-700 leading-relaxed">
-                        {feature.description}
-                      </p>
-                      <div className="flex items-start gap-2">
-                        <span className="text-base">{feature.emoji}</span>
-                        <p className="text-sm font-medium text-black">
-                          {feature.highlight}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
-              ))}
+              </ScrollArea>
             </div>
 
             {/* Dashboard/Preview */}
