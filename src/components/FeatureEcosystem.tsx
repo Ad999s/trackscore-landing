@@ -307,9 +307,12 @@ const FeatureEcosystem = () => {
         >
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light mb-6 text-black">
-              <span className="font-semibold">Full Data-Driven Ecosystem:</span> Cut RTO, Scale COD Without Friction.
+            <h2 className="text-3xl md:text-4xl font-light mb-3 text-black">
+              <span className="font-semibold">Full Data-Driven Ecosystem</span>
             </h2>
+            <p className="text-xl md:text-2xl font-light text-gray-600">
+              Cut RTO, Scale COD Without Friction.
+            </p>
           </div>
           
           <div className="grid lg:grid-cols-2 gap-16 items-start">
